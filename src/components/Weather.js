@@ -5,11 +5,14 @@ const Weather = ({ city }) => {
     const [weatherInfo, setWeatherInfo] = useState();
 
     useEffect(() => {
-        WeatherService.getCityWeather(city)
-            .then(response => {
-                setWeatherInfo(response)
-            })
+        if (city) {
+            WeatherService.getCityWeather(city)
+                .then(response => {
+                    setWeatherInfo(response)
+                })
+        }
     }, [city])
+
 
     //const filteredCities = cities.filter(city => city.includes(filter))
 

@@ -1,15 +1,28 @@
 import React from "react";
-import Dropdown from "react-bootstrap/Dropdown";
-import cityService from '../services/CityService'
+import City from "./City"
 
-const CityList = () => {
+let filteredCities = []
+const CityList = ({ cities, filter, setCity }) => {
+    if(filter !== ''){
+    filteredCities = cities.filter(c => c.name.includes(filter))
+}
+    console.log(filteredCities)
+    /* if(filteredCities.length === 1)
+         return() */
 
-    const cities = cityService.initializeCities()
-    console.log(cities)
+    if (filteredCities.length > 10)
+        return (<p>Please narrow your search criteria</p>)
+
     return (
-        <div>
-            {cities.map(city => <div key={city.id}><Dropdown.Item as="button" eventKey={city.id}>{city.name} , {city.country_code}</Dropdown.Item></div>)}
-        </div>
+        <ul>
+            {filter !== '' &&
+                filteredCities.map(city =>
+                    <div key={city.id}>
+                        <City name={city.name} countryCode={city.country} setCity={setCity}/>
+                    </div>
+                )
+            }
+        </ul>
     )
 }
 
