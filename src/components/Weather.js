@@ -13,9 +13,6 @@ const Weather = ({ city }) => {
         }
     }, [city])
 
-
-    //const filteredCities = cities.filter(city => city.includes(filter))
-
     return (
         <div >
             {weatherInfo && <div>
