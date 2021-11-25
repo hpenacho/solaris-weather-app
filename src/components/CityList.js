@@ -3,6 +3,7 @@ import City from "./City"
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
+import Stack from '@mui/material/Stack';
 
 let filteredCities = []
 const CityList = ({ cities, filter, setCity }) => {
@@ -21,16 +22,26 @@ const CityList = ({ cities, filter, setCity }) => {
 
     return (
 
-        <Box sx={{ width: '100%', maxWidth: 360, bgcolor: '#b0bec5' }}>
+        <Box sx={{ width: '100%', borderRadius: 3 }}>
 
             <List>
-                {filter !== '' &&
-                    filteredCities.map(city =>
-                        <ListItem disablePadding key={city.id}>
-                            <City cityInfo={city} setCity={setCity} />
-                        </ListItem>
-                    )
-                }
+                <Stack
+                    direction={{ xs: 'column', sm: 'row' }}
+                    spacing={1}
+                >
+                    {filter !== '' &&
+                        filteredCities.map(city =>
+                            <ListItem disablePadding key={city.id} sx={{
+                                border: 1, bgcolor: "#e8eaf6", borderRadius: 3, '&:hover': {
+                                    background: "#c5e1a5",
+
+                                }
+                            }}>
+                                <City cityInfo={city} setCity={setCity} />
+                            </ListItem>
+                        )
+                    }
+                </Stack>
             </List>
 
         </Box>

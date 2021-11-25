@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Filter from './components/Filter'
 import Weather from './components/Weather'
 import CityList from './components/CityList'
 import CityService from './services/CityService'
@@ -20,29 +19,26 @@ const App = () => {
   console.log()
 
   return (
-
-    <Container maxWidth="sm">
-      <Box sx={{ bgcolor: "red" }}>
+    < Container maxWidth="md">
+      <Box sx={{ bgcolor: "#1D1D1D", borderRadius: 3 }} p={5}>
         <ThemeProvider theme={theme}>
-          <Box>
-            <Paper sx={{
-              mx: "auto", borderRadius: 3
-            }}>
-              <Box
-                sx={{
-                  mx: "auto", borderRadius: 3
-                }}
-              >
-                <SearchBar filter={filter} setFilter={setFilter} setCity={setCity} />
-                <CityList cities={cities} filter={filter} setCity={setCity} />
-                <hr />
-                <Weather city={city} />
-              </Box>
-            </Paper>
+          <Box p={3} sx={{ bgcolor: "#0D0D0D", borderRadius: 3 }}>
+            <Box
+              sx={{
+                mx: "auto", borderRadius: 3
+              }}
+            >
+              <SearchBar filter={filter} setFilter={setFilter} setCity={setCity} />
+              <hr />
+              <CityList cities={cities} filter={filter} setCity={setCity} />
+              <hr />
+              <Weather city={city} />
+            </Box>
+
           </Box>
         </ThemeProvider>
       </Box>
-    </Container>
+    </Container >
 
   );
 }

@@ -67,8 +67,8 @@ export default function SearchAppBar({ filter, setFilter, setCity }) {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
-                <Toolbar>
+            <AppBar position="static" sx={{ borderRadius: 3 }} >
+                <Toolbar  >
                     <IconButton
                         size="large"
                         edge="start"
@@ -94,7 +94,7 @@ export default function SearchAppBar({ filter, setFilter, setCity }) {
                         sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, color: 'inherit' }}
                     >
                     </Typography>
-                    <Search value={filter} onChange={handleFilterChange} onKeyPress={search}>
+                    <Search value={filter} onChange={handleFilterChange} onKeyPress={search} sx={{ borderRadius: 3 }}>
                         <SearchIconWrapper>
                             <SearchIcon />
                         </SearchIconWrapper>
@@ -105,6 +105,6 @@ export default function SearchAppBar({ filter, setFilter, setCity }) {
                     </Search>
                 </Toolbar>
             </AppBar>
-        </Box>
+        </Box >
     );
 }

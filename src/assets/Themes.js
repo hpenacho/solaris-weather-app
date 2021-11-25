@@ -6,14 +6,14 @@ const darktheme = createTheme(
         palette: {
             type: 'dark',
             primary: {
-                main: '#90caf9',
+                main: '#141414',
             },
             secondary: {
                 main: '#f48fb1',
             },
             background: {
                 default: '#212121',
-                paper: '#424242',
+                paper: '#1D1D1D',
             },
         },
     })
