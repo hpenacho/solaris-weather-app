@@ -52,11 +52,23 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function SearchAppBar() {
+
+export default function SearchAppBar({ filter, setFilter, setCity }) {
+
+    const handleFilterChange = (event) => {
+        setFilter(event.target.value)
+    }
+
+    const search = async (e) => {
+        if (e.key === 'Enter') {
+            setCity(filter)
+        }
+    }
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
-                <Toolbar sx={{ bgcolor: '#424242' }}>
+                <Toolbar>
                     <IconButton
                         size="large"
                         edge="start"
@@ -81,9 +93,8 @@ export default function SearchAppBar() {
                         component="div"
                         sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, color: 'inherit' }}
                     >
-                        cityName here
                     </Typography>
-                    <Search>
+                    <Search value={filter} onChange={handleFilterChange} onKeyPress={search}>
                         <SearchIconWrapper>
                             <SearchIcon />
                         </SearchIconWrapper>

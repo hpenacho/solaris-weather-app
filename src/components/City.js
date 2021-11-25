@@ -9,7 +9,7 @@ const City = ({ cityInfo, setCity }) => {
     }
 
     return (
-        <ListItemButton component="city" href="#simple-list" onClick={handleClick}>
+        <ListItemButton onClick={handleClick}>
             <ListItemText primary={cityInfo.name} secondary={cityInfo.country} />
         </ListItemButton>
 
