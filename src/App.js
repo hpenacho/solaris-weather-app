@@ -1,46 +1,81 @@
 import React, { useState } from 'react'
 import Weather from './components/Weather'
 import CityList from './components/CityList'
-import CityService from './services/CityService'
+import InitService from './services/InitService'
 import SearchBar from './components/SearchBar'
 import Box from '@mui/material/Box'
 import darktheme from './assets/Themes'
 import { ThemeProvider } from '@mui/material/styles'
+import { Container, Typography } from '@mui/material'
+import { CssBaseline } from '@mui/material';
+import Modal from './components/advancedSearch/Modal'
 import Paper from '@mui/material/Paper';
-import { Container } from '@mui/material'
+import { borderRadius } from '@mui/system'
+import { Grid } from '@mui/material';
+import Header from './components/Header/HeaderSection'
+import NavBarSection from './components/Navbar/NavBarSection'
+import WeatherForecast from './components/WeatherForecast/ForecastContainer'
+import ForecastContainer from './components/WeatherForecast/ForecastContainer'
 
 
 const App = () => {
   const [filter, setFilter] = useState('')
-  const [city, setCity] = useState('')
+  const [location, setLocation] = useState('Lisbon')
   const [theme, setTheme] = useState(darktheme)
+  //const [showWeather, setShowWeather] = useState(false)
 
-  const cities = CityService.initializeCities()
-  console.log()
+  const cities = InitService.initializeCities()
 
-  return (
-    < Container maxWidth="md">
-      <Box sx={{ bgcolor: "#1D1D1D", borderRadius: 3 }} p={5}>
-        <ThemeProvider theme={theme}>
-          <Box p={3} sx={{ bgcolor: "#0D0D0D", borderRadius: 3 }}>
-            <Box
-              sx={{
-                mx: "auto", borderRadius: 3
-              }}
-            >
-              <SearchBar filter={filter} setFilter={setFilter} setCity={setCity} />
-              <hr />
-              <CityList cities={cities} filter={filter} setCity={setCity} />
-              <hr />
-              <Weather city={city} />
+  //style={{ background: "radial-gradient(circle, rgba(28,28,28,1) 0%, rgba(9,9,9,1) 50%, rgba(9,9,9,1) 100%)" }}
+
+  /*
+  <Box sx={{ borderRadius: 3 }} p={5}>
+
+            <Modal />
+            <Box p={3} sx={{ bgcolor: "#0D0D0D", borderRadius: 3 }}>
+              <Box
+                sx={{
+                  mx: "auto", borderRadius: 3
+                }}
+              >
+                <SearchBar filter={filter} setFilter={setFilter} setLocation={setLocation} setShowWeather={setShowWeather} />
+                <hr />
+                {!showWeather ?
+                  <CityList cities={cities} filter={filter} setLocation={setLocation} setShowWeather={setShowWeather} />
+                  :
+                  <Weather location={location} unitType={unitType} language={language} />
+                }
+              </Box>
+
             </Box>
 
           </Box>
-        </ThemeProvider>
-      </Box>
-    </Container >
-
+           */
+  return (
+    <div >
+      <ThemeProvider theme={theme}>
+        <CssBaseline enableColorScheme />
+        <Grid container >
+          <Header />
+          < Container disableGutters maxWidth="md" sx={{ mx: 'auto', borderTopLeftRadius: 15, borderTopRightRadius: 15 }}>
+            <NavBarSection filter={filter} setFilter={setFilter} setLocation={setLocation} />
+            <ForecastContainer location={location} />
+          </Container >
+        </Grid>
+      </ThemeProvider>
+    </div >
   );
 }
 
+/* <Box my={7} sx={{
+              width: 300,
+              height: 300,
+              backgroundColor: 'background.paper',
+              borderRadius: 2.5,
+              mx: 'auto',
+            }}>
+              <Paper height="220" width="330">
+
+              </Paper>
+            </Box> */
 export default App;

@@ -1,10 +1,11 @@
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 
-const City = ({ cityInfo, setCity }) => {
+const City = ({ cityInfo, setLocation, setShowWeather }) => {
 
     const handleClick = () => {
-        setCity(`${cityInfo.name},${cityInfo.country}`)
+        setLocation(`${cityInfo.name},${cityInfo.country}`)
+        setShowWeather(true)
     }
 
     return (

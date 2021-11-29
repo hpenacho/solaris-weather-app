@@ -53,15 +53,18 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 
-export default function SearchAppBar({ filter, setFilter, setCity }) {
+export default function SearchAppBar({ filter, setFilter, setLocation, setShowWeather }) {
 
     const handleFilterChange = (event) => {
         setFilter(event.target.value)
+        setShowWeather(false)
     }
 
     const search = async (e) => {
         if (e.key === 'Enter') {
-            setCity(filter)
+            console.log("clicked", filter)
+            setLocation(filter)
+            setShowWeather(true)
         }
     }
 

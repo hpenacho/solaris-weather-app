@@ -4,9 +4,10 @@ import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Stack from '@mui/material/Stack';
+import { useSpring, animated } from 'react-spring'
 
 let filteredCities = []
-const CityList = ({ cities, filter, setCity }) => {
+const CityList = ({ cities, filter, setLocation, setShowWeather }) => {
     if (filter !== '' && filter.length > 2) {
         filteredCities = cities.filter(c => c.name.startsWith(filter))
     }
@@ -18,12 +19,10 @@ const CityList = ({ cities, filter, setCity }) => {
             .sort((x, y) => y.stat.population - x.stat.population)
             .slice(0, 5)
     }
-    console.log(filteredCities)
 
     return (
 
         <Box sx={{ width: '100%', borderRadius: 3 }}>
-
             <List>
                 <Stack
                     direction={{ xs: 'column', sm: 'row' }}
@@ -34,17 +33,15 @@ const CityList = ({ cities, filter, setCity }) => {
                             <ListItem disablePadding key={city.id} sx={{
                                 border: 1, bgcolor: "#e8eaf6", borderRadius: 3, '&:hover': {
                                     background: "#c5e1a5",
-
                                 }
                             }}>
-                                <City cityInfo={city} setCity={setCity} />
+                                <City cityInfo={city} setLocation={setLocation} setShowWeather={setShowWeather} />
                             </ListItem>
                         )
                     }
                 </Stack>
             </List>
-
-        </Box>
+        </Box >
     )
 }
 
