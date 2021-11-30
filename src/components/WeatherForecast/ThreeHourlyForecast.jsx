@@ -6,13 +6,17 @@ import Icon from './Icon'
 
 const ThreeHourlyForecast = ({ hour, iconID, currentTemp, rain, snow }) => {
 
+    const styleObj = {
+        backgroundColor: "red"
+    }
+
     return (
         <>
             <ListItemButton sx={{ minHeight: 120 }}>
                 <Stack alignItems="center">
                     <ListItemText primary={hour} />
                     <ListItemIcon>
-                        <Icon iconID={iconID} isAnimated={true} />
+                        <Icon style={styleObj} iconID={iconID} isAnimated={true} />
                     </ListItemIcon>
                     <ListItemText primary={currentTemp} />
                     <ListItemText primary={rain} />

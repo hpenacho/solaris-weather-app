@@ -1,22 +1,13 @@
-import { ReactComponent as Day } from '../components/WeatherForecast/icons/static/day.svg'
-import { ReactComponent as AnimatedDay } from '../components/WeatherForecast/icons/animated/day.svg'
+import { icons } from "../components/WeatherForecast/IconArray";
 
-/*const icons = [{
-    staticIcon: <Day />,
-    animatedIcon: <AnimatedDay />,
-    id: "01d"
-},
-] */
+const IconFinder = (id, isAnimated) => {
+    let chosenIcon
+    if (isAnimated)
+        chosenIcon = icons.find(iconData => iconData.id.find(x => x === id)).animatedIcon;
 
-const IconFinder = (id) => {
-    //const result = icons.find(icon => icon.id === id).animatedIcon;
-    return "result"
+    else chosenIcon = icons.find(iconData => iconData.id.find(x => x === id)).staticIcon;
+
+    return chosenIcon
 }
 
 export default IconFinder;
-
-/*
-staticIcon: day,
-        animatedIcon: animatedDay,
-        id: "01d"
-*/
