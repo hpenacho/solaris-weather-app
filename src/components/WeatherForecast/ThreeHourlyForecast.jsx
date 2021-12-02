@@ -1,19 +1,16 @@
-import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { Stack } from '@mui/material';
-import Icon from './Icon'
+import WeatherIcon from './WeatherIcon'
 
-const ThreeHourlyForecast = ({ hour, iconID, currentTemp, rain, snow }) => {
-
-
+const ThreeHourlyForecast = ({ hour, iconID, iconStyle, currentTemp, rain, snow }) => {
 
     return (
         <>
             <Stack alignItems="center">
                 <ListItemText primary={hour} />
                 <ListItemIcon>
-                    <Icon iconID={iconID} isAnimated={true} />
+                    <WeatherIcon iconID={iconID} iconStyle={iconStyle} />
                 </ListItemIcon>
                 <ListItemText primary={currentTemp} />
                 <ListItemText primary={rain} />

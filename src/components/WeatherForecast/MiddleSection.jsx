@@ -11,7 +11,7 @@ let formatHour = (date) => {
 }
 
 let slicedForecast = [];
-const MiddleSection = ({ weatherInfo }) => {
+const MiddleSection = ({ weatherInfo, iconStyle }) => {
 
     if (weatherInfo) {
         slicedForecast = weatherInfo.list
@@ -29,6 +29,7 @@ const MiddleSection = ({ weatherInfo }) => {
                                     <ThreeHourlyForecast
                                         hour={formatHour(element.dt_txt)}
                                         iconID={element.weather[0].icon}
+                                        iconStyle={iconStyle}
                                         currentTemp={Math.round(element.main.temp)}
                                         rain={element.rain && element.rain["3h"]}
                                         snow={element.snow && element.snow["3h"]} />
