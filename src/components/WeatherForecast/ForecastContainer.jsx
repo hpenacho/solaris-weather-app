@@ -9,25 +9,37 @@ import { Paper } from "@mui/material"
 const ForecastContainer = ({ location }) => {
     const [unitType, setUnitType] = useState("metric")
     const [language, setLanguage] = useState("en")
-    const [iconStyle, setIconStyle] = useState("default")
+    const [iconStyle, setIconStyle] = useState("animated")
     const [weatherInfo, setWeatherInfo] = useState();
+    const [dailyWeatherInfo, setDailyWeatherInfo] = useState();
 
     useEffect(() => {
         if (location) {
             WeatherService.fetchWeather(location, unitType, language)
                 .then(response => {
                     setWeatherInfo(response)
-                    console.log(response)
                 })
         }
+
+
     }, [location, unitType, language])
+
+    useEffect(() => {
+        if (weatherInfo) {
+            WeatherService.fetchDailyWeather(weatherInfo.city.coord.lat, weatherInfo.city.coord.lon, unitType, language)
+                .then(response => {
+                    setDailyWeatherInfo(response)
+                    console.log("dailyInfo", response)
+                })
+        }
+    }, [weatherInfo, unitType, language])
 
     return (
         <Paper sx={{ borderRadius: 0, borderBottomLeftRadius: 15, WebkitBorderBottomRightRadius: 15 }}>
             <TopSection weather={weatherInfo} setUnitType={setUnitType} setLanguage={setLanguage} setIconStyle={setIconStyle} />
             <MiddleSection weatherInfo={weatherInfo} iconStyle={iconStyle} />
             <ComplementaryInfo weatherInfo={weatherInfo} />
-            <BottomSection weatherInfo={weatherInfo} iconStyle={iconStyle} />
+            <BottomSection dailyWeatherInfo={dailyWeatherInfo} iconStyle={iconStyle} />
         </Paper>
     )
 }

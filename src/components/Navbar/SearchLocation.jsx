@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-const SearchLocation = ({ filter, setFilter, setLocation }) => {
+const SearchLocation = ({ filter, setFilter, setLocation, cities }) => {
 
     const handleFilterChange = (event) => {
         setFilter(event.target.value)
@@ -11,6 +11,7 @@ const SearchLocation = ({ filter, setFilter, setLocation }) => {
     const search = async (e) => {
         if (e.key === 'Enter') {
             setLocation(filter)
+
         }
     }
 

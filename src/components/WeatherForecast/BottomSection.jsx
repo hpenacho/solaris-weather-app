@@ -2,16 +2,19 @@ import { Grid } from '@mui/material';
 import DailyForecast from './DailyForecast';
 import Box from '@mui/material/Box'
 
-const BottomSection = ({ weatherInfo }) => {
+const BottomSection = ({ dailyWeatherInfo, iconStyle }) => {
 
     return (
 
         <Grid container direction="row" justifyContent="space-between">
-            <Grid item>
-                <Box>
-                    <DailyForecast weatherInfo={weatherInfo} />
-                </Box>
-            </Grid>
+            {dailyWeatherInfo &&
+                dailyWeatherInfo.daily.map(element =>
+                    <Grid item key={element.dt} >
+                        <Box>
+                            <DailyForecast dailyWeatherInfo={element} iconStyle={iconStyle} />
+                        </Box>
+                    </Grid>
+                )}
         </Grid>
     )
 }

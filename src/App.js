@@ -58,7 +58,7 @@ const App = () => {
         <Grid container >
           <Header />
           < Container disableGutters maxWidth="md" sx={{ mx: 'auto', borderTopLeftRadius: 15, borderTopRightRadius: 15 }}>
-            <NavBarSection filter={filter} setFilter={setFilter} setLocation={setLocation} />
+            <NavBarSection filter={filter} setFilter={setFilter} setLocation={setLocation} cities={cities} />
             <ForecastContainer location={location} />
           </Container >
         </Grid>
