@@ -29,13 +29,12 @@ const ForecastContainer = ({ location }) => {
             WeatherService.fetchDailyWeather(weatherInfo.city.coord.lat, weatherInfo.city.coord.lon, unitType, language)
                 .then(response => {
                     setDailyWeatherInfo(response)
-                    console.log("dailyInfo", response)
                 })
         }
     }, [weatherInfo, unitType, language])
 
     return (
-        <Paper sx={{ borderRadius: 0, borderBottomLeftRadius: 15, WebkitBorderBottomRightRadius: 15 }}>
+        <Paper sx={{ borderRadius: 0, borderBottomLeftRadius: 15, borderBottomRightRadius: 15 }}>
             <TopSection weather={weatherInfo} setUnitType={setUnitType} setLanguage={setLanguage} setIconStyle={setIconStyle} />
             <MiddleSection weatherInfo={weatherInfo} iconStyle={iconStyle} />
             <ComplementaryInfo weatherInfo={weatherInfo} />

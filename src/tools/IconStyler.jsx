@@ -1,4 +1,5 @@
-import { icons } from "../components/WeatherForecast/IconArray";
+//import { icons } from "../components/WeatherForecast/IconArray";
+import animIconPicker from './animIconPicker'
 
 const IconStyler = (iconID, iconStyle) => {
 
@@ -8,7 +9,8 @@ const IconStyler = (iconID, iconStyle) => {
         case 'alternate':
             return null
         case 'animated':
-            return icons.find(iconData => iconData.id.find(x => x === iconID)).animatedIcon;
+            return animIconPicker(iconID)
+        //icons.find(iconData => iconData.id.find(x => x === iconID)).animatedIcon;
         default:
             return <img alt="weatherIcon" src={`https://openweathermap.org/img/wn/${iconID}@2x.png`} />
     }

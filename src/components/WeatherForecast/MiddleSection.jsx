@@ -24,7 +24,7 @@ const MiddleSection = ({ weatherInfo, iconStyle }) => {
                 <Grid container direction="row" justifyContent="space-evenly">
                     {weatherInfo &&
                         slicedForecast.map(element =>
-                            <Grid item key={element.dt}>
+                            <Grid item key={element.dt} xs="1">
                                 <ListItem disablePadding >
                                     <ThreeHourlyForecast
                                         hour={formatHour(element.dt_txt)}

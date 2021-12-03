@@ -18,6 +18,7 @@ import WeatherForecast from './components/WeatherForecast/ForecastContainer'
 import ForecastContainer from './components/WeatherForecast/ForecastContainer'
 
 
+
 const App = () => {
   const [filter, setFilter] = useState('')
   const [location, setLocation] = useState('Lisbon')
