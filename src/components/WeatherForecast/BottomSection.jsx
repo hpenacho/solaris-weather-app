@@ -1,8 +1,9 @@
 import { Grid } from '@mui/material';
 import DailyForecast from './DailyForecast';
-import Box from '@mui/material/Box'
-import ListItem from '@mui/material/ListItem';
-import List from '@mui/material/List';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Box from '@mui/material/Box';
+import { Container } from '@mui/material'
 
 let slicedForecast = [];
 const BottomSection = ({ dailyWeatherInfo, iconStyle }) => {
@@ -13,18 +14,17 @@ const BottomSection = ({ dailyWeatherInfo, iconStyle }) => {
     }
 
     return (
-        <List disablePadding>
-            <Grid container direction="row" justifyContent="space-between">
+        <Container disableGutters sx={{ borderBottomLeftRadius: 15, borderBottomRightRadius: 15 }}>
+            <Grid container direction="row" sx={{ justifyContent: 'space-between' }} columns={7}>
                 {dailyWeatherInfo &&
                     slicedForecast.map(element =>
-                        <Grid item key={element.dt} >
-                            <ListItem disablePadding sx={{ maxWidth: 120 }}>
-                                <DailyForecast dailyWeatherInfo={element} iconStyle={iconStyle} />
-                            </ListItem>
+                        <Grid item xs={1} key={element.dt} >
+                            <DailyForecast dailyWeatherInfo={element} iconStyle={iconStyle} />
                         </Grid>
                     )}
             </Grid>
-        </List>
+        </Container>
+
     )
 }
 

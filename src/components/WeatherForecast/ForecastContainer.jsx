@@ -3,8 +3,7 @@ import WeatherService from '../../services/WeatherService'
 import TopSection from "./TopSection"
 import MiddleSection from "./MiddleSection"
 import BottomSection from "./BottomSection"
-import ComplementaryInfo from './ComplementaryInfo'
-import { Paper } from "@mui/material"
+import Box from '@mui/material/Box';
 
 const ForecastContainer = ({ location }) => {
     const [unitType, setUnitType] = useState("metric")
@@ -20,8 +19,6 @@ const ForecastContainer = ({ location }) => {
                     setWeatherInfo(response)
                 })
         }
-
-
     }, [location, unitType, language])
 
     useEffect(() => {
@@ -34,12 +31,11 @@ const ForecastContainer = ({ location }) => {
     }, [weatherInfo, unitType, language])
 
     return (
-        <Paper sx={{ borderRadius: 0, borderBottomLeftRadius: 15, borderBottomRightRadius: 15 }}>
+        <>
             <TopSection weather={weatherInfo} setUnitType={setUnitType} setLanguage={setLanguage} setIconStyle={setIconStyle} />
             <MiddleSection weatherInfo={weatherInfo} iconStyle={iconStyle} />
-            <ComplementaryInfo weatherInfo={weatherInfo} />
             <BottomSection dailyWeatherInfo={dailyWeatherInfo} iconStyle={iconStyle} />
-        </Paper>
+        </>
     )
 }
 

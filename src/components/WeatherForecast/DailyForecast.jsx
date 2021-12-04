@@ -17,12 +17,12 @@ const DailyForecast = ({ dailyWeatherInfo, iconStyle }) => {
     }
 
     return (
-        <Button sx={{ textTransform: "none", minHeight: 120, maxWidth: 120, borderRadius: 0, borderRight: 1, borderColor: 'grey.800' }}>
+        <Button fullWidth sx={{ textTransform: "none" }} >
             <Stack alignItems="center">
                 <ListItemText> {weekDay}</ListItemText>
-                <ListItemIcon fontSize=""> <WeatherIcon iconID={dailyWeatherInfo.weather[0].icon} iconStyle={iconStyle} /></ListItemIcon>
-                <ListItemText> {Math.round(dailyWeatherInfo.temp.max)} </ListItemText>
-                <ListItemText> {Math.round(dailyWeatherInfo.temp.min)}</ListItemText>
+                <ListItemIcon> <WeatherIcon iconID={dailyWeatherInfo.weather[0].icon} iconStyle={iconStyle} /></ListItemIcon>
+                <ListItemText> <b> {Math.round(dailyWeatherInfo.temp.max)}° </b></ListItemText>
+                <ListItemText> {Math.round(dailyWeatherInfo.temp.min)}°</ListItemText>
             </Stack>
         </Button >
     )

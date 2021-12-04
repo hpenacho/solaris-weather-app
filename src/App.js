@@ -58,9 +58,11 @@ const App = () => {
         <CssBaseline enableColorScheme />
         <Grid container >
           <Header />
-          < Container disableGutters maxWidth="md" sx={{ mx: 'auto', borderTopLeftRadius: 15, borderTopRightRadius: 15 }}>
-            <NavBarSection filter={filter} setFilter={setFilter} setLocation={setLocation} cities={cities} />
-            <ForecastContainer location={location} />
+          < Container maxWidth="md" >
+            <Box sx={{ boxShadow: 8, borderRadius: 7, backgroundColor: "#161616" }}>
+              <NavBarSection filter={filter} setFilter={setFilter} setLocation={setLocation} cities={cities} />
+              <ForecastContainer location={location} />
+            </Box>
           </Container >
         </Grid>
       </ThemeProvider>
