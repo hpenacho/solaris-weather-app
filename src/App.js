@@ -70,15 +70,4 @@ const App = () => {
   );
 }
 
-/* <Box my={7} sx={{
-              width: 300,
-              height: 300,
-              backgroundColor: 'background.paper',
-              borderRadius: 2.5,
-              mx: 'auto',
-            }}>
-              <Paper height="220" width="330">
-
-              </Paper>
-            </Box> */
 export default App;

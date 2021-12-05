@@ -1,8 +1,10 @@
 import Button from '@mui/material/Button';
 import { Stack } from '@mui/material';
-import WeatherIcon from './WeatherIcon'
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
+import WeatherIcon from './WeatherIcon';
+import SvgIcon from '@mui/material/SvgIcon';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import { Grid } from '@mui/material';
 
 let getWeekDay = (date) => {
     let weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -18,12 +20,22 @@ const DailyForecast = ({ dailyWeatherInfo, iconStyle }) => {
 
     return (
         <Button fullWidth sx={{ textTransform: "none" }} >
-            <Stack alignItems="center">
-                <ListItemText> {weekDay}</ListItemText>
-                <ListItemIcon> <WeatherIcon iconID={dailyWeatherInfo.weather[0].icon} iconStyle={iconStyle} /></ListItemIcon>
-                <ListItemText> <b> {Math.round(dailyWeatherInfo.temp.max)}° </b></ListItemText>
-                <ListItemText> {Math.round(dailyWeatherInfo.temp.min)}°</ListItemText>
-            </Stack>
+            <Grid container justifyContent="center" alignItems="center">
+                <Grid item>
+                    <Typography variant="h6"> {weekDay} </Typography>
+                    <SvgIcon sx={{ fontSize: 60 }}>
+                        <WeatherIcon iconID={dailyWeatherInfo.weather[0].icon} iconStyle={iconStyle} />
+                    </SvgIcon>
+                </Grid>
+                <Grid item mx={1}>
+                    <Grid item>
+                        <Typography><b> {Math.round(dailyWeatherInfo.temp.max)}° </b> </Typography>
+                    </Grid>
+                    <Grid item>
+                        <Typography> {Math.round(dailyWeatherInfo.temp.min)}° </Typography>
+                    </Grid>
+                </Grid>
+            </Grid>
         </Button >
     )
 }
