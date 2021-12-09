@@ -22,25 +22,25 @@ const animIconPicker = (iconID) => {
             return <AnimatedCloudyDay />
         case '02n':
             return <AnimatedCloudyNight />
-        case '03d' || "03n" || "04d" || "04n":
+        case '03d': case '03n': case '04d': case '04n':
             return <AnimatedCloudy />
-        case '09d' || '09n':
+        case '09d': case '09n':
             return <AnimatedShowerRain />
         case '10d':
             return <AnimatedRainDay />
         case '10n':
             return <AnimatedRainNight />
-        case '11d' || '11n':
+        case '11d': case '11n':
             return <AnimatedThunder />
         case '13d':
             return <AnimatedSnowDay />
         case '13n':
             return <AnimatedSnowNight />
-        case '50d' || '50n':
+        case '50d': case '50n':
             return <AnimatedMist />
 
         default:
-            return <AnimatedDay />
+            return null
     }
 }
 

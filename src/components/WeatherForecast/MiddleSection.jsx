@@ -14,7 +14,7 @@ let slicedForecast = [];
 const MiddleSection = ({ weatherData, iconStyle, forecastInterval }) => {
 
     if (weatherData) {
-        console.log(weatherData.hourly, "aqui estamos")
+        console.log(weatherData, "aqui estamos")
         slicedForecast = weatherData.hourly
             .filter((element, index) => { return index % forecastInterval === 0; })
             .slice(0, 8)
@@ -27,7 +27,7 @@ const MiddleSection = ({ weatherData, iconStyle, forecastInterval }) => {
                     slicedForecast.map(element =>
                         <Grid item md={1} key={element.dt} >
                             <HourlyForecast
-                                hour={formatHour(element.dt)}
+                                hour={formatHour(element.dt + weatherData.timezone_offset)}
                                 iconID={element.weather[0].icon}
                                 iconStyle={iconStyle}
                                 currentTemp={Math.round(element.temp)}
