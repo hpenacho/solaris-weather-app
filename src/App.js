@@ -21,7 +21,7 @@ import ForecastContainer from './components/WeatherForecast/ForecastContainer'
 
 const App = () => {
   const [filter, setFilter] = useState('')
-  const [location, setLocation] = useState('Lisbon')
+  const [location, setLocation] = useState('') //temp Lisbon
   const [theme, setTheme] = useState(darktheme)
   //const [showWeather, setShowWeather] = useState(false)
 

@@ -10,8 +10,9 @@ const SearchLocation = ({ filter, setFilter, setLocation, cities }) => {
 
     const search = async (e) => {
         if (e.key === 'Enter') {
-            setLocation(filter)
 
+            const location = cities.find(city => city.name === filter)
+            setLocation(location)
         }
     }
 

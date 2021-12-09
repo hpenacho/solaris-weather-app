@@ -6,7 +6,7 @@ import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useSpring, animated } from 'react-spring';
-import CountrySelect from './CountrySelect'
+//import LocationSearch from '../Navbar/LocationSearch'
 
 const Fade = React.forwardRef(function Fade(props, ref) {
     const { in: open, children, onEnter, onExited, ...other } = props;
@@ -78,7 +78,7 @@ export default function SpringModal() {
                         <Typography id="spring-modal-description" sx={{ mt: 2 }}>
                             Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
                         </Typography>
-                        <CountrySelect />
+
                     </Box>
                 </Fade>
             </Modal>

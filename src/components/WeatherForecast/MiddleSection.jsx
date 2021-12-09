@@ -1,40 +1,42 @@
 import { Grid } from '@mui/material';
-import ThreeHourlyForecast from './ThreeHourlyForecast';
+import HourlyForecast from './HourlyForecast';
 import { Container } from '@mui/material'
 import ComplementaryInfo from './ComplementaryInfo'
 
 let formatHour = (date) => {
-    let formattedDate = new Date(date)
+    let formattedDate = new Date(date * 1000)
     let hour = formattedDate.getHours()
 
     return hour;
 }
 
 let slicedForecast = [];
-const MiddleSection = ({ weatherInfo, iconStyle }) => {
+const MiddleSection = ({ weatherData, iconStyle, forecastInterval }) => {
 
-    if (weatherInfo) {
-        slicedForecast = weatherInfo.list
+    if (weatherData) {
+        console.log(weatherData.hourly, "aqui estamos")
+        slicedForecast = weatherData.hourly
+            .filter((element, index) => { return index % forecastInterval === 0; })
             .slice(0, 8)
     }
 
     return (
         <Container disableGutters sx={{ backgroundColor: '#212121' }}>
             <Grid container direction="row" sx={{ justifyContent: 'space-between' }} columns={8} >
-                {weatherInfo &&
+                {weatherData &&
                     slicedForecast.map(element =>
                         <Grid item md={1} key={element.dt} >
-                            <ThreeHourlyForecast
-                                hour={formatHour(element.dt_txt)}
+                            <HourlyForecast
+                                hour={formatHour(element.dt)}
                                 iconID={element.weather[0].icon}
                                 iconStyle={iconStyle}
-                                currentTemp={Math.round(element.main.temp)}
-                                rain={element.rain && element.rain["3h"]}
-                                snow={element.snow && element.snow["3h"]} />
+                                currentTemp={Math.round(element.temp)}
+                                rain={element.rain && element.rain["1h"]}
+                                snow={element.snow && element.snow["1h"]} />
                         </Grid>
                     )}
             </Grid>
-            <ComplementaryInfo weatherInfo={weatherInfo} />
+            <ComplementaryInfo weatherInfo={weatherData} />
         </Container>
     )
 }

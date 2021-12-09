@@ -1,9 +1,7 @@
 import Button from '@mui/material/Button';
-import { Stack } from '@mui/material';
 import WeatherIcon from './WeatherIcon';
 import SvgIcon from '@mui/material/SvgIcon';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 import { Grid } from '@mui/material';
 
 let getWeekDay = (date) => {

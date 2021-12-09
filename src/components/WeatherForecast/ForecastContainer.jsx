@@ -3,38 +3,38 @@ import WeatherService from '../../services/WeatherService'
 import TopSection from "./TopSection"
 import MiddleSection from "./MiddleSection"
 import BottomSection from "./BottomSection"
-import Box from '@mui/material/Box';
 
 const ForecastContainer = ({ location }) => {
     const [unitType, setUnitType] = useState("metric")
     const [language, setLanguage] = useState("en")
     const [iconStyle, setIconStyle] = useState("animated")
-    const [weatherInfo, setWeatherInfo] = useState();
-    const [dailyWeatherInfo, setDailyWeatherInfo] = useState();
+    const [forecastInterval, setForecastInterval] = useState(3)
+    //const [weatherInfo, setWeatherInfo] = useState();
+    const [weatherData, setWeatherData] = useState();
 
-    useEffect(() => {
+    /*useEffect(() => {
         if (location) {
             WeatherService.fetchWeather(location, unitType, language)
                 .then(response => {
                     setWeatherInfo(response)
                 })
         }
-    }, [location, unitType, language])
+    }, [location, unitType, language]) */
 
     useEffect(() => {
-        if (weatherInfo) {
-            WeatherService.fetchDailyWeather(weatherInfo.city.coord.lat, weatherInfo.city.coord.lon, unitType, language)
+        if (location) {
+            WeatherService.fetchWeather(location.coord.lat, location.coord.lon, unitType, language)
                 .then(response => {
-                    setDailyWeatherInfo(response)
+                    setWeatherData(response)
                 })
         }
-    }, [weatherInfo, unitType, language])
+    }, [location, unitType, language])
 
     return (
         <>
-            <TopSection weather={weatherInfo} setUnitType={setUnitType} setLanguage={setLanguage} setIconStyle={setIconStyle} />
-            <MiddleSection weatherInfo={weatherInfo} iconStyle={iconStyle} />
-            <BottomSection dailyWeatherInfo={dailyWeatherInfo} iconStyle={iconStyle} />
+            <TopSection location={location} setUnitType={setUnitType} setLanguage={setLanguage} setIconStyle={setIconStyle} setForecastInterval={setForecastInterval} />
+            <MiddleSection weatherData={weatherData} iconStyle={iconStyle} forecastInterval={forecastInterval} />
+            <BottomSection weatherData={weatherData} iconStyle={iconStyle} />
         </>
     )
 }
