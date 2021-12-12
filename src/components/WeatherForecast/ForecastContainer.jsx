@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import WeatherService from '../../services/WeatherService'
 import TopSection from "./TopSection"
 import MiddleSection from "./MiddleSection"
+import ComplementaryInfo from './ComplementaryInfo'
 import BottomSection from "./BottomSection"
 
 const ForecastContainer = ({ location }) => {
@@ -9,17 +10,7 @@ const ForecastContainer = ({ location }) => {
     const [language, setLanguage] = useState("en")
     const [iconStyle, setIconStyle] = useState("animated")
     const [forecastInterval, setForecastInterval] = useState(3)
-    //const [weatherInfo, setWeatherInfo] = useState();
     const [weatherData, setWeatherData] = useState();
-
-    /*useEffect(() => {
-        if (location) {
-            WeatherService.fetchWeather(location, unitType, language)
-                .then(response => {
-                    setWeatherInfo(response)
-                })
-        }
-    }, [location, unitType, language]) */
 
     useEffect(() => {
         if (location) {

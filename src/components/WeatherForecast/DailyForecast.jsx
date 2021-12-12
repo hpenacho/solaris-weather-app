@@ -1,14 +1,10 @@
 import Button from '@mui/material/Button';
 import WeatherIcon from './WeatherIcon';
-import SvgIcon from '@mui/material/SvgIcon';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
+import { getWeekDay } from '../../tools/dateFormatter'
 
-let getWeekDay = (date) => {
-    let weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    let day = new Date(date * 1000).getDay();
-    return weekdays[day];
-}
+
 let weekDay = ''
 const DailyForecast = ({ dailyWeatherInfo, iconStyle }) => {
 
@@ -21,9 +17,9 @@ const DailyForecast = ({ dailyWeatherInfo, iconStyle }) => {
             <Grid container justifyContent="center" alignItems="center">
                 <Grid item>
                     <Typography variant="h6"> {weekDay} </Typography>
-                    <SvgIcon sx={{ fontSize: 60 }}>
+                    <svg width="55px" height="55px">
                         <WeatherIcon iconID={dailyWeatherInfo.weather[0].icon} iconStyle={iconStyle} />
-                    </SvgIcon>
+                    </svg>
                 </Grid>
                 <Grid item mx={1}>
                     <Grid item>

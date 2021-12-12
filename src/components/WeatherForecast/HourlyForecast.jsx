@@ -4,7 +4,7 @@ import { Stack } from '@mui/material';
 import WeatherIcon from './WeatherIcon'
 import Button from '@mui/material/Button';
 
-const HourlyForecast = ({ hour, iconID, iconStyle, currentTemp, rain, snow }) => {
+const HourlyForecast = ({ hour, iconID, iconStyle, currentTemp }) => {
 
     return (
         <>
@@ -15,8 +15,6 @@ const HourlyForecast = ({ hour, iconID, iconStyle, currentTemp, rain, snow }) =>
                         <WeatherIcon iconID={iconID} iconStyle={iconStyle} />
                     </ListItemIcon>
                     <ListItemText>  {currentTemp}° </ListItemText>
-                    <ListItemText primary={rain} />
-                    <ListItemText primary={snow} />
                 </Stack>
             </Button>
         </>

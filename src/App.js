@@ -1,23 +1,14 @@
 import React, { useState } from 'react'
-import Weather from './components/Weather'
-import CityList from './components/CityList'
 import InitService from './services/InitService'
-import SearchBar from './components/SearchBar'
 import Box from '@mui/material/Box'
 import darktheme from './assets/Themes'
 import { ThemeProvider } from '@mui/material/styles'
-import { Container, Typography } from '@mui/material'
+import { Container } from '@mui/material'
 import { CssBaseline } from '@mui/material';
-import Modal from './components/advancedSearch/Modal'
-import Paper from '@mui/material/Paper';
-import { borderRadius } from '@mui/system'
 import { Grid } from '@mui/material';
 import Header from './components/Header/HeaderSection'
 import NavBarSection from './components/Navbar/NavBarSection'
-import WeatherForecast from './components/WeatherForecast/ForecastContainer'
 import ForecastContainer from './components/WeatherForecast/ForecastContainer'
-
-
 
 const App = () => {
   const [filter, setFilter] = useState('')

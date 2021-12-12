@@ -2,13 +2,7 @@ import { Grid } from '@mui/material';
 import HourlyForecast from './HourlyForecast';
 import { Container } from '@mui/material'
 import ComplementaryInfo from './ComplementaryInfo'
-
-let formatHour = (date) => {
-    let formattedDate = new Date(date * 1000)
-    let hour = formattedDate.getHours()
-
-    return hour;
-}
+import { formatHour } from '../../tools/dateFormatter'
 
 let slicedForecast = [];
 const MiddleSection = ({ weatherData, iconStyle, forecastInterval }) => {
@@ -36,7 +30,7 @@ const MiddleSection = ({ weatherData, iconStyle, forecastInterval }) => {
                         </Grid>
                     )}
             </Grid>
-            <ComplementaryInfo weatherInfo={weatherData} />
+            <ComplementaryInfo weatherData={weatherData} />
         </Container>
     )
 }
