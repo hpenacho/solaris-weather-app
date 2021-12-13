@@ -16,7 +16,7 @@ const MiddleSection = ({ weatherData, iconStyle, forecastInterval }) => {
 
     return (
         <Container disableGutters sx={{ backgroundColor: '#212121' }}>
-            <Grid container direction="row" sx={{ justifyContent: 'space-between' }} columns={8} >
+            <Grid py={1} container direction="row" sx={{ justifyContent: 'space-between' }} columns={8} >
                 {weatherData &&
                     slicedForecast.map(element =>
                         <Grid item md={1} key={element.dt} >

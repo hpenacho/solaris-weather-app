@@ -21,7 +21,7 @@ const DailyForecast = ({ dailyWeatherInfo, iconStyle }) => {
                         <WeatherIcon iconID={dailyWeatherInfo.weather[0].icon} iconStyle={iconStyle} />
                     </svg>
                 </Grid>
-                <Grid item mx={1}>
+                <Grid item mx={1} >
                     <Grid item>
                         <Typography><b> {Math.round(dailyWeatherInfo.temp.max)}° </b> </Typography>
                     </Grid>

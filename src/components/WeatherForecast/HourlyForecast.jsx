@@ -11,8 +11,10 @@ const HourlyForecast = ({ hour, iconID, iconStyle, currentTemp }) => {
             <Button fullWidth sx={{ textTransform: "none" }} >
                 <Stack alignItems="center" >
                     <ListItemText> {hour}h </ListItemText>
-                    <ListItemIcon>
-                        <WeatherIcon iconID={iconID} iconStyle={iconStyle} />
+                    <ListItemIcon >
+                        <svg width="100px" height="100px">
+                            <WeatherIcon iconID={iconID} iconStyle={iconStyle} />
+                        </svg>
                     </ListItemIcon>
                     <ListItemText>  {currentTemp}° </ListItemText>
                 </Stack>

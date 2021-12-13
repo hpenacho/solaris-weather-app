@@ -23,7 +23,7 @@ const ForecastContainer = ({ location }) => {
 
     return (
         <>
-            <TopSection location={location} setUnitType={setUnitType} setLanguage={setLanguage} setIconStyle={setIconStyle} setForecastInterval={setForecastInterval} />
+            <TopSection location={location} weatherData={weatherData} setUnitType={setUnitType} setLanguage={setLanguage} setIconStyle={setIconStyle} setForecastInterval={setForecastInterval} />
             <MiddleSection weatherData={weatherData} iconStyle={iconStyle} forecastInterval={forecastInterval} />
             <BottomSection weatherData={weatherData} iconStyle={iconStyle} />
         </>

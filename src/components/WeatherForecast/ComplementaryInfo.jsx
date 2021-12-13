@@ -6,13 +6,14 @@ import AirRoundedIcon from '@mui/icons-material/AirRounded';
 import InvertColorsTwoToneIcon from '@mui/icons-material/InvertColorsTwoTone';
 import Tooltip from '@mui/material/Tooltip';
 import Zoom from '@mui/material/Zoom';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const ComplementaryInfo = ({ weatherData }) => {
 
     return (
-        <Container>
+        <Container >
             {weatherData &&
-                <Grid pb={1} container alignItems="center" justifyContent="flex-start">
+                <Grid pb={2} mt={1} container alignItems="center" justifyContent="flex-start">
                     <Grid item>
                         <Grid pr={1} container direction="row" alignItems="center">
                             <Tooltip TransitionComponent={Zoom} title="Current Humidity">
@@ -29,7 +30,6 @@ const ComplementaryInfo = ({ weatherData }) => {
                                 variant="outlined" />
                         </Tooltip>
                     </Grid>
-
                     {weatherData.alerts &&
                         weatherData.alerts.map((element, index) =>
                             <Grid item key={index}>

@@ -15,12 +15,15 @@ const BottomSection = ({ weatherData, iconStyle }) => {
             <Grid container direction="row" sx={{ justifyContent: 'space-between' }} columns={7}>
                 {weatherData &&
                     slicedForecast.map(element =>
-                        <Grid item xs={1} key={element.dt} >
+
+                        <Grid sx={{ borderRight: 1, borderColor: "#212121" }} item xs={1} key={element.dt} >
                             <DailyForecast dailyWeatherInfo={element} iconStyle={iconStyle} />
                         </Grid>
+
                     )}
+
             </Grid>
-        </Container>
+        </Container >
     )
 }
 
