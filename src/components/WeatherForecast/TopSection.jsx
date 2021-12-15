@@ -6,7 +6,8 @@ import LocationOnTwoToneIcon from '@mui/icons-material/LocationOnTwoTone';
 import InfoTwoToneIcon from '@mui/icons-material/InfoTwoTone';
 import Tooltip from '@mui/material/Tooltip';
 import Zoom from '@mui/material/Zoom';
-import { Stack } from '@mui/material';
+import InitService from '../../services/InitService'
+import Chip from '@mui/material/Chip';
 
 const capitalize = (word) => {
     return word.charAt(0).toUpperCase() + word.slice(1);
@@ -15,13 +16,21 @@ const capitalize = (word) => {
 const TopSection = ({ location, weatherData }) => {
 
     let wikiLink = "";
-    if (location.langs !== undefined) {
-        wikiLink = location.langs.find(element => element.link).link
+    if (location) {
+        if (location.langs !== undefined) {
+            wikiLink = location.langs.find(element => element.link).link
+        }
+        if (wikiLink === "" || wikiLink === undefined) {
+            wikiLink = `https://en.wikipedia.org/wiki/${location.name}`
+        }
     }
 
+    console.log(location)
+    const country = InitService.initializeCountries().find(country => country.code === location.country)
+
+    console.log(country)
     return (
         <Container sx={{ backgroundColor: '#212121' }}>
-
             {location && weatherData &&
                 <>
                     <Grid container pt={1} justifyContent={"space-between"}>
@@ -54,23 +63,18 @@ const TopSection = ({ location, weatherData }) => {
                         </Grid>
                     </Grid>
                     <Grid container alignItems="center" justifyContent="flex-start">
-
-
                         <Grid item >
                             <Grid px={1} container direction="row" alignItems="center">
-                                <Typography variant='h6' mr={1}> {location.name} </Typography>
+                                <Typography variant='h5'> {location.name},</Typography>
+                                <Typography mr={1} sx={{ color: "gray" }} variant='h5'>{country.label} </Typography>
                                 <img loading="lazy" width="30" alt="flag"
                                     src={`https://flagcdn.com/${location.country.toLowerCase()}.svg`}
                                 />
                             </Grid>
                         </Grid>
-
-
-
                     </Grid>
                 </>
             }
-
         </Container >
     )
 }

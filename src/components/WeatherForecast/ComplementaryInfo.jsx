@@ -4,18 +4,19 @@ import AlertModal from './AlertModal'
 import Chip from '@mui/material/Chip';
 import AirRoundedIcon from '@mui/icons-material/AirRounded';
 import InvertColorsTwoToneIcon from '@mui/icons-material/InvertColorsTwoTone';
+import BeachAccessIcon from '@mui/icons-material/BeachAccess';
 import Tooltip from '@mui/material/Tooltip';
 import Zoom from '@mui/material/Zoom';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import WeatherDetails from './WeatherDetails'
 
 const ComplementaryInfo = ({ weatherData }) => {
 
     return (
         <Container >
             {weatherData &&
-                <Grid pb={2} mt={1} container alignItems="center" justifyContent="flex-start">
+                <Grid pb={2} mt={1} container alignItems="center" justifyContent="flex-start" spacing={1}>
                     <Grid item>
-                        <Grid pr={1} container direction="row" alignItems="center">
+                        <Grid container direction="row" alignItems="center">
                             <Tooltip TransitionComponent={Zoom} title="Current Humidity">
                                 <Chip icon={<InvertColorsTwoToneIcon />}
                                     label={`${weatherData.current.humidity}%`}
@@ -30,13 +31,27 @@ const ComplementaryInfo = ({ weatherData }) => {
                                 variant="outlined" />
                         </Tooltip>
                     </Grid>
+
+                    {weatherData.current.uvi !== 0 &&
+                        <Grid item >
+                            <Tooltip TransitionComponent={Zoom} title="Ultra Violet Index">
+                                <Chip icon={<BeachAccessIcon />}
+                                    label={weatherData.current.uvi}
+                                    variant="outlined" />
+                            </Tooltip>
+                        </Grid>
+                    }
                     {weatherData.alerts &&
                         weatherData.alerts.map((element, index) =>
                             <Grid item key={index}>
                                 <AlertModal alertData={element} index={index} />
                             </Grid>
                         )}
+                    <Grid item>
+                        <WeatherDetails></WeatherDetails>
+                    </Grid>
                 </Grid>
+
             }
         </Container>
     )

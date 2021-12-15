@@ -12,7 +12,12 @@ const SearchLocation = ({ filter, setFilter, setLocation, cities }) => {
         if (e.key === 'Enter') {
 
             const location = cities.find(city => city.name === filter)
-            setLocation(location)
+
+            if (location)
+                setLocation(location)
+            else {
+                console.log("No such location")
+            }
         }
     }
 
