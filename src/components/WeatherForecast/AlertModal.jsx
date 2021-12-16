@@ -52,8 +52,8 @@ export default function AlertModal({ alertData, index }) {
           <Fade in={open}>
             <Box sx={style}>
               <Typography alignItems={"center"} justifyContent={"center"} variant="h5" pb={1} id="transition-modal-title" color="#ff9100">{alertData.event.toUpperCase()}</Typography>
-              <Typography color="#e0e0e0" variant="subtitle1"> <i>Starts:</i> {formatTime(alertData.start)}</Typography>
-              <Typography color="#e0e0e0" variant="subtitle1"><i>Ends:</i> {formatTime(alertData.end)}</Typography>
+              <Typography color="#e0e0e0" variant="subtitle1"> <i>Starts:</i> {formatTime(alertData.start, { hour: 'numeric', minute: 'numeric', hour12: false })} {formatTime(alertData.start, { day: 'numeric', month: 'short', hour12: false })}</Typography>
+              <Typography color="#e0e0e0" variant="subtitle1"><i>Ends: </i>{formatTime(alertData.end, { hour: 'numeric', minute: 'numeric', hour12: false })} {formatTime(alertData.end, { day: 'numeric', month: 'short', hour12: false })}</Typography>
               <Typography color="#F0E9D2" variant="body1" py={2} id="transition-modal-description">{alertData.description}</Typography>
               <Typography color="#9e9e9e" variant="subtitle2">Alert provider: {alertData.sender_name}</Typography>
             </Box>

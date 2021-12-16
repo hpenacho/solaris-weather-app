@@ -7,7 +7,6 @@ let slicedForecast = [];
 const MiddleSection = ({ weatherData, iconStyle, forecastInterval }) => {
 
     if (weatherData) {
-        console.log(weatherData, "aqui estamos")
         slicedForecast = weatherData.hourly
             .filter((element, index) => { return index % forecastInterval === 0; })
             .slice(0, 8)

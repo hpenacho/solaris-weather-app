@@ -1,36 +1,45 @@
+import React, { useRef } from 'react'
 import Button from '@mui/material/Button';
 import WeatherIcon from './WeatherIcon';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
 import { getWeekDay } from '../../tools/dateFormatter'
-
+import WeatherDetails from './WeatherDetails'
 
 let weekDay = ''
-const DailyForecast = ({ dailyWeatherInfo, iconStyle }) => {
+const DailyForecast = ({ dailyWeatherInfo, timezoneOffset, iconStyle }) => {
 
     if (dailyWeatherInfo) {
         weekDay = getWeekDay(dailyWeatherInfo.dt);
     }
 
+    const ref = useRef()
+    const handleClick = () => {
+        ref.current.handleClickOpen()
+    }
+
     return (
-        <Button fullWidth sx={{ textTransform: "none" }} >
-            <Grid container justifyContent="center" alignItems="center">
-                <Grid item>
-                    <Typography variant="h6"> {weekDay} </Typography>
-                    <svg width="55px" height="55px">
-                        <WeatherIcon iconID={dailyWeatherInfo.weather[0].icon} iconStyle={iconStyle} />
-                    </svg>
-                </Grid>
-                <Grid item mx={1} >
+        <>
+            <Button fullWidth sx={{ textTransform: "none" }} onClick={handleClick}>
+                <Grid container justifyContent="center" alignItems="center">
                     <Grid item>
-                        <Typography><b> {Math.round(dailyWeatherInfo.temp.max)}° </b> </Typography>
+                        <Typography variant="h6"> {weekDay} </Typography>
+                        <svg width="55px" height="55px">
+                            <WeatherIcon iconID={dailyWeatherInfo.weather[0].icon} iconStyle={iconStyle} />
+                        </svg>
                     </Grid>
-                    <Grid item>
-                        <Typography> {Math.round(dailyWeatherInfo.temp.min)}° </Typography>
+                    <Grid item mx={1} >
+                        <Grid item>
+                            <Typography><b> {Math.round(dailyWeatherInfo.temp.max)}° </b> </Typography>
+                        </Grid>
+                        <Grid item>
+                            <Typography> {Math.round(dailyWeatherInfo.temp.min)}° </Typography>
+                        </Grid>
                     </Grid>
                 </Grid>
-            </Grid>
-        </Button >
+            </Button >
+            <WeatherDetails forecastDetails={dailyWeatherInfo} timezoneOffset={timezoneOffset} iconStyle={iconStyle} ref={ref} />
+        </>
     )
 }
 

@@ -18,17 +18,18 @@ const TopSection = ({ location, weatherData }) => {
     let wikiLink = "";
     if (location) {
         if (location.langs !== undefined) {
-            wikiLink = location.langs.find(element => element.link).link
+            wikiLink = location.langs.find(element => element.link)
+            if (wikiLink) {
+                wikiLink = wikiLink.link
+            }
         }
         if (wikiLink === "" || wikiLink === undefined) {
             wikiLink = `https://en.wikipedia.org/wiki/${location.name}`
         }
     }
 
-    console.log(location)
     const country = InitService.initializeCountries().find(country => country.code === location.country)
 
-    console.log(country)
     return (
         <Container sx={{ backgroundColor: '#212121' }}>
             {location && weatherData &&

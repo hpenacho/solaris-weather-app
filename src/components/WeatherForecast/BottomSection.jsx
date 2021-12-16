@@ -6,7 +6,6 @@ let slicedForecast = [];
 const BottomSection = ({ weatherData, iconStyle }) => {
 
     if (weatherData) {
-        console.log(weatherData.daily[7])
         slicedForecast = weatherData.daily
             .slice(0, 6)
     }
@@ -17,12 +16,17 @@ const BottomSection = ({ weatherData, iconStyle }) => {
                 {weatherData &&
                     slicedForecast.map(element =>
                         <Grid sx={{ borderRight: 1, borderColor: "#212121" }} item xs={1} key={element.dt} >
-                            <DailyForecast dailyWeatherInfo={element} iconStyle={iconStyle} />
+                            <DailyForecast
+                                dailyWeatherInfo={element}
+                                timezoneOffset={weatherData.timezone_offset}
+                                iconStyle={iconStyle} />
                         </Grid>
                     )}
                 {weatherData &&
-                    <Grid item xs={1} key={weatherData.daily[7].dt} >
-                        <DailyForecast dailyWeatherInfo={weatherData.daily[7]} iconStyle={iconStyle} />
+                    <Grid item xs={1} key={weatherData.daily[6].dt} >
+                        <DailyForecast dailyWeatherInfo={weatherData.daily[6]}
+                            timezoneOffset={weatherData.timezone_offset}
+                            iconStyle={iconStyle} />
                     </Grid>
                 }
             </Grid>

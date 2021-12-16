@@ -11,10 +11,11 @@ const formatHour = (unixDate) => {
     return hour;
 }
 
-const formatTime = (unixDate) => {
-    const options = { hour: 'numeric', minute: 'numeric', day: 'numeric', month: 'short', hour12: false };
-    let date = new Date(unixDate * 1000)
-    return new Intl.DateTimeFormat('en-GB', options).format(date);
+const formatTime = (unixDate, options) => {
+    let time;
+    if (unixDate && options) {
+        time = new Intl.DateTimeFormat('en-GB', options).format(unixDate * 1000)
+    }
+    return time;
 }
-
 export { getWeekDay, formatHour, formatTime }

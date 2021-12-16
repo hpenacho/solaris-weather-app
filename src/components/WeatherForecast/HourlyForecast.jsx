@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { Stack } from '@mui/material';
@@ -10,9 +10,7 @@ import WeatherDetails from './WeatherDetails'
 const HourlyForecast = ({ hourlyForecast, timezoneOffset, iconStyle }) => {
 
     const ref = useRef()
-
     const handleClick = () => {
-        console.log(ref)
         ref.current.handleClickOpen()
     }
 
@@ -26,10 +24,10 @@ const HourlyForecast = ({ hourlyForecast, timezoneOffset, iconStyle }) => {
                             <WeatherIcon iconID={hourlyForecast.weather[0].icon} iconStyle={iconStyle} />
                         </svg>
                     </ListItemIcon>
-                    <ListItemText>  {Math.round(hourlyForecast.temp)}° </ListItemText>
+                    <ListItemText> {Math.round(hourlyForecast.temp)}° </ListItemText>
                 </Stack>
             </Button>
-            <WeatherDetails ref={ref} />
+            <WeatherDetails forecastDetails={hourlyForecast} localTime={hourlyForecast.dt + timezoneOffset} iconStyle={iconStyle} ref={ref} />
         </>
     )
 }

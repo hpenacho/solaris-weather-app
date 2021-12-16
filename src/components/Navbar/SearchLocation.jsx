@@ -13,6 +13,12 @@ const SearchLocation = ({ filter, setFilter, setLocation, cities }) => {
 
             const location = cities.find(city => city.name === filter)
 
+            /* if (location !== undefined && location.langs) {
+                 // const test = cities.includes(cities.find(city => city.langs[1] === filter
+                 //))
+                 console.log(location.langs)
+             } */
+
             if (location)
                 setLocation(location)
             else {
