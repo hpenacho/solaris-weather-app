@@ -22,11 +22,12 @@ import { formatTime } from '../../tools/dateFormatter';
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
         padding: theme.spacing(2),
+
     },
     '& .MuiDialogActions-root': {
         padding: theme.spacing(1),
     },
-    backdropFilter: "blur(2px)"
+    backdropFilter: "blur(2px)",
 }));
 
 const BootstrapDialogTitle = (props) => {
@@ -80,6 +81,8 @@ const WeatherDetails = React.forwardRef(({ forecastDetails, localTime, timezoneO
                 <BootstrapDialog
                     onClose={handleClose}
                     aria-labelledby="customized-dialog-title"
+                    fullWidth
+                    maxWidth="sm"
                     open={open}
                 >
                     <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>

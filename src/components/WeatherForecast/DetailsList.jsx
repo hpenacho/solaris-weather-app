@@ -7,14 +7,17 @@ import ListItemText from '@mui/material/ListItemText';
 import Collapse from '@mui/material/Collapse';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
-import StarBorder from '@mui/icons-material/StarBorder';
 import DeviceThermostatOutlinedIcon from '@mui/icons-material/DeviceThermostatOutlined';
 import { ReactComponent as Barometer } from '../../assets/icons/misc/wi-barometer.svg'
+import { ReactComponent as Humidity } from '../../assets/icons/misc/wi-humidity.svg'
 import InvertColorsTwoToneIcon from '@mui/icons-material/InvertColorsTwoTone';
 import FilterDramaTwoToneIcon from '@mui/icons-material/FilterDramaTwoTone';
 import AirRoundedIcon from '@mui/icons-material/AirRounded';
+import BeachAccessIcon from '@mui/icons-material/BeachAccess';
+import VisibilityTwoToneIcon from '@mui/icons-material/VisibilityTwoTone';
 import { Divider } from '@mui/material';
 import { Stack } from '@mui/material';
+import { SvgIcon } from '@mui/material';
 
 
 const DetailsList = ({ forecastDetails }) => {
@@ -27,7 +30,9 @@ const DetailsList = ({ forecastDetails }) => {
         >
             <ListItemButton onClick={() => setOpenWind(!openWind)}>
                 <ListItemIcon>
-                    <DeviceThermostatOutlinedIcon sx={{ fontSize: 32 }} />
+                    <SvgIcon fontSize='large'>
+                        <DeviceThermostatOutlinedIcon />
+                    </SvgIcon>
                 </ListItemIcon>
 
                 {isNaN(forecastDetails.temp) &&
@@ -48,65 +53,79 @@ const DetailsList = ({ forecastDetails }) => {
             </ListItemButton>
             <Collapse in={openWind} timeout="auto" unmountOnExit>
                 <List component="div">
-                    {!isNaN(forecastDetails.temp) &&
-                        <>
-                            <ListItem sx={{ pl: 4 }}>
+
+                    <Stack direction="row" justifyContent={'center'}>
+                        <Stack direction="row" >
+                            {!isNaN(forecastDetails.temp) &&
+                                <>
+                                    <ListItem>
+                                        <ListItemText primaryTypographyProps={{
+                                            fontSize: 16,
+                                            fontWeight: 'medium'
+                                        }} primary={`${Math.round(forecastDetails.feels_like)}°`}
+                                            secondary='Feels Like' />
+                                    </ListItem>
+                                    <Divider orientation="vertical" variant="middle" flexItem />
+                                </>
+                            }
+                        </Stack>
+                        <Stack direction="row" justifyContent={'center'}>
+                            {isNaN(forecastDetails.temp) &&
+                                <>
+                                    <ListItem>
+                                        <ListItemIcon>
+                                            <DeviceThermostatOutlinedIcon sx={{ color: '#F15421' }} />
+                                        </ListItemIcon>
+                                        <ListItemText primaryTypographyProps={{
+                                            fontSize: 16,
+                                            fontWeight: 'medium'
+                                        }} primary={`${Math.round(forecastDetails.temp.max)}°`}
+                                            secondary='Max'
+                                        />
+                                    </ListItem>
+                                    <Divider orientation="vertical" variant="middle" flexItem />
+                                    <ListItem >
+                                        <ListItemIcon>
+                                            <DeviceThermostatOutlinedIcon sx={{ color: '#589ceb' }} />
+                                        </ListItemIcon>
+                                        <ListItemText primaryTypographyProps={{
+                                            fontSize: 16,
+                                            fontWeight: 'medium'
+                                        }} primary={`${Math.round(forecastDetails.temp.min)}°`}
+                                            secondary='Min' />
+                                    </ListItem>
+                                    <Divider orientation="vertical" variant="middle" flexItem />
+                                </>
+                            }
+                            <ListItem>
                                 <ListItemText primaryTypographyProps={{
                                     fontSize: 16,
                                     fontWeight: 'medium'
-                                }} primary={`${Math.round(forecastDetails.feels_like)}°`}
-                                    secondary='Feels Like' />
+                                }} primary={`${forecastDetails.dew_point}°`}
+                                    secondary='Dew Point' />
                             </ListItem>
-                        </>
-                    }
-
-                    <Stack direction="row" >
-                        {isNaN(forecastDetails.temp) &&
-
-                            <>
-                                <ListItem sx={{ pl: 4 }}>
-                                    <ListItemIcon>
-                                        <DeviceThermostatOutlinedIcon sx={{ fontSize: 60, color: '#F15421' }} />
-                                    </ListItemIcon>
-                                    <ListItemText primaryTypographyProps={{
-                                        fontSize: 16,
-                                        fontWeight: 'medium'
-                                    }} primary={`${Math.round(forecastDetails.temp.max)}°`}
-                                        secondary='Max'
-                                    />
-                                </ListItem>
-                                <Divider orientation="vertical" variant="middle" flexItem />
-                                <ListItem sx={{ pl: 4 }}>
-                                    <ListItemIcon>
-                                        <DeviceThermostatOutlinedIcon sx={{ fontSize: 27, color: '#589ceb' }} />
-                                    </ListItemIcon>
-                                    <ListItemText primaryTypographyProps={{
-                                        fontSize: 16,
-                                        fontWeight: 'medium'
-                                    }} primary={`${Math.round(forecastDetails.temp.min)}°`}
-                                        secondary='Min' />
-                                </ListItem>
-                                <Divider orientation="vertical" variant="middle" flexItem />
-                            </>
-
-                        }
-
-                        <ListItem sx={{ pl: 4 }}>
-                            <ListItemText primaryTypographyProps={{
-                                fontSize: 16,
-                                fontWeight: 'medium'
-                            }} primary={`${forecastDetails.dew_point}°`}
-                                secondary='Dew Point' />
-                        </ListItem>
-
+                        </Stack>
                     </Stack>
-
                 </List>
             </Collapse >
 
             <ListItem>
                 <ListItemIcon>
-                    <InvertColorsTwoToneIcon sx={{ fontSize: 32 }} />
+                    <SvgIcon fontSize='large'>
+                        <Humidity />
+                    </SvgIcon>
+                </ListItemIcon>
+                <ListItemText primaryTypographyProps={{
+                    fontSize: 20,
+                    fontWeight: 'medium'
+                }} primary={`${Math.round(forecastDetails.humidity)}%`} secondary='Humidity' />
+            </ListItem>
+
+            <ListItem>
+                <ListItemIcon>
+                    <SvgIcon fontSize='large'>
+                        <InvertColorsTwoToneIcon />
+                    </SvgIcon>
                 </ListItemIcon>
                 <ListItemText primaryTypographyProps={{
                     fontSize: 20,
@@ -115,17 +134,20 @@ const DetailsList = ({ forecastDetails }) => {
             </ListItem>
             <ListItem>
                 <ListItemIcon>
-                    <FilterDramaTwoToneIcon sx={{ fontSize: 32 }} />
+                    <SvgIcon fontSize='large'>
+                        <FilterDramaTwoToneIcon />
+                    </SvgIcon>
                 </ListItemIcon>
                 <ListItemText primaryTypographyProps={{
                     fontSize: 20,
                     fontWeight: 'medium',
-                    letterSpacing: 0,
                 }} primary={`${forecastDetails.clouds}%`} secondary='Cloud Coverage' />
             </ListItem>
             <ListItemButton onClick={() => setOpenTemp(!openTemp)}>
                 <ListItemIcon>
-                    <AirRoundedIcon sx={{ fontSize: 32 }} />
+                    <SvgIcon fontSize='large'>
+                        <AirRoundedIcon />
+                    </SvgIcon>
                 </ListItemIcon>
                 <ListItemText primary={`${forecastDetails.wind_deg} at ${forecastDetails.wind_speed} km/h`} secondary='Wind direction and speed' />
                 {openTemp ? <ExpandLess /> : <ExpandMore />}
@@ -137,110 +159,54 @@ const DetailsList = ({ forecastDetails }) => {
                     </ListItem>
                 </List>
             </Collapse>
-            <ListItem>
-                <ListItemIcon>
-                    <FilterDramaTwoToneIcon sx={{ fontSize: 32 }} />
-                </ListItemIcon>
-                <ListItemText primaryTypographyProps={{
-                    fontSize: 20,
-                    fontWeight: 'medium',
-                    letterSpacing: 0,
-                }} primary={`${forecastDetails.clouds}%`} secondary='Cloud Coverage' />
-            </ListItem>
 
-            <ListItem>
-                <ListItemIcon>
-                    <FilterDramaTwoToneIcon sx={{ fontSize: 32 }} />
-                </ListItemIcon>
-                <ListItemText primaryTypographyProps={{
-                    fontSize: 20,
-                    fontWeight: 'medium',
-                    letterSpacing: 0,
-                }} primary={`${forecastDetails.clouds}%`} secondary='Cloud Coverage' />
-            </ListItem>
+            {forecastDetails.visibility &&
+                <ListItem>
+                    <ListItemIcon>
+                        <SvgIcon fontSize='large'>
+                            <VisibilityTwoToneIcon />
+                        </SvgIcon>
+                    </ListItemIcon>
+                    <ListItemText primaryTypographyProps={{
+                        fontSize: 20,
+                        fontWeight: 'medium',
 
-            <ListItem>
-                <ListItemIcon>
-                    <FilterDramaTwoToneIcon sx={{ fontSize: 32 }} />
-                </ListItemIcon>
-                <ListItemText primaryTypographyProps={{
-                    fontSize: 20,
-                    fontWeight: 'medium',
-                    letterSpacing: 0,
-                }} primary={`${forecastDetails.clouds}%`} secondary='Cloud Coverage' />
-            </ListItem>
+                    }} primary={`${forecastDetails.visibility} m`} secondary='Visibility' />
+                </ListItem>
+            }
 
-            <ListItem>
-                <ListItemIcon>
-                    <FilterDramaTwoToneIcon sx={{ fontSize: 32 }} />
-                </ListItemIcon>
-                <ListItemText primaryTypographyProps={{
-                    fontSize: 20,
-                    fontWeight: 'medium',
-                    letterSpacing: 0,
-                }} primary={`${forecastDetails.clouds}%`} secondary='Cloud Coverage' />
-            </ListItem>
+            <Stack direction="row" justifyContent={'center'}>
+                <ListItem>
+                    <ListItemIcon>
+                        <SvgIcon fontSize='large'>
+                            <Barometer />
+                        </SvgIcon>
+                    </ListItemIcon>
+                    <ListItemText primaryTypographyProps={{
+                        fontSize: 20,
+                        fontWeight: 'medium',
+                    }} primary={`${forecastDetails.pressure} hpa`} secondary='Air Pressure' />
+                </ListItem>
 
-            <ListItem>
-                <ListItemIcon fontSize='large'>
-                    <FilterDramaTwoToneIcon />
-                </ListItemIcon>
-                <ListItemText primaryTypographyProps={{
-                    fontSize: 20,
-                    fontWeight: 'medium',
-                    letterSpacing: 0,
-                }} primary={`${forecastDetails.clouds}%`} secondary='Cloud Coverage' />
-            </ListItem>
+                {forecastDetails.uvi !== 0 &&
+                    <>
+                        <Divider orientation="vertical" variant="middle" flexItem />
+                        <ListItem>
+                            <ListItemIcon>
+                                <SvgIcon fontSize='large'>
+                                    <BeachAccessIcon />
+                                </SvgIcon>
+                            </ListItemIcon>
+                            <ListItemText primaryTypographyProps={{
+                                fontSize: 20,
+                                fontWeight: 'medium',
+                            }} primary={`${forecastDetails.uvi}`} secondary='UV Index' />
+                        </ListItem>
+                    </>
+                }
+            </Stack>
         </List >
     );
 }
 
 export default DetailsList;
-
-/*<Typography fontSize={20} gutterBottom>
-                            <i><b>Temperature:</b></i> {Math.round(forecastDetails.temp)}°
-                        </Typography>
-
-                        <Typography fontSize={20} gutterBottom>
-                            <i><b>Feels like:</b></i> {Math.round(forecastDetails.feels_like)}°
-                        </Typography>
-
-                        <Typography fontSize={20} gutterBottom>
-                            <i>  <b>Chance of precipitation:</b></i>  {Math.round(forecastDetails.pop * 100)}%
-                        </Typography>
-
-                        <Typography fontSize={20} gutterBottom>
-                            <i>  <b>Clouds:</b></i>  {forecastDetails.clouds}%
-                        </Typography>
-
-                        <Typography fontSize={20} gutterBottom>
-                            <i>  <b>Dew Point:</b></i>  {forecastDetails.dew_point}°
-                        </Typography>
-
-                        <Typography fontSize={20} gutterBottom>
-                            <i>  <b>Humidity:</b></i>  {forecastDetails.humidity}%
-                        </Typography>
-
-                        <Typography fontSize={20} gutterBottom>
-                            <i>  <b>Pressure:</b></i>  {forecastDetails.pressure} hpa
-                        </Typography>
-
-                        {forecastDetails.uvi !== 0 &&
-                            <Typography fontSize={20} gutterBottom>
-                                <i>    <b>UV index:</b></i>  {forecastDetails.uvi}
-                            </Typography>
-                        }
-
-                        {forecastDetails.visibility &&
-                            <Typography fontSize={20} gutterBottom>
-                                <i>   <b>Visibility:</b></i> {forecastDetails.visibility}{forecastDetails.visibility === 10000 && "+"} m
-                            </Typography>
-                        }
-
-                        <Typography fontSize={20} gutterBottom>
-                            <i> <b>Wind:</b></i> {forecastDetails.wind_deg} at {forecastDetails.wind_speed} km/h
-                        </Typography>
-
-                        <Typography fontSize={20} gutterBottom>
-                            <i> <b>Wind Gusts:</b></i> {forecastDetails.wind_gust} km/h
-                        </Typography>*/
