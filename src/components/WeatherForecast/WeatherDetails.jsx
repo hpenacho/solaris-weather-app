@@ -6,14 +6,13 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+import DetailsList from './DetailsList'
 import { Divider } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 import { ReactComponent as Sunrise } from '../../assets/icons/misc/wi-sunrise.svg'
 import { ReactComponent as Sunset } from '../../assets/icons/misc/wi-sunset.svg'
 import { ReactComponent as Moonrise } from '../../assets/icons/misc/wi-moonrise.svg'
 import { ReactComponent as Moonset } from '../../assets/icons/misc/wi-moonset.svg'
-import { ReactComponent as Barometer } from '../../assets/icons/misc/wi-barometer.svg'
-
 import Typography from '@mui/material/Typography';
 import WeatherIcon from './WeatherIcon'
 import { Icon, Stack } from '@mui/material';
@@ -127,13 +126,13 @@ const WeatherDetails = React.forwardRef(({ forecastDetails, localTime, timezoneO
                         {forecastDetails.sunrise &&
                             <Stack direction="row" px={1} spacing={10}>
                                 <Stack direction="row" alignItems={'center'}>
-                                    <SvgIcon sx={{ color: "#ff9100", fontSize: 40 }} fontSize='large'> <Sunrise /> </SvgIcon>
+                                    <SvgIcon sx={{ color: "#ff9100" }} fontSize='large'> <Sunrise /> </SvgIcon>
                                     <Typography fontSize={22}>
                                         <i>{formatTime(forecastDetails.sunrise + timezoneOffset, { hour: 'numeric', minute: 'numeric', hour12: false })} </i>
                                     </Typography>
                                 </Stack>
                                 <Stack direction="row" alignItems={'center'}>
-                                    <SvgIcon sx={{ color: "#589ceb", fontSize: 40 }} fontSize='large'> <Moonrise /> </SvgIcon>
+                                    <SvgIcon sx={{ color: "#589ceb" }} fontSize='large'> <Moonrise /> </SvgIcon>
                                     <Typography fontSize={22}>
                                         <i>{formatTime(forecastDetails.moonrise + timezoneOffset, { hour: 'numeric', minute: 'numeric', hour12: false })}</i>
                                     </Typography>
@@ -146,13 +145,13 @@ const WeatherDetails = React.forwardRef(({ forecastDetails, localTime, timezoneO
                             <Stack direction="row" px={1} pb={3} spacing={10}>
 
                                 <Stack direction="row" alignItems={'center'}>
-                                    <SvgIcon sx={{ color: "#ff9100", fontSize: 40 }}> <Sunset /> </SvgIcon>
+                                    <SvgIcon sx={{ color: "#ff9100" }} fontSize='large'> <Sunset /> </SvgIcon>
                                     <Typography fontSize={22} >
                                         <i>{formatTime(forecastDetails.sunset + timezoneOffset, { hour: 'numeric', minute: 'numeric', hour12: false })}</i>
                                     </Typography>
                                 </Stack>
                                 <Stack direction="row" alignItems={'center'}>
-                                    <SvgIcon sx={{ color: "#589ceb", fontSize: 40 }}> <Moonset /> </SvgIcon>
+                                    <SvgIcon sx={{ color: "#589ceb" }} fontSize='large'> <Moonset /> </SvgIcon>
                                     <Typography fontSize={22} >
                                         <i> {formatTime(forecastDetails.moonset + timezoneOffset, { hour: 'numeric', minute: 'numeric', hour12: false })} </i>
                                     </Typography>
@@ -164,54 +163,7 @@ const WeatherDetails = React.forwardRef(({ forecastDetails, localTime, timezoneO
                     </Stack>
                     <DialogContent dividers>
 
-
-                        <Typography fontSize={25} gutterBottom>
-                            <b>Temperature:</b> {Math.round(forecastDetails.temp)}°
-                        </Typography>
-
-                        <Typography fontSize={25} gutterBottom>
-                            <b>Feels like:</b> {Math.round(forecastDetails.feels_like)}°
-                        </Typography>
-
-                        <Typography fontSize={25} gutterBottom>
-                            <b>Chance of precipitation:</b> {Math.round(forecastDetails.pop * 100)}%
-                        </Typography>
-
-                        <Typography fontSize={25} gutterBottom>
-                            <b>Clouds:</b> {forecastDetails.clouds}%
-                        </Typography>
-
-                        <Typography fontSize={25} gutterBottom>
-                            <b>Dew Point:</b> {forecastDetails.dew_point}°
-                        </Typography>
-
-                        <Typography fontSize={25} gutterBottom>
-                            <b>Humidity:</b> {forecastDetails.humidity}%
-                        </Typography>
-
-                        <Typography gutterBottom>
-                            <b>Pressure:</b> {forecastDetails.pressure} hpa
-                        </Typography>
-
-                        {forecastDetails.uvi !== 0 &&
-                            <Typography gutterBottom>
-                                <b>UV index:</b> {forecastDetails.uvi}
-                            </Typography>
-                        }
-
-                        {forecastDetails.visibility &&
-                            <Typography gutterBottom>
-                                <b>Visibility:</b> {forecastDetails.visibility}{forecastDetails.visibility === 10000 && "+"} m
-                            </Typography>
-                        }
-
-                        <Typography gutterBottom>
-                            <b>Wind:</b> {forecastDetails.wind_deg} at {forecastDetails.wind_speed} km/h
-                        </Typography>
-
-                        <Typography gutterBottom>
-                            <b>Wind Gusts:</b> {forecastDetails.wind_gust} km/h
-                        </Typography>
+                        <DetailsList forecastDetails={forecastDetails} />
 
                     </DialogContent>
                 </BootstrapDialog>
