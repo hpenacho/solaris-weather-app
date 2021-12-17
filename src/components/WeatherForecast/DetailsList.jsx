@@ -121,28 +121,19 @@ const DetailsList = ({ forecastDetails }) => {
                 }} primary={`${Math.round(forecastDetails.humidity)}%`} secondary='Humidity' />
             </ListItem>
 
-            <ListItem>
-                <ListItemIcon>
-                    <SvgIcon fontSize='large'>
-                        <InvertColorsTwoToneIcon />
-                    </SvgIcon>
-                </ListItemIcon>
-                <ListItemText primaryTypographyProps={{
-                    fontSize: 20,
-                    fontWeight: 'medium'
-                }} primary={`${Math.round(forecastDetails.pop * 100)}%`} secondary='Chance of Precipitation' />
-            </ListItem>
-            <ListItem>
-                <ListItemIcon>
-                    <SvgIcon fontSize='large'>
-                        <FilterDramaTwoToneIcon />
-                    </SvgIcon>
-                </ListItemIcon>
-                <ListItemText primaryTypographyProps={{
-                    fontSize: 20,
-                    fontWeight: 'medium',
-                }} primary={`${forecastDetails.clouds}%`} secondary='Cloud Coverage' />
-            </ListItem>
+            {forecastDetails.pop !== 0 &&
+                <ListItem>
+                    <ListItemIcon>
+                        <SvgIcon fontSize='large'>
+                            <InvertColorsTwoToneIcon />
+                        </SvgIcon>
+                    </ListItemIcon>
+                    <ListItemText primaryTypographyProps={{
+                        fontSize: 20,
+                        fontWeight: 'medium'
+                    }} primary={`${Math.round(forecastDetails.pop * 100)}%`} secondary='Chance of Precipitation' />
+                </ListItem>
+            }
             <ListItemButton onClick={() => setOpenTemp(!openTemp)}>
                 <ListItemIcon>
                     <SvgIcon fontSize='large'>
@@ -160,20 +151,37 @@ const DetailsList = ({ forecastDetails }) => {
                 </List>
             </Collapse>
 
-            {forecastDetails.visibility &&
+            <Stack direction="row" justifyContent={'center'}>
                 <ListItem>
                     <ListItemIcon>
                         <SvgIcon fontSize='large'>
-                            <VisibilityTwoToneIcon />
+                            <FilterDramaTwoToneIcon />
                         </SvgIcon>
                     </ListItemIcon>
                     <ListItemText primaryTypographyProps={{
                         fontSize: 20,
                         fontWeight: 'medium',
-
-                    }} primary={`${forecastDetails.visibility} m`} secondary='Visibility' />
+                    }} primary={`${forecastDetails.clouds}%`} secondary='Cloud Coverage' />
                 </ListItem>
-            }
+
+                {forecastDetails.visibility &&
+                    <>
+                        <Divider orientation="vertical" variant="middle" flexItem />
+                        <ListItem>
+                            <ListItemIcon>
+                                <SvgIcon fontSize='large'>
+                                    <VisibilityTwoToneIcon />
+                                </SvgIcon>
+                            </ListItemIcon>
+                            <ListItemText primaryTypographyProps={{
+                                fontSize: 20,
+                                fontWeight: 'medium',
+
+                            }} primary={`${forecastDetails.visibility} m`} secondary='Visibility' />
+                        </ListItem>
+                    </>
+                }
+            </Stack>
 
             <Stack direction="row" justifyContent={'center'}>
                 <ListItem>
