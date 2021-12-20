@@ -22,13 +22,12 @@ import { SvgIcon } from '@mui/material';
 
 const DetailsList = ({ forecastDetails }) => {
     const [openTemp, setOpenTemp] = React.useState(false);
-    const [openWind, setOpenWind] = React.useState(false);
 
     return (
         <List
-            sx={{ width: '100%', bgcolor: 'background.paper' }}
+            sx={{ width: '100%', borderRadius: 4, bgcolor: 'detailsModal.section' }}
         >
-            <ListItemButton onClick={() => setOpenWind(!openWind)}>
+            <ListItemButton onClick={() => setOpenTemp(!openTemp)}>
                 <ListItemIcon>
                     <SvgIcon fontSize='large'>
                         <DeviceThermostatOutlinedIcon />
@@ -39,7 +38,7 @@ const DetailsList = ({ forecastDetails }) => {
                     <>
                         <ListItemText primaryTypographyProps={{ fontSize: 17, fontWeight: 'medium', }}
                             primary='Temperature' />
-                        {openWind ? <ExpandLess /> : <ExpandMore />}
+                        {openTemp ? <ExpandLess /> : <ExpandMore />}
                     </>
                 }
                 {!isNaN(forecastDetails.temp) &&
@@ -47,11 +46,11 @@ const DetailsList = ({ forecastDetails }) => {
                         <ListItemText
                             primaryTypographyProps={{ fontSize: 20, fontWeight: 'medium', }}
                             primary={`${Math.round(forecastDetails.temp)}°`} secondary='Temperature' />
-                        {openWind ? <ExpandLess /> : <ExpandMore />}
+                        {openTemp ? <ExpandLess /> : <ExpandMore />}
                     </>
                 }
             </ListItemButton>
-            <Collapse in={openWind} timeout="auto" unmountOnExit>
+            <Collapse in={openTemp} timeout="auto" unmountOnExit>
                 <List component="div">
 
                     <Stack direction="row" justifyContent={'center'}>
@@ -109,48 +108,56 @@ const DetailsList = ({ forecastDetails }) => {
                 </List>
             </Collapse >
 
-            <ListItem>
-                <ListItemIcon>
-                    <SvgIcon fontSize='large'>
-                        <Humidity />
-                    </SvgIcon>
-                </ListItemIcon>
-                <ListItemText primaryTypographyProps={{
-                    fontSize: 20,
-                    fontWeight: 'medium'
-                }} primary={`${Math.round(forecastDetails.humidity)}%`} secondary='Humidity' />
-            </ListItem>
-
-            {forecastDetails.pop !== 0 &&
+            <Stack direction="row" justifyContent={'center'}>
                 <ListItem>
                     <ListItemIcon>
                         <SvgIcon fontSize='large'>
-                            <InvertColorsTwoToneIcon />
+                            <Humidity />
                         </SvgIcon>
                     </ListItemIcon>
                     <ListItemText primaryTypographyProps={{
                         fontSize: 20,
                         fontWeight: 'medium'
-                    }} primary={`${Math.round(forecastDetails.pop * 100)}%`} secondary='Chance of Precipitation' />
+                    }} primary={`${Math.round(forecastDetails.humidity)}%`} secondary='Humidity' />
                 </ListItem>
-            }
-            <ListItemButton onClick={() => setOpenTemp(!openTemp)}>
-                <ListItemIcon>
-                    <SvgIcon fontSize='large'>
-                        <AirRoundedIcon />
-                    </SvgIcon>
-                </ListItemIcon>
-                <ListItemText primary={`${forecastDetails.wind_deg} at ${forecastDetails.wind_speed} km/h`} secondary='Wind direction and speed' />
-                {openTemp ? <ExpandLess /> : <ExpandMore />}
-            </ListItemButton>
-            <Collapse in={openTemp} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-                    <ListItem sx={{ pl: 4 }}>
-                        <ListItemText primary={`Gusts: ${forecastDetails.wind_gust} km/h`} />
-                    </ListItem>
-                </List>
-            </Collapse>
 
+                {forecastDetails.pop !== 0 &&
+                    <>
+                        <Divider orientation="vertical" variant="middle" flexItem />
+                        <ListItem>
+                            <ListItemIcon>
+                                <SvgIcon fontSize='large'>
+                                    <InvertColorsTwoToneIcon />
+                                </SvgIcon>
+                            </ListItemIcon>
+                            <ListItemText primaryTypographyProps={{
+                                fontSize: 20,
+                                fontWeight: 'medium'
+                            }} primary={`${Math.round(forecastDetails.pop * 100)}%`} secondary='Chance of Precipitation' />
+                        </ListItem>
+                    </>
+                }
+            </Stack>
+            <Stack direction="row" justifyContent={'center'}>
+                <ListItem>
+                    <ListItemIcon>
+                        <SvgIcon fontSize='large'>
+                            <AirRoundedIcon />
+                        </SvgIcon>
+                    </ListItemIcon>
+                    <ListItemText primary={`${forecastDetails.wind_deg} at ${forecastDetails.wind_speed} km/h`} secondary='Wind direction and speed' />
+                </ListItem>
+                <Divider orientation="vertical" variant="middle" flexItem />
+                <ListItem>
+                    <ListItemIcon>
+                        <SvgIcon fontSize='large'>
+                            <AirRoundedIcon />
+                        </SvgIcon>
+                    </ListItemIcon>
+                    <ListItemText primary={`${forecastDetails.wind_gust} km/h`} secondary={'Wind Gusts'} />
+                </ListItem>
+
+            </Stack>
             <Stack direction="row" justifyContent={'center'}>
                 <ListItem>
                     <ListItemIcon>

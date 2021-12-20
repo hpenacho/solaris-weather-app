@@ -15,6 +15,10 @@ const darktheme = createTheme(
                 default: '#0f0f0f',
                 paper: '#1e1e1e',
             },
+            detailsModal: {
+                main: '#1e1e1e',
+                section: '#2a2a2a',
+            },
         },
     })
 

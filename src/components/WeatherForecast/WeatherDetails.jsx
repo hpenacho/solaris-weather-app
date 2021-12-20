@@ -7,22 +7,22 @@ import DialogContent from '@mui/material/DialogContent';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import DetailsList from './DetailsList'
-import { Divider } from '@mui/material';
-import { SvgIcon } from '@mui/material';
 import { ReactComponent as Sunrise } from '../../assets/icons/misc/wi-sunrise.svg'
 import { ReactComponent as Sunset } from '../../assets/icons/misc/wi-sunset.svg'
 import { ReactComponent as Moonrise } from '../../assets/icons/misc/wi-moonrise.svg'
 import { ReactComponent as Moonset } from '../../assets/icons/misc/wi-moonset.svg'
 import Typography from '@mui/material/Typography';
 import WeatherIcon from './WeatherIcon'
-import { Icon, Stack } from '@mui/material';
+import { Icon } from '@mui/material';
 import { Grid } from '@mui/material'
 import { formatTime } from '../../tools/dateFormatter';
+import SunMoonTime from './SunMoonTime';
+import List from '@mui/material/List';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+
     '& .MuiDialogContent-root': {
         padding: theme.spacing(2),
-
     },
     '& .MuiDialogActions-root': {
         padding: theme.spacing(1),
@@ -74,7 +74,6 @@ const WeatherDetails = React.forwardRef(({ forecastDetails, localTime, timezoneO
         }
     })
 
-    console.log(forecastDetails)
     return (
         <div>
             {forecastDetails &&
@@ -85,88 +84,96 @@ const WeatherDetails = React.forwardRef(({ forecastDetails, localTime, timezoneO
                     maxWidth="sm"
                     open={open}
                 >
-                    <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-                        <b>Forecast</b>
+                    <BootstrapDialogTitle backgroundColor='detailsModal.main' id="customized-dialog-title" onClose={handleClose}>
+                        <Typography fontSize='large' sx={{ color: 'gray' }}>
+                            <b>Forecast</b>
+                        </Typography>
                     </BootstrapDialogTitle>
 
-                    <Stack pt={1} px={2} alignItems="center" justifyContent="center">
-                        <Typography variant='h3'>
-                            {capitalize(forecastDetails.weather[0].description)}
-                        </Typography>
+                    <Grid pb={2} bgcolor='detailsModal.main' container direction="row" justifyContent="space-evenly">
+                        <Grid item>
+                            <Grid container alignItems="center" direction="column" >
+                                <Grid item  >
+                                    <Grid container direction="row">
+                                        <Grid mt={-2} item >
+                                            <Icon sx={{ fontSize: 140 }}>
+                                                <WeatherIcon iconID={forecastDetails.weather[0].icon} iconStyle={iconStyle} />
+                                            </Icon>
+                                        </Grid>
 
-                        <Grid container mt={-5} px={2} alignItems="center" justifyContent="center" spacing={3}>
-                            <Grid item alignItems="center" justifyContent="center">
-                                <Icon sx={{ fontSize: 160 }}>
-                                    <WeatherIcon iconID={forecastDetails.weather[0].icon} iconStyle={iconStyle} />
-                                </Icon>
+                                        {localTime &&
+                                            <Grid item mt={5} mr={2} sx={{ textAlign: 'center' }}>
+                                                <Typography variant='h5' sx={{ color: '#FFFFFFB3' }}>
+                                                    {formatTime(localTime, { hour: 'numeric', minute: 'numeric', hour12: false })}
+                                                </Typography>
+                                                <Typography variant='h5' sx={{ color: '#FFFFFFB3' }}>
+                                                    {formatTime(localTime, { day: 'numeric', month: 'short', hour12: false })}
+                                                </Typography>
+                                            </Grid>
+                                        }
+
+                                        {!localTime &&
+                                            <Grid item mr={2} mt={5}>
+                                                <Typography variant='h6' sx={{ color: '#FFFFFFB3' }} textAlign={'right'}>
+                                                    <i>{formatTime(forecastDetails.dt, { weekday: 'long' })}</i>
+                                                </Typography>
+                                                <Typography variant='h6' sx={{ color: '#FFFFFFB3' }}>
+                                                    {formatTime(forecastDetails.dt, { year: 'numeric', month: 'numeric', day: 'numeric' })}
+                                                </Typography>
+                                            </Grid>
+                                        }
+                                    </Grid>
+                                </Grid>
+
+                                <Grid item>
+                                    <Typography fontStyle='italic' sx={{ fontSize: 37, color: '#F0E9D2' }} >
+                                        {capitalize(forecastDetails.weather[0].description)}
+                                    </Typography>
+                                </Grid>
+
                             </Grid>
-
-                            {localTime &&
-                                <Grid item mr={2}>
-                                    <Typography variant='h4'>
-                                        {formatTime(localTime, { hour: 'numeric', minute: 'numeric', hour12: false })}
-                                    </Typography>
-                                    <Typography variant='h4'>
-                                        {formatTime(localTime, { day: 'numeric', month: 'short', hour12: false })}
-                                    </Typography>
-                                </Grid>
-                            }
-
-                            {!localTime &&
-                                <Grid item mr={2}>
-                                    <Typography variant='h4' textAlign={'right'}>
-                                        <i>{formatTime(forecastDetails.dt, { weekday: 'long' })}</i>
-                                    </Typography>
-                                    <Typography variant='h4'>
-                                        {formatTime(forecastDetails.dt, { year: 'numeric', month: 'numeric', day: 'numeric' })}
-                                    </Typography>
-                                </Grid>
-                            }
-
-
                         </Grid>
 
                         {forecastDetails.sunrise &&
-                            <Stack direction="row" px={1} spacing={10}>
-                                <Stack direction="row" alignItems={'center'}>
-                                    <SvgIcon sx={{ color: "#ff9100" }} fontSize='large'> <Sunrise /> </SvgIcon>
-                                    <Typography fontSize={22}>
-                                        <i>{formatTime(forecastDetails.sunrise + timezoneOffset, { hour: 'numeric', minute: 'numeric', hour12: false })} </i>
-                                    </Typography>
-                                </Stack>
-                                <Stack direction="row" alignItems={'center'}>
-                                    <SvgIcon sx={{ color: "#589ceb" }} fontSize='large'> <Moonrise /> </SvgIcon>
-                                    <Typography fontSize={22}>
-                                        <i>{formatTime(forecastDetails.moonrise + timezoneOffset, { hour: 'numeric', minute: 'numeric', hour12: false })}</i>
-                                    </Typography>
-                                </Stack>
+                            <Grid item>
+                                <Grid container alignItems="center" justifyContent="center">
+                                    <Grid item>
+                                        <List disablePadding dense sx={{ width: '100%', borderRadius: 5, bgcolor: 'detailsModal.section' }}>
+                                            <SunMoonTime
+                                                time={`${formatTime(forecastDetails.sunrise + timezoneOffset, { hour: 'numeric', minute: 'numeric', hour12: false })}`}
+                                                title='Sun Rise'
+                                                icon={<Sunrise />}
+                                                color={"#ff9100"}
+                                            />
+                                            <SunMoonTime
+                                                time={`${formatTime(forecastDetails.sunset + timezoneOffset, { hour: 'numeric', minute: 'numeric', hour12: false })}`}
+                                                title='Sun Set'
+                                                icon={<Sunset />}
+                                                color={"#ff9100"}
+                                            />
+                                            <SunMoonTime
+                                                time={`${formatTime(forecastDetails.moonrise + timezoneOffset, { hour: 'numeric', minute: 'numeric', hour12: false })}`}
+                                                title='Moon Rise'
+                                                icon={<Moonrise />}
+                                                color={"#589ceb"}
+                                            />
+                                            <SunMoonTime
+                                                time={`${formatTime(forecastDetails.moonset + timezoneOffset, { hour: 'numeric', minute: 'numeric', hour12: false })}`}
+                                                title='Moon Set'
+                                                icon={<Moonset />}
+                                                color={"#589ceb"}
+                                            />
+                                        </List>
+                                    </Grid>
 
-                            </Stack>
+                                </Grid>
+                            </Grid>
                         }
+                    </Grid>
 
-                        {forecastDetails.moonrise &&
-                            <Stack direction="row" px={1} pb={3} spacing={10}>
+                    <DialogContent sx={{ backgroundColor: 'detailsModal.main' }} dividers >
 
-                                <Stack direction="row" alignItems={'center'}>
-                                    <SvgIcon sx={{ color: "#ff9100" }} fontSize='large'> <Sunset /> </SvgIcon>
-                                    <Typography fontSize={22} >
-                                        <i>{formatTime(forecastDetails.sunset + timezoneOffset, { hour: 'numeric', minute: 'numeric', hour12: false })}</i>
-                                    </Typography>
-                                </Stack>
-                                <Stack direction="row" alignItems={'center'}>
-                                    <SvgIcon sx={{ color: "#589ceb" }} fontSize='large'> <Moonset /> </SvgIcon>
-                                    <Typography fontSize={22} >
-                                        <i> {formatTime(forecastDetails.moonset + timezoneOffset, { hour: 'numeric', minute: 'numeric', hour12: false })} </i>
-                                    </Typography>
-                                </Stack>
-                            </Stack>
-
-                        }
-
-                    </Stack>
-                    <DialogContent dividers>
-
-                        <DetailsList forecastDetails={forecastDetails} />
+                        <DetailsList forecastDetails={forecastDetails} timezoneOffset={timezoneOffset} />
 
                     </DialogContent>
                 </BootstrapDialog>
