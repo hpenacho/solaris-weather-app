@@ -1,7 +1,6 @@
 import { Grid } from '@mui/material';
 import { Container } from '@mui/material';
 import AlertModal from './AlertModal'
-import WeatherDetails from '../WeatherDetailsSection/WeatherDetails'
 import ComplementaryItem from './ComplementaryItem'
 import AirRoundedIcon from '@mui/icons-material/AirRounded';
 import InvertColorsTwoToneIcon from '@mui/icons-material/InvertColorsTwoTone';

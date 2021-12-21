@@ -4,14 +4,13 @@ import { Container } from '@mui/material'
 import ComplementaryInfo from '../ComplementarySection/ComplementaryInfo'
 
 let slicedForecast = [];
-const MiddleSection = ({ weatherData, iconStyle, unitType, forecastInterval }) => {
+const MiddleSection = ({ weatherData, iconStyle, unitType, timeframe }) => {
 
     if (weatherData) {
         slicedForecast = weatherData.hourly
-            .filter((element, index) => { return index % forecastInterval === 0; })
+            .filter((element, index) => { return index % timeframe === 0; })
             .slice(0, 8)
     }
-
 
     return (
         <Container disableGutters sx={{ backgroundColor: '#212121' }}>

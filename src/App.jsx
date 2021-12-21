@@ -12,11 +12,11 @@ import ForecastContainer from './components/WeatherForecast/ForecastContainer'
 
 const App = () => {
   const [filter, setFilter] = useState('')
-  const [location, setLocation] = useState('') //temp Lisbon
+  const [location, setLocation] = useState('')
   const [theme, setTheme] = useState(darktheme)
-  const [unitType, setUnitType] = useState("celcius")
+  const [unitType, setUnitType] = useState("celsius")
   const [iconStyle, setIconStyle] = useState("animated")
-  const [forecastInterval, setForecastInterval] = useState(3)
+  const [timeframe, setTimeframe] = useState(3)
 
   const cities = InitService.initializeCities()
 
@@ -35,12 +35,14 @@ const App = () => {
               unitType={unitType}
               setUnitType={setUnitType}
               setIconStyle={setIconStyle}
-              setForecastInterval={setForecastInterval} />
+              timeframe={timeframe}
+              setTimeframe={setTimeframe} />
             <ForecastContainer
               location={location}
+              setLocation={setLocation}
               iconStyle={iconStyle}
               unitType={unitType}
-              forecastInterval={forecastInterval} />
+              timeframe={timeframe} />
           </Box>
         </Container >
       </Grid>

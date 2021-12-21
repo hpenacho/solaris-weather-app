@@ -4,7 +4,7 @@ import TopSection from "./TopSection"
 import MiddleSection from "./MiddleSection"
 import BottomSection from "./BottomSection"
 
-const ForecastContainer = ({ location, iconStyle, unitType, forecastInterval }) => {
+const ForecastContainer = ({ location, setLocation, iconStyle, unitType, timeframe }) => {
     const [weatherData, setWeatherData] = useState();
 
     useEffect(() => {
@@ -18,9 +18,21 @@ const ForecastContainer = ({ location, iconStyle, unitType, forecastInterval }) 
 
     return (
         <>
-            <TopSection location={location} weatherData={weatherData} />
-            <MiddleSection weatherData={weatherData} iconStyle={iconStyle} unitType={unitType} forecastInterval={forecastInterval} />
-            <BottomSection weatherData={weatherData} iconStyle={iconStyle} unitType={unitType} />
+            <TopSection
+                location={location}
+                setLocation={setLocation}
+                weatherData={weatherData} />
+
+            <MiddleSection
+                weatherData={weatherData}
+                iconStyle={iconStyle}
+                unitType={unitType}
+                timeframe={timeframe} />
+
+            <BottomSection
+                weatherData={weatherData}
+                iconStyle={iconStyle}
+                unitType={unitType} />
         </>
     )
 }

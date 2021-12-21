@@ -7,14 +7,12 @@ import InfoTwoToneIcon from '@mui/icons-material/InfoTwoTone';
 import Tooltip from '@mui/material/Tooltip';
 import Zoom from '@mui/material/Zoom';
 import InitService from '../../services/InitService'
-import Chip from '@mui/material/Chip';
 
 const capitalize = (word) => {
     return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
 const TopSection = ({ location, weatherData }) => {
-
     let wikiLink = "";
     if (location) {
         if (location.langs !== undefined) {
@@ -27,7 +25,6 @@ const TopSection = ({ location, weatherData }) => {
             wikiLink = `https://en.wikipedia.org/wiki/${location.name}`
         }
     }
-
     const country = InitService.initializeCountries().find(country => country.code === location.country)
 
     return (
