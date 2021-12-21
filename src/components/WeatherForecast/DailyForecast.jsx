@@ -4,10 +4,11 @@ import WeatherIcon from './WeatherIcon';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
 import { getWeekDay } from '../../tools/dateFormatter'
-import WeatherDetails from './WeatherDetails'
+import WeatherDetails from '../WeatherDetailsSection/WeatherDetails'
+import unitTypeSwitcher from '../../tools/unitTypeSwitcher';
 
 let weekDay = ''
-const DailyForecast = ({ dailyWeatherInfo, timezoneOffset, iconStyle }) => {
+const DailyForecast = ({ dailyWeatherInfo, timezoneOffset, iconStyle, unitType }) => {
 
     if (dailyWeatherInfo) {
         weekDay = getWeekDay(dailyWeatherInfo.dt);
@@ -30,15 +31,15 @@ const DailyForecast = ({ dailyWeatherInfo, timezoneOffset, iconStyle }) => {
                     </Grid>
                     <Grid item mx={1} >
                         <Grid item>
-                            <Typography><b> {Math.round(dailyWeatherInfo.temp.max)}° </b> </Typography>
+                            <Typography><b> {Math.round(unitTypeSwitcher(dailyWeatherInfo.temp.max, unitType))}° </b> </Typography>
                         </Grid>
                         <Grid item>
-                            <Typography> {Math.round(dailyWeatherInfo.temp.min)}° </Typography>
+                            <Typography> {Math.round(unitTypeSwitcher(dailyWeatherInfo.temp.min, unitType))}° </Typography>
                         </Grid>
                     </Grid>
                 </Grid>
             </Button >
-            <WeatherDetails forecastDetails={dailyWeatherInfo} timezoneOffset={timezoneOffset} iconStyle={iconStyle} ref={ref} />
+            <WeatherDetails forecastDetails={dailyWeatherInfo} timezoneOffset={timezoneOffset} iconStyle={iconStyle} unitType={unitType} ref={ref} />
         </>
     )
 }

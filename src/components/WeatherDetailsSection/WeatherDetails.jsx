@@ -12,7 +12,7 @@ import { ReactComponent as Sunset } from '../../assets/icons/misc/wi-sunset.svg'
 import { ReactComponent as Moonrise } from '../../assets/icons/misc/wi-moonrise.svg'
 import { ReactComponent as Moonset } from '../../assets/icons/misc/wi-moonset.svg'
 import Typography from '@mui/material/Typography';
-import WeatherIcon from './WeatherIcon'
+import WeatherIcon from '../WeatherForecast/WeatherIcon'
 import { Icon } from '@mui/material';
 import { Grid } from '@mui/material'
 import { formatTime } from '../../tools/dateFormatter';
@@ -59,7 +59,7 @@ BootstrapDialogTitle.propTypes = {
     onClose: PropTypes.func.isRequired,
 };
 
-const WeatherDetails = React.forwardRef(({ forecastDetails, localTime, timezoneOffset, iconStyle }, ref) => {
+const WeatherDetails = React.forwardRef(({ forecastDetails, localTime, timezoneOffset, iconStyle, unitType }, ref) => {
     const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => { setOpen(true); };
     const handleClose = () => { setOpen(false); };
@@ -173,7 +173,7 @@ const WeatherDetails = React.forwardRef(({ forecastDetails, localTime, timezoneO
 
                     <DialogContent sx={{ backgroundColor: 'detailsModal.main' }} dividers >
 
-                        <DetailsList forecastDetails={forecastDetails} timezoneOffset={timezoneOffset} />
+                        <DetailsList forecastDetails={forecastDetails} timezoneOffset={timezoneOffset} unitType={unitType} />
 
                     </DialogContent>
                 </BootstrapDialog>

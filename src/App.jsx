@@ -14,7 +14,7 @@ const App = () => {
   const [filter, setFilter] = useState('')
   const [location, setLocation] = useState('') //temp Lisbon
   const [theme, setTheme] = useState(darktheme)
-  const [unitType, setUnitType] = useState("metric")
+  const [unitType, setUnitType] = useState("celcius")
   const [iconStyle, setIconStyle] = useState("animated")
   const [forecastInterval, setForecastInterval] = useState(3)
 
@@ -32,13 +32,14 @@ const App = () => {
               setFilter={setFilter}
               setLocation={setLocation}
               cities={cities}
+              unitType={unitType}
               setUnitType={setUnitType}
               setIconStyle={setIconStyle}
               setForecastInterval={setForecastInterval} />
             <ForecastContainer
               location={location}
-              unitType={unitType}
               iconStyle={iconStyle}
+              unitType={unitType}
               forecastInterval={forecastInterval} />
           </Box>
         </Container >

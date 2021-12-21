@@ -5,9 +5,10 @@ import { Stack } from '@mui/material';
 import WeatherIcon from './WeatherIcon'
 import Button from '@mui/material/Button';
 import { formatHour } from '../../tools/dateFormatter'
-import WeatherDetails from './WeatherDetails'
+import WeatherDetails from '../WeatherDetailsSection/WeatherDetails'
+import unitTypeSwitcher from '../../tools/unitTypeSwitcher';
 
-const HourlyForecast = ({ hourlyForecast, timezoneOffset, iconStyle }) => {
+const HourlyForecast = ({ hourlyForecast, timezoneOffset, iconStyle, unitType }) => {
 
     const ref = useRef()
     const handleClick = () => {
@@ -24,10 +25,12 @@ const HourlyForecast = ({ hourlyForecast, timezoneOffset, iconStyle }) => {
                             <WeatherIcon iconID={hourlyForecast.weather[0].icon} iconStyle={iconStyle} />
                         </svg>
                     </ListItemIcon>
-                    <ListItemText> {Math.round(hourlyForecast.temp)}° </ListItemText>
+                    <ListItemText>
+                        {Math.round(unitTypeSwitcher(hourlyForecast.temp, unitType))}°
+                    </ListItemText>
                 </Stack>
             </Button>
-            <WeatherDetails forecastDetails={hourlyForecast} localTime={hourlyForecast.dt + timezoneOffset} iconStyle={iconStyle} ref={ref} />
+            <WeatherDetails forecastDetails={hourlyForecast} localTime={hourlyForecast.dt + timezoneOffset} iconStyle={iconStyle} unitType={unitType} ref={ref} />
         </>
     )
 }

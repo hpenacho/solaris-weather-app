@@ -1,10 +1,10 @@
 import { Grid } from '@mui/material';
 import HourlyForecast from './HourlyForecast';
 import { Container } from '@mui/material'
-import ComplementaryInfo from './ComplementaryInfo'
+import ComplementaryInfo from '../ComplementarySection/ComplementaryInfo'
 
 let slicedForecast = [];
-const MiddleSection = ({ weatherData, iconStyle, forecastInterval }) => {
+const MiddleSection = ({ weatherData, iconStyle, unitType, forecastInterval }) => {
 
     if (weatherData) {
         slicedForecast = weatherData.hourly
@@ -23,7 +23,8 @@ const MiddleSection = ({ weatherData, iconStyle, forecastInterval }) => {
                                 <HourlyForecast
                                     hourlyForecast={element}
                                     timezoneOffset={weatherData.timezone_offset}
-                                    iconStyle={iconStyle} />
+                                    iconStyle={iconStyle}
+                                    unitType={unitType} />
                             </Grid>
                         )}
                 </Grid>}

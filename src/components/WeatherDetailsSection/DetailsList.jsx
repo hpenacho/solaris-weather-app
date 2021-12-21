@@ -18,9 +18,10 @@ import VisibilityTwoToneIcon from '@mui/icons-material/VisibilityTwoTone';
 import { Divider } from '@mui/material';
 import { Stack } from '@mui/material';
 import { SvgIcon } from '@mui/material';
+import unitTypeSwitcher from '../../tools/unitTypeSwitcher';
 
 
-const DetailsList = ({ forecastDetails }) => {
+const DetailsList = ({ forecastDetails, unitType }) => {
     const [openTemp, setOpenTemp] = React.useState(false);
 
     return (
@@ -45,7 +46,7 @@ const DetailsList = ({ forecastDetails }) => {
                     <>
                         <ListItemText
                             primaryTypographyProps={{ fontSize: 20, fontWeight: 'medium', }}
-                            primary={`${Math.round(forecastDetails.temp)}°`} secondary='Temperature' />
+                            primary={`${Math.round(unitTypeSwitcher(forecastDetails.temp, unitType))}°`} secondary='Temperature' />
                         {openTemp ? <ExpandLess /> : <ExpandMore />}
                     </>
                 }
@@ -58,17 +59,23 @@ const DetailsList = ({ forecastDetails }) => {
                             {!isNaN(forecastDetails.temp) &&
                                 <>
                                     <ListItem>
+                                        <ListItemIcon>
+                                            <SvgIcon>
+                                                <DeviceThermostatOutlinedIcon />
+                                            </SvgIcon>
+                                        </ListItemIcon>
+
                                         <ListItemText primaryTypographyProps={{
                                             fontSize: 16,
                                             fontWeight: 'medium'
-                                        }} primary={`${Math.round(forecastDetails.feels_like)}°`}
+                                        }} primary={`${Math.round(unitTypeSwitcher(forecastDetails.feels_like, unitType))}°`}
                                             secondary='Feels Like' />
                                     </ListItem>
                                     <Divider orientation="vertical" variant="middle" flexItem />
                                 </>
                             }
                         </Stack>
-                        <Stack direction="row" justifyContent={'center'}>
+                        <Stack direction="row" >
                             {isNaN(forecastDetails.temp) &&
                                 <>
                                     <ListItem>
@@ -78,7 +85,7 @@ const DetailsList = ({ forecastDetails }) => {
                                         <ListItemText primaryTypographyProps={{
                                             fontSize: 16,
                                             fontWeight: 'medium'
-                                        }} primary={`${Math.round(forecastDetails.temp.max)}°`}
+                                        }} primary={`${Math.round(unitTypeSwitcher(forecastDetails.temp.max, unitType))}°`}
                                             secondary='Max'
                                         />
                                     </ListItem>
@@ -90,18 +97,25 @@ const DetailsList = ({ forecastDetails }) => {
                                         <ListItemText primaryTypographyProps={{
                                             fontSize: 16,
                                             fontWeight: 'medium'
-                                        }} primary={`${Math.round(forecastDetails.temp.min)}°`}
+                                        }} primary={`${Math.round(unitTypeSwitcher(forecastDetails.temp.min, unitType))}°`}
                                             secondary='Min' />
                                     </ListItem>
                                     <Divider orientation="vertical" variant="middle" flexItem />
                                 </>
                             }
                             <ListItem>
+                                <ListItemIcon>
+                                    <SvgIcon >
+                                        <DeviceThermostatOutlinedIcon />
+                                    </SvgIcon>
+                                </ListItemIcon>
                                 <ListItemText primaryTypographyProps={{
                                     fontSize: 16,
                                     fontWeight: 'medium'
-                                }} primary={`${forecastDetails.dew_point}°`}
-                                    secondary='Dew Point' />
+                                }} primary={`${unitTypeSwitcher(forecastDetails.dew_point, unitType).toFixed(1)}°`}
+                                    sx={{ whiteSpace: 'nowrap' }}
+                                    secondary={'Dew Point'}
+                                />
                             </ListItem>
                         </Stack>
                     </Stack>

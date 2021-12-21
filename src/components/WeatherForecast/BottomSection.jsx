@@ -3,7 +3,7 @@ import DailyForecast from './DailyForecast';
 import { Container } from '@mui/material'
 
 let slicedForecast = [];
-const BottomSection = ({ weatherData, iconStyle }) => {
+const BottomSection = ({ weatherData, iconStyle, unitType }) => {
 
     if (weatherData) {
         slicedForecast = weatherData.daily
@@ -19,14 +19,16 @@ const BottomSection = ({ weatherData, iconStyle }) => {
                             <DailyForecast
                                 dailyWeatherInfo={element}
                                 timezoneOffset={weatherData.timezone_offset}
-                                iconStyle={iconStyle} />
+                                iconStyle={iconStyle}
+                                unitType={unitType} />
                         </Grid>
                     )}
                 {weatherData &&
                     <Grid item xs={1} key={weatherData.daily[6].dt} >
                         <DailyForecast dailyWeatherInfo={weatherData.daily[6]}
                             timezoneOffset={weatherData.timezone_offset}
-                            iconStyle={iconStyle} />
+                            iconStyle={iconStyle}
+                            unitType={unitType} />
                     </Grid>
                 }
             </Grid>
