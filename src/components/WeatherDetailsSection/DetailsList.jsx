@@ -24,6 +24,7 @@ import unitTypeSwitcher from '../../tools/unitTypeSwitcher';
 const DetailsList = ({ forecastDetails, unitType }) => {
     const [openTemp, setOpenTemp] = React.useState(false);
 
+    console.log(forecastDetails)
     return (
         <List
             sx={{ width: '100%', borderRadius: 4, bgcolor: 'detailsModal.section' }}

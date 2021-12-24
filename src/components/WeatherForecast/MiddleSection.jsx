@@ -13,7 +13,7 @@ const MiddleSection = ({ weatherData, iconStyle, unitType, timeframe }) => {
     }
 
     return (
-        <Container disableGutters sx={{ backgroundColor: '#212121' }}>
+        <Container disableGutters sx={{ backgroundColor: 'secondary.main' }}>
             {weatherData &&
                 <Grid py={1} container direction="row" sx={{ justifyContent: 'space-between' }} columns={8} >
                     {weatherData &&

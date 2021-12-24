@@ -24,17 +24,17 @@ const DailyForecast = ({ dailyWeatherInfo, timezoneOffset, iconStyle, unitType }
             <Button fullWidth sx={{ textTransform: "none" }} onClick={handleClick}>
                 <Grid container justifyContent="center" alignItems="center">
                     <Grid item>
-                        <Typography variant="h6"> {weekDay} </Typography>
-                        <svg width="55px" height="55px">
+                        <Typography color='textColor.default' variant="h6"> {weekDay} </Typography>
+                        <svg width="57px" height="57px">
                             <WeatherIcon iconID={dailyWeatherInfo.weather[0].icon} iconStyle={iconStyle} />
                         </svg>
                     </Grid>
                     <Grid item mx={1} >
                         <Grid item>
-                            <Typography><b> {Math.round(unitTypeSwitcher(dailyWeatherInfo.temp.max, unitType))}° </b> </Typography>
+                            <Typography fontSize={20} color='textColor.default'> {Math.round(unitTypeSwitcher(dailyWeatherInfo.temp.max, unitType))}°  </Typography>
                         </Grid>
                         <Grid item>
-                            <Typography> {Math.round(unitTypeSwitcher(dailyWeatherInfo.temp.min, unitType))}° </Typography>
+                            <Typography color='textColor.default'> {Math.round(unitTypeSwitcher(dailyWeatherInfo.temp.min, unitType))}° </Typography>
                         </Grid>
                     </Grid>
                 </Grid>

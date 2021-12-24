@@ -28,14 +28,14 @@ const TopSection = ({ location, weatherData }) => {
     const country = InitService.initializeCountries().find(country => country.code === location.country)
 
     return (
-        <Container sx={{ backgroundColor: '#212121' }}>
+        <Container sx={{ backgroundColor: 'secondary.main' }}>
             {location && weatherData &&
                 <>
                     <Grid container pt={1} justifyContent={"space-between"}>
                         <Grid item>
-                            <Typography variant={"h4"}> <b> {capitalize(weatherData.current.weather[0].description)} </b></Typography>
+                            <Typography variant={"h4"} color='textColor.default'> <b> {capitalize(weatherData.current.weather[0].description)} </b></Typography>
                         </Grid>
-                        <Grid border={1} borderColor={"gray"} borderRadius={5} item>
+                        <Grid backgroundColor='primary.main' borderRadius={5} item>
                             {wikiLink &&
                                 <Tooltip
                                     TransitionComponent={Zoom}
@@ -55,7 +55,7 @@ const TopSection = ({ location, weatherData }) => {
                                 <IconButton
                                     href={`https://www.google.com/maps/place/${location.name}/@${location.coord.lat},${location.coord.lon}`}
                                     target="_blank">
-                                    <LocationOnTwoToneIcon sx={{ color: "lightgreen" }} />
+                                    <LocationOnTwoToneIcon sx={{ color: "green" }} />
                                 </IconButton>
                             </Tooltip>
                         </Grid>
@@ -64,7 +64,7 @@ const TopSection = ({ location, weatherData }) => {
                         <Grid item >
                             <Grid px={1} container direction="row" alignItems="center">
                                 <Typography variant='h5'> {location.name},</Typography>
-                                <Typography mr={1} sx={{ color: "gray" }} variant='h5'>{country.label} </Typography>
+                                <Typography mr={1} sx={{ color: 'textColor.subdued' }} variant='h5'>{country.label} </Typography>
                                 <img loading="lazy" width="30" alt="flag"
                                     src={`https://flagcdn.com/${location.country.toLowerCase()}.svg`}
                                 />

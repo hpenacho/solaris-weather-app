@@ -12,7 +12,7 @@ const ComplementaryInfo = ({ title, icon, label }) => {
                 <Tooltip TransitionComponent={Zoom} title={title}>
                     <Chip icon={icon}
                         label={label}
-                        variant="outlined" />
+                        variant="filled" />
                 </Tooltip>
             </Grid>
         </Grid>

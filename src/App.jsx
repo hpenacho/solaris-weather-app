@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import InitService from './services/InitService'
 import Box from '@mui/material/Box'
 import darktheme from './assets/Themes'
+import { lighttheme } from './assets/Themes'
 import { ThemeProvider } from '@mui/material/styles'
 import { Container } from '@mui/material'
 import { CssBaseline } from '@mui/material';
@@ -13,7 +14,7 @@ import ForecastContainer from './components/WeatherForecast/ForecastContainer'
 const App = () => {
   const [filter, setFilter] = useState('')
   const [location, setLocation] = useState('')
-  const [theme, setTheme] = useState(darktheme)
+  const [theme, setTheme] = useState(lighttheme)
   const [unitType, setUnitType] = useState("celsius")
   const [iconStyle, setIconStyle] = useState("animated")
   const [timeframe, setTimeframe] = useState(3)
@@ -26,7 +27,7 @@ const App = () => {
       <Grid container >
         <Header />
         < Container maxWidth="md" >
-          <Box sx={{ boxShadow: 8, borderRadius: 7, backgroundColor: "#161616" }}>
+          <Box sx={{ boxShadow: 8, borderRadius: 7, backgroundColor: "primary.main" }}>
             <NavBarSection
               filter={filter}
               setFilter={setFilter}

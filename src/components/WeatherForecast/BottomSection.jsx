@@ -15,7 +15,7 @@ const BottomSection = ({ weatherData, iconStyle, unitType }) => {
             <Grid container direction="row" sx={{ justifyContent: 'space-between' }} columns={7}>
                 {weatherData &&
                     slicedForecast.map(element =>
-                        <Grid sx={{ borderRight: 1, borderColor: "#212121" }} item xs={1} key={element.dt} >
+                        <Grid sx={{ borderRight: 1, borderColor: "secondary.main" }} item xs={1} key={element.dt} >
                             <DailyForecast
                                 dailyWeatherInfo={element}
                                 timezoneOffset={weatherData.timezone_offset}

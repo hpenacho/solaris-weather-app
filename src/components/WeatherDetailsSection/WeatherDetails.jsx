@@ -134,7 +134,7 @@ const WeatherDetails = React.forwardRef(({ forecastDetails, localTime, timezoneO
                             </Grid>
                         </Grid>
 
-                        {forecastDetails.sunrise &&
+                        {forecastDetails.sunrise && forecastDetails.sunset &&
                             <Grid item>
                                 <Grid container alignItems="center" justifyContent="center">
                                     <Grid item>
@@ -151,18 +151,22 @@ const WeatherDetails = React.forwardRef(({ forecastDetails, localTime, timezoneO
                                                 icon={<Sunset />}
                                                 color={"#ff9100"}
                                             />
-                                            <SunMoonTime
-                                                time={`${formatTime(forecastDetails.moonrise + timezoneOffset, { hour: 'numeric', minute: 'numeric', hour12: false })}`}
-                                                title='Moon Rise'
-                                                icon={<Moonrise />}
-                                                color={"#589ceb"}
-                                            />
-                                            <SunMoonTime
-                                                time={`${formatTime(forecastDetails.moonset + timezoneOffset, { hour: 'numeric', minute: 'numeric', hour12: false })}`}
-                                                title='Moon Set'
-                                                icon={<Moonset />}
-                                                color={"#589ceb"}
-                                            />
+                                            {forecastDetails.moonrise !== 0 && forecastDetails.moonset !== 0 &&
+                                                <>
+                                                    <SunMoonTime
+                                                        time={`${formatTime(forecastDetails.moonrise + timezoneOffset, { hour: 'numeric', minute: 'numeric', hour12: false })}`}
+                                                        title='Moon Rise'
+                                                        icon={<Moonrise />}
+                                                        color={"#589ceb"}
+                                                    />
+                                                    <SunMoonTime
+                                                        time={`${formatTime(forecastDetails.moonset + timezoneOffset, { hour: 'numeric', minute: 'numeric', hour12: false })}`}
+                                                        title='Moon Set'
+                                                        icon={<Moonset />}
+                                                        color={"#589ceb"}
+                                                    />
+                                                </>
+                                            }
                                         </List>
                                     </Grid>
 

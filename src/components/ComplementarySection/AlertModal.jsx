@@ -10,23 +10,28 @@ import { formatTime } from '../../tools/dateFormatter'
 import Tooltip from '@mui/material/Tooltip';
 import Zoom from '@mui/material/Zoom';
 import Badge from '@mui/material/Badge';
+import { Grid } from '@mui/material';
 
 const style = {
   position: 'absolute',
-  top: '50%',
+  top: '45%',
   left: '50%',
-  transform: 'translate(-50%, -50%)',
-  maxWidth: 500,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
+  transform: 'translate(-50%, -52%)',
+  maxWidth: 600,
+  bgcolor: 'alertModal.main',
+  border: '2px solid',
+  borderRadius: 2,
   boxShadow: 24,
   p: 4,
+  //#ec9e53
 };
 
 export default function AlertModal({ alertData, index }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  console.log(alertData)
 
   return (
     <>
@@ -51,11 +56,21 @@ export default function AlertModal({ alertData, index }) {
         >
           <Fade in={open}>
             <Box sx={style}>
-              <Typography alignItems={"center"} justifyContent={"center"} variant="h5" pb={1} id="transition-modal-title" color="#ff9100">{alertData.event.toUpperCase()}</Typography>
-              <Typography color="#e0e0e0" variant="subtitle1"> <i>Starts:</i> {formatTime(alertData.start, { hour: 'numeric', minute: 'numeric', hour12: false })} {formatTime(alertData.start, { day: 'numeric', month: 'short', hour12: false })}</Typography>
-              <Typography color="#e0e0e0" variant="subtitle1"><i>Ends: </i>{formatTime(alertData.end, { hour: 'numeric', minute: 'numeric', hour12: false })} {formatTime(alertData.end, { day: 'numeric', month: 'short', hour12: false })}</Typography>
-              <Typography color="#F0E9D2" variant="body1" py={2} id="transition-modal-description">{alertData.description}</Typography>
-              <Typography color="#9e9e9e" variant="subtitle2">Alert provider: {alertData.sender_name}</Typography>
+              <Typography alignItems={"center"} justifyContent={"center"} fontSize={26} pb={1} id="transition-modal-title" color="#ff9100">{alertData.event.toUpperCase()}</Typography>
+              <Grid py={1} container justifyContent='space-evenly' spacing={1}>
+                <Grid item pb={1}>
+                  <Typography px={0.7} sx={{ backgroundColor: 'alertModal.secondary', borderRadius: 5 }} color="textColor.default" variant="subtitle1"> <i>Starts:</i> {formatTime(alertData.start, { hour: 'numeric', minute: 'numeric', hour12: false })} {formatTime(alertData.start, { day: 'numeric', month: 'short', hour12: false })}</Typography>
+                </Grid>
+                <Grid item>
+                  <Typography px={0.7} sx={{ backgroundColor: 'alertModal.secondary', borderRadius: 5 }} color="textColor.default" variant="subtitle1"><i>Ends: </i>{formatTime(alertData.end, { hour: 'numeric', minute: 'numeric', hour12: false })} {formatTime(alertData.end, { day: 'numeric', month: 'short', hour12: false })}</Typography>
+                </Grid>
+              </Grid>
+              {alertData.description &&
+                <Typography color="textColor.default" sx={{ backgroundColor: 'alertModal.secondary', borderRadius: 3 }} fontSize={20} p={2} id="transition-modal-description">{alertData.description}</Typography>
+              }
+              {alertData.sender_name &&
+                < Typography mt={4} color="textColor.subdued" variant="subtitle2">Alert provider: {alertData.sender_name}</Typography>
+              }
             </Box>
           </Fade>
         </Modal>

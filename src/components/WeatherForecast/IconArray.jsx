@@ -2,7 +2,8 @@ import AnimatedDay from '../../assets/icons/animated/01d.svg'
 import AnimatedNight from '../../assets/icons/animated/01n.svg'
 import AnimatedCloudyDay from '../../assets/icons/animated/02d.svg'
 import AnimatedCloudyNight from '../../assets/icons/animated/02n.svg'
-import AnimatedCloudy from '../../assets/icons/animated/03d.svg'
+import AnimatedOvercastDay from '../../assets/icons/animated/overcast-day.svg'
+import AnimatedOvercastNight from '../../assets/icons/animated/overcast-night.svg'
 import AnimatedShowerRain from '../../assets/icons/animated/09d.svg'
 import AnimatedRainDay from '../../assets/icons/animated/10d.svg'
 import AnimatedRainNight from '../../assets/icons/animated/10n.svg'
@@ -28,8 +29,12 @@ export const icons = [{
     id: ["02n", "03n"]
 },
 {
-    animatedIcon: <object type="image/svg+xml" data={AnimatedCloudy}>svg-animation</object>,
-    id: ["04d", "04n"]
+    animatedIcon: <object type="image/svg+xml" data={AnimatedOvercastDay}>svg-animation</object>,
+    id: ["04d"]
+},
+{
+    animatedIcon: <object type="image/svg+xml" data={AnimatedOvercastNight}>svg-animation</object>,
+    id: ["04n"]
 },
 {
     animatedIcon: <object type="image/svg+xml" data={AnimatedShowerRain}>svg-animation</object>,
