@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import InitService from './services/InitService'
 import Box from '@mui/material/Box'
 import darkTheme from './assets/darkTheme'
-import lightTheme from './assets/lightTheme'
 import { ThemeProvider } from '@mui/material/styles'
 import { Container } from '@mui/material'
 import { CssBaseline } from '@mui/material';
@@ -16,7 +15,7 @@ const App = () => {
   const [location, setLocation] = useState('')
   const [theme, setTheme] = useState(darkTheme)
   const [unitType, setUnitType] = useState("celsius")
-  const [iconStyle, setIconStyle] = useState("animated")
+  const [iconStyle, setIconStyle] = useState("static")
   const [timeframe, setTimeframe] = useState(3)
 
   const cities = InitService.initializeCities()
@@ -36,6 +35,8 @@ const App = () => {
               unitType={unitType}
               setUnitType={setUnitType}
               setIconStyle={setIconStyle}
+              theme={theme}
+              setTheme={setTheme}
               timeframe={timeframe}
               setTimeframe={setTimeframe} />
             <ForecastContainer

@@ -23,9 +23,14 @@ const HourlyForecast = ({ hourlyForecast, timezoneOffset, iconStyle, unitType })
                         {formatHour(hourlyForecast.dt + timezoneOffset)}h
                     </ListItemText>
                     <ListItemIcon>
-                        <svg width="100px" height="100px">
+                        {iconStyle === 'animated' &&
+                            <svg width="100px" height="100px">
+                                <WeatherIcon iconID={hourlyForecast.weather[0].icon} iconStyle={iconStyle} />
+                            </svg>
+                        }
+                        {iconStyle === 'static' &&
                             <WeatherIcon iconID={hourlyForecast.weather[0].icon} iconStyle={iconStyle} />
-                        </svg>
+                        }
                     </ListItemIcon>
                     <ListItemText primaryTypographyProps={{ fontSize: 19, color: 'textColor.default', mt: -1 }}>
                         {Math.round(unitTypeSwitcher(hourlyForecast.temp, unitType))}°

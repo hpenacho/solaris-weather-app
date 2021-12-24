@@ -23,8 +23,8 @@ const lighttheme = createTheme(
                 section: '#d2d3db', //#e4e5f1
             },
             alertModal: {
-                main: '#fdddb1',
-                secondary: '#fef0dd'
+                main: '#d2d3db',
+                secondary: '#f1f2f8'
             }
         },
     })

@@ -85,7 +85,7 @@ const WeatherDetails = React.forwardRef(({ forecastDetails, localTime, timezoneO
                     open={open}
                 >
                     <BootstrapDialogTitle backgroundColor='detailsModal.main' id="customized-dialog-title" onClose={handleClose}>
-                        <Typography fontSize='large' sx={{ color: 'gray' }}>
+                        <Typography fontSize='large' sx={{ color: 'textColor.subdued' }}>
                             <b>Forecast</b>
                         </Typography>
                     </BootstrapDialogTitle>
@@ -103,10 +103,10 @@ const WeatherDetails = React.forwardRef(({ forecastDetails, localTime, timezoneO
 
                                         {localTime &&
                                             <Grid item mt={5} mr={2} sx={{ textAlign: 'center' }}>
-                                                <Typography variant='h5' sx={{ color: '#FFFFFFB3' }}>
+                                                <Typography variant='h5' sx={{ color: 'textColor.default' }}>
                                                     {formatTime(localTime, { hour: 'numeric', minute: 'numeric', hour12: false })}
                                                 </Typography>
-                                                <Typography variant='h5' sx={{ color: '#FFFFFFB3' }}>
+                                                <Typography variant='h5' sx={{ color: 'textColor.default' }}>
                                                     {formatTime(localTime, { day: 'numeric', month: 'short', hour12: false })}
                                                 </Typography>
                                             </Grid>
@@ -114,10 +114,10 @@ const WeatherDetails = React.forwardRef(({ forecastDetails, localTime, timezoneO
 
                                         {!localTime &&
                                             <Grid item mr={2} mt={5}>
-                                                <Typography variant='h6' sx={{ color: '#FFFFFFB3' }} textAlign={'right'}>
+                                                <Typography variant='h6' sx={{ color: 'textColor.default' }} textAlign={'right'}>
                                                     <i>{formatTime(forecastDetails.dt, { weekday: 'long' })}</i>
                                                 </Typography>
-                                                <Typography variant='h6' sx={{ color: '#FFFFFFB3' }}>
+                                                <Typography variant='h6' sx={{ color: 'textColor.default' }}>
                                                     {formatTime(forecastDetails.dt, { year: 'numeric', month: 'numeric', day: 'numeric' })}
                                                 </Typography>
                                             </Grid>
@@ -126,7 +126,7 @@ const WeatherDetails = React.forwardRef(({ forecastDetails, localTime, timezoneO
                                 </Grid>
 
                                 <Grid item>
-                                    <Typography fontStyle='italic' sx={{ fontSize: 37, color: '#F0E9D2' }} >
+                                    <Typography fontStyle='italic' sx={{ fontSize: 37, color: 'textColor.default' }} >
                                         {capitalize(forecastDetails.weather[0].description)}
                                     </Typography>
                                 </Grid>
@@ -176,9 +176,7 @@ const WeatherDetails = React.forwardRef(({ forecastDetails, localTime, timezoneO
                     </Grid>
 
                     <DialogContent sx={{ backgroundColor: 'detailsModal.main' }} dividers >
-
                         <DetailsList forecastDetails={forecastDetails} timezoneOffset={timezoneOffset} unitType={unitType} />
-
                     </DialogContent>
                 </BootstrapDialog>
             }

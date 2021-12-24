@@ -6,6 +6,7 @@ import { Grid } from '@mui/material';
 import { getWeekDay } from '../../tools/dateFormatter'
 import WeatherDetails from '../WeatherDetailsSection/WeatherDetails'
 import unitTypeSwitcher from '../../tools/unitTypeSwitcher';
+import { Icon } from '@mui/material';
 
 let weekDay = ''
 const DailyForecast = ({ dailyWeatherInfo, timezoneOffset, iconStyle, unitType }) => {
@@ -25,9 +26,14 @@ const DailyForecast = ({ dailyWeatherInfo, timezoneOffset, iconStyle, unitType }
                 <Grid container justifyContent="center" alignItems="center">
                     <Grid item>
                         <Typography color='textColor.default' variant="h6"> {weekDay} </Typography>
-                        <svg width="57px" height="57px">
+                        {iconStyle === 'animated' &&
+                            <svg width="57px" height="57px">
+                                <WeatherIcon iconID={dailyWeatherInfo.weather[0].icon} iconStyle={iconStyle} />
+                            </svg>
+                        }
+                        {iconStyle === 'static' &&
                             <WeatherIcon iconID={dailyWeatherInfo.weather[0].icon} iconStyle={iconStyle} />
-                        </svg>
+                        }
                     </Grid>
                     <Grid item mx={1} >
                         <Grid container direction='column'>
