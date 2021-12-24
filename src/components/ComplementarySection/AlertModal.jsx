@@ -14,24 +14,21 @@ import { Grid } from '@mui/material';
 
 const style = {
   position: 'absolute',
-  top: '45%',
+  top: '50%',
   left: '50%',
-  transform: 'translate(-50%, -52%)',
+  transform: 'translate(-50%, -50%)',
   maxWidth: 600,
   bgcolor: 'alertModal.main',
-  border: '2px solid',
+  border: '2px solid #ff9100',
   borderRadius: 2,
   boxShadow: 24,
-  p: 4,
-  //#ec9e53
+  p: 4
 };
 
 export default function AlertModal({ alertData, index }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  console.log(alertData)
 
   return (
     <>
@@ -53,6 +50,7 @@ export default function AlertModal({ alertData, index }) {
           BackdropProps={{
             timeout: 500,
           }}
+          sx={{ backdropFilter: "blur(3px)" }}
         >
           <Fade in={open}>
             <Box sx={style}>

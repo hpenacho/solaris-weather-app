@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import InitService from './services/InitService'
 import Box from '@mui/material/Box'
-import darktheme from './assets/Themes'
-import { lighttheme } from './assets/Themes'
+import darkTheme from './assets/darkTheme'
+import lightTheme from './assets/lightTheme'
 import { ThemeProvider } from '@mui/material/styles'
 import { Container } from '@mui/material'
 import { CssBaseline } from '@mui/material';
@@ -14,7 +14,7 @@ import ForecastContainer from './components/WeatherForecast/ForecastContainer'
 const App = () => {
   const [filter, setFilter] = useState('')
   const [location, setLocation] = useState('')
-  const [theme, setTheme] = useState(lighttheme)
+  const [theme, setTheme] = useState(darkTheme)
   const [unitType, setUnitType] = useState("celsius")
   const [iconStyle, setIconStyle] = useState("animated")
   const [timeframe, setTimeframe] = useState(3)
