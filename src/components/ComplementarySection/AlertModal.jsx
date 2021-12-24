@@ -50,7 +50,7 @@ export default function AlertModal({ alertData, index }) {
           BackdropProps={{
             timeout: 500,
           }}
-          sx={{ backdropFilter: "blur(3px)" }}
+          sx={{ backdropFilter: "blur(2px)" }}
         >
           <Fade in={open}>
             <Box sx={style}>

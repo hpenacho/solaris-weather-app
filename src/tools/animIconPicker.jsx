@@ -12,6 +12,7 @@ import { ReactComponent as AnimatedThunderNight } from '../assets/icons/animated
 import { ReactComponent as AnimatedSnowDay } from '../assets/icons/animated/snow-day.svg'
 import { ReactComponent as AnimatedSnowNight } from '../assets/icons/animated/snow-night.svg'
 import { ReactComponent as AnimatedMist } from '../assets/icons/animated/mist.svg'
+import { ReactComponent as NotAvailable } from '../assets/icons/misc/not-available.svg'
 
 const animIconPicker = (iconID) => {
 
@@ -45,7 +46,7 @@ const animIconPicker = (iconID) => {
         case '50d': case '50n':
             return <AnimatedMist />
         default:
-            return null
+            return <NotAvailable />
     }
 }
 
