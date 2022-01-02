@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import Button from '@mui/material/Button';
-import WeatherIcon from './WeatherIcon';
+import WeatherIcon from '../WeatherIcon';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
 import { getWeekDay } from '../../tools/dateFormatter'

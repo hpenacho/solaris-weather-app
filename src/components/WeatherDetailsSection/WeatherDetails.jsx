@@ -12,7 +12,7 @@ import { ReactComponent as Sunset } from '../../assets/icons/misc/wi-sunset.svg'
 import { ReactComponent as Moonrise } from '../../assets/icons/misc/wi-moonrise.svg'
 import { ReactComponent as Moonset } from '../../assets/icons/misc/wi-moonset.svg'
 import Typography from '@mui/material/Typography';
-import WeatherIcon from '../WeatherForecast/WeatherIcon'
+import WeatherIcon from '../WeatherIcon'
 import { Icon } from '@mui/material';
 import { Grid } from '@mui/material'
 import { formatTime } from '../../tools/dateFormatter';

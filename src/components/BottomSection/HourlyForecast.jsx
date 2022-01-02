@@ -1,5 +1,5 @@
 import { Grid } from '@mui/material';
-import HourlyForecast from './HourlyForecast';
+import HourlyForecast from './HourlyForecastItem';
 import { Container } from '@mui/material'
 import ComplementaryInfo from '../ComplementarySection/ComplementaryInfo'
 

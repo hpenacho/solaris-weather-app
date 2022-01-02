@@ -1,5 +1,5 @@
 import { Grid } from '@mui/material';
-import DailyForecast from './DailyForecast';
+import DailyForecast from './DailyForecastItem';
 import { Container } from '@mui/material'
 
 let slicedForecast = [];

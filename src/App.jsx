@@ -9,7 +9,7 @@ import { CssBaseline } from '@mui/material';
 import { Grid } from '@mui/material';
 import Header from './components/Header/HeaderSection'
 import NavBarSection from './components/Navbar/NavBarSection'
-import ForecastContainer from './components/WeatherForecast/ForecastContainer'
+import ForecastContainer from './components/ForecastContainer'
 
 const App = () => {
   const [filter, setFilter] = useState('')
