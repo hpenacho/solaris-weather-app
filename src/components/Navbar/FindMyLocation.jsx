@@ -5,7 +5,7 @@ import React from 'react'
 import { Tooltip } from '@mui/material';
 import Zoom from '@mui/material/Zoom';
 
-const FindMyLocation = ({ setLocation }) => {
+const FindMyLocation = ({ setLocation, enqueueSnackbar }) => {
 
     const successCallback = (position) => {
         if (position) {
@@ -17,12 +17,14 @@ const FindMyLocation = ({ setLocation }) => {
                         coord: { lat: response[0].lat, lon: response[0].lon }
                     }
                     setLocation(location)
+                    enqueueSnackbar((`Geo-located at ${location.name}`), { variant: 'success' })
                 })
         }
     }
 
     const errorCallback = (error) => {
         console.error(error)
+        enqueueSnackbar((`${error.message}`), { variant: 'error' })
     }
 
     const handleClick = () => {
