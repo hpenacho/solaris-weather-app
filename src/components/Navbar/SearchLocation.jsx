@@ -9,7 +9,11 @@ import { Tooltip } from '@mui/material';
 import Zoom from '@mui/material/Zoom';
 
 const SearchLocation = ({ filter, setFilter, setLocation, cities }) => {
-    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+    const { enqueueSnackbar } = useSnackbar();
+
+    const capitalize = (word) => {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+    }
 
     const handleFilterChange = (event) => {
         setFilter(event.target.value)
@@ -22,11 +26,13 @@ const SearchLocation = ({ filter, setFilter, setLocation, cities }) => {
     }
 
     const handleSearch = async () => {
+        filter = capitalize(filter);
         const location = cities.find(city => city.name === filter)
 
-        if (location) {
+        if (location && location.name !== "") {
             setLocation(location)
             enqueueSnackbar((`Displaying ${filter} weather data`), { variant: 'success' })
+            setFilter("");
         }
 
         else {

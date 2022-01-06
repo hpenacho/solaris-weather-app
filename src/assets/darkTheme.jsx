@@ -27,6 +27,16 @@ const darktheme = createTheme(
                 secondary: '#2a2a2a'
             }
         },
+        components: {
+            MuiButton: {
+                styleOverrides: {
+                    root: {
+                        transition: "transform 0.17s ease-in-out",
+                        "&:hover": { transform: "scale3d(1.16, 1.16, 1)", background: 'none', },
+                    },
+                }
+            }
+        }
     })
 
 export default darktheme;

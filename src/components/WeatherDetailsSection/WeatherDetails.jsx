@@ -126,7 +126,7 @@ const WeatherDetails = React.forwardRef(({ forecastDetails, localTime, timezoneO
                                 </Grid>
 
                                 <Grid item>
-                                    <Typography fontStyle='italic' sx={{ fontSize: 37, color: 'textColor.default' }} >
+                                    <Typography fontStyle='italic' sx={{ fontSize: 36, color: 'textColor.default' }} >
                                         {capitalize(forecastDetails.weather[0].description)}
                                     </Typography>
                                 </Grid>

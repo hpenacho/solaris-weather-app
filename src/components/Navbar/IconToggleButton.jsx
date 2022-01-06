@@ -13,27 +13,24 @@ const IconToggleButton = ({ iconStyle, setIconStyle }) => {
     };
 
     return (
-
-        <ToggleButtonGroup
-            value={iconStyle}
-            exclusive
-            onChange={handleUnit}
-            aria-label="iconStyle"
-        >
-            <Tooltip title="Click for static icons" placement="top">
+        <Tooltip title="Toggle static/animated icons" placement="top">
+            <ToggleButtonGroup
+                value={iconStyle}
+                exclusive
+                onChange={handleUnit}
+                aria-label="iconStyle"
+            >
                 <ToggleButton sx={{ height: 39, paddingX: 0.5, borderRadius: 4 }} value="static" aria-label="Static">
                     <img height='35px' alt="weatherIcon" src={`https://openweathermap.org/img/wn/02d@2x.png`} />
                 </ToggleButton>
-            </Tooltip>
-            <Tooltip title="Click for animated icons" placement="top">
+
                 <ToggleButton sx={{ height: 39, paddingX: 0.5, borderRadius: 4 }} value="animated" aria-label="Animated">
                     <svg width="35px" height="35px">
                         <AnimatedCloudyDay />
                     </svg>
                 </ToggleButton>
-            </Tooltip>
-        </ToggleButtonGroup >
-
+            </ToggleButtonGroup >
+        </Tooltip>
     );
 }
 
