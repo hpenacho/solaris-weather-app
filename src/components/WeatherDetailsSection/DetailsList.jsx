@@ -19,6 +19,7 @@ import { Divider } from '@mui/material';
 import { Stack } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 import unitTypeSwitcher from '../../tools/unitTypeSwitcher';
+import Item from './Item';
 
 const DetailsList = ({ forecastDetails, unitType }) => {
     const [openTemp, setOpenTemp] = React.useState(false);
@@ -33,10 +34,9 @@ const DetailsList = ({ forecastDetails, unitType }) => {
                         <DeviceThermostatOutlinedIcon />
                     </SvgIcon>
                 </ListItemIcon>
-
                 {isNaN(forecastDetails.temp) &&
                     <>
-                        <ListItemText primaryTypographyProps={{ fontSize: 17, fontWeight: 'medium', }}
+                        <ListItemText primaryTypographyProps={{ fontSize: 17.5, fontWeight: 'medium', }}
                             primary='Temperature' />
                         {openTemp ? <ExpandLess /> : <ExpandMore />}
                     </>
@@ -52,24 +52,17 @@ const DetailsList = ({ forecastDetails, unitType }) => {
             </ListItemButton>
             <Collapse in={openTemp} timeout="auto" unmountOnExit>
                 <List component="div">
-
                     <Stack direction="row" justifyContent={'center'}>
                         <Stack direction="row" >
                             {!isNaN(forecastDetails.temp) &&
                                 <>
-                                    <ListItem>
-                                        <ListItemIcon>
-                                            <SvgIcon>
-                                                <DeviceThermostatOutlinedIcon />
-                                            </SvgIcon>
-                                        </ListItemIcon>
-
-                                        <ListItemText primaryTypographyProps={{
-                                            fontSize: 16,
-                                            fontWeight: 'medium'
-                                        }} primary={`${Math.round(unitTypeSwitcher(forecastDetails.feels_like, unitType))}°`}
-                                            secondary='Feels Like' />
-                                    </ListItem>
+                                    <Item
+                                        icon={<DeviceThermostatOutlinedIcon />}
+                                        iconSize={26}
+                                        text={`${Math.round(unitTypeSwitcher(forecastDetails.feels_like, unitType))}°`}
+                                        textSize={17.5}
+                                        subtitle='Feels Like'
+                                    />
                                     <Divider orientation="vertical" variant="middle" flexItem />
                                 </>
                             }
@@ -77,159 +70,105 @@ const DetailsList = ({ forecastDetails, unitType }) => {
                         <Stack direction="row" >
                             {isNaN(forecastDetails.temp) &&
                                 <>
-                                    <ListItem>
-                                        <ListItemIcon>
-                                            <DeviceThermostatOutlinedIcon sx={{ color: '#F15421' }} />
-                                        </ListItemIcon>
-                                        <ListItemText primaryTypographyProps={{
-                                            fontSize: 16,
-                                            fontWeight: 'medium'
-                                        }} primary={`${Math.round(unitTypeSwitcher(forecastDetails.temp.max, unitType))}°`}
-                                            secondary='Max'
-                                        />
-                                    </ListItem>
+                                    <Item
+                                        icon={<DeviceThermostatOutlinedIcon sx={{ color: '#F15421' }} />}
+                                        iconSize={26}
+                                        text={`${Math.round(unitTypeSwitcher(forecastDetails.temp.max, unitType))}°`}
+                                        textSize={17.5}
+                                        subtitle='Max'
+                                    />
                                     <Divider orientation="vertical" variant="middle" flexItem />
-                                    <ListItem >
-                                        <ListItemIcon>
-                                            <DeviceThermostatOutlinedIcon sx={{ color: '#589ceb' }} />
-                                        </ListItemIcon>
-                                        <ListItemText primaryTypographyProps={{
-                                            fontSize: 16,
-                                            fontWeight: 'medium'
-                                        }} primary={`${Math.round(unitTypeSwitcher(forecastDetails.temp.min, unitType))}°`}
-                                            secondary='Min' />
-                                    </ListItem>
+                                    <Item
+                                        icon={<DeviceThermostatOutlinedIcon sx={{ color: '#589ceb' }} />}
+                                        iconSize={26}
+                                        text={`${Math.round(unitTypeSwitcher(forecastDetails.temp.min, unitType))}°`}
+                                        textSize={17.5}
+                                        subtitle='Min'
+                                    />
                                     <Divider orientation="vertical" variant="middle" flexItem />
                                 </>
                             }
-                            <ListItem>
-                                <ListItemIcon>
-                                    <SvgIcon >
-                                        <DeviceThermostatOutlinedIcon />
-                                    </SvgIcon>
-                                </ListItemIcon>
-                                <ListItemText primaryTypographyProps={{
-                                    fontSize: 16,
-                                    fontWeight: 'medium'
-                                }} primary={`${unitTypeSwitcher(forecastDetails.dew_point, unitType).toFixed(1)}°`}
-                                    sx={{ whiteSpace: 'nowrap' }}
-                                    secondary={'Dew Point'}
-                                />
-                            </ListItem>
+                            <Item
+                                icon={<DeviceThermostatOutlinedIcon />}
+                                iconSize={26}
+                                text={`${unitTypeSwitcher(forecastDetails.dew_point, unitType).toFixed(1)}°`}
+                                textSize={17.5}
+                                sx={{ whiteSpace: 'nowrap' }}
+                                subtitle={'Dew Point'}
+                            />
                         </Stack>
                     </Stack>
                 </List>
             </Collapse >
-
             <Stack direction="row" justifyContent={'center'}>
-                <ListItem>
-                    <ListItemIcon>
-                        <SvgIcon fontSize='large'>
-                            <Humidity />
-                        </SvgIcon>
-                    </ListItemIcon>
-                    <ListItemText primaryTypographyProps={{
-                        fontSize: 20,
-                        fontWeight: 'medium'
-                    }} primary={`${Math.round(forecastDetails.humidity)}%`} secondary='Humidity' />
-                </ListItem>
-
+                <Item
+                    icon={<Humidity />}
+                    text={`${Math.round(forecastDetails.humidity)}%`}
+                    textSize={20}
+                    subtitle='Humidity'
+                />
                 {forecastDetails.pop !== 0 &&
                     <>
                         <Divider orientation="vertical" variant="middle" flexItem />
-                        <ListItem>
-                            <ListItemIcon>
-                                <SvgIcon fontSize='large'>
-                                    <InvertColorsTwoToneIcon />
-                                </SvgIcon>
-                            </ListItemIcon>
-                            <ListItemText primaryTypographyProps={{
-                                fontSize: 20,
-                                fontWeight: 'medium'
-                            }} primary={`${Math.round(forecastDetails.pop * 100)}%`} secondary='Chance of Precipitation' />
-                        </ListItem>
+                        <Item
+                            icon={<InvertColorsTwoToneIcon />}
+                            text={`${Math.round(forecastDetails.pop * 100)}%`}
+                            textSize={20}
+                            subtitle='Chance of Precipitation'
+                        />
                     </>
                 }
             </Stack>
             <Stack direction="row" justifyContent={'center'}>
-                <ListItem>
-                    <ListItemIcon>
-                        <SvgIcon fontSize='large'>
-                            <AirRoundedIcon />
-                        </SvgIcon>
-                    </ListItemIcon>
-                    <ListItemText primary={`${forecastDetails.wind_deg} at ${forecastDetails.wind_speed} km/h`} secondary='Wind direction and speed' />
-                </ListItem>
+                <Item
+                    icon={<AirRoundedIcon />}
+                    text={`${forecastDetails.wind_deg} at ${forecastDetails.wind_speed} km/h`}
+                    textSize={18}
+                    subtitle='Wind direction and speed'
+                />
                 <Divider orientation="vertical" variant="middle" flexItem />
-                <ListItem>
-                    <ListItemIcon>
-                        <SvgIcon fontSize='large'>
-                            <AirRoundedIcon />
-                        </SvgIcon>
-                    </ListItemIcon>
-                    <ListItemText primary={`${forecastDetails.wind_gust} km/h`} secondary={'Wind Gusts'} />
-                </ListItem>
-
+                <Item
+                    icon={<AirRoundedIcon />}
+                    text={`${forecastDetails.wind_gust} km/h`}
+                    textSize={18}
+                    subtitle='Wind Gusts'
+                />
             </Stack>
             <Stack direction="row" justifyContent={'center'}>
-                <ListItem>
-                    <ListItemIcon>
-                        <SvgIcon fontSize='large'>
-                            <FilterDramaTwoToneIcon />
-                        </SvgIcon>
-                    </ListItemIcon>
-                    <ListItemText primaryTypographyProps={{
-                        fontSize: 20,
-                        fontWeight: 'medium',
-                    }} primary={`${forecastDetails.clouds}%`} secondary='Cloud Coverage' />
-                </ListItem>
-
+                <Item
+                    icon={<FilterDramaTwoToneIcon />}
+                    text={`${forecastDetails.clouds}%`}
+                    textSize={20}
+                    subtitle='Cloud Coverage'
+                />
                 {forecastDetails.visibility &&
                     <>
                         <Divider orientation="vertical" variant="middle" flexItem />
-                        <ListItem>
-                            <ListItemIcon>
-                                <SvgIcon fontSize='large'>
-                                    <VisibilityTwoToneIcon />
-                                </SvgIcon>
-                            </ListItemIcon>
-                            <ListItemText primaryTypographyProps={{
-                                fontSize: 20,
-                                fontWeight: 'medium',
-
-                            }} primary={`${forecastDetails.visibility} m`} secondary='Visibility' />
-                        </ListItem>
+                        <Item
+                            icon={<VisibilityTwoToneIcon />}
+                            text={`${forecastDetails.visibility} m`}
+                            textSize={20}
+                            subtitle='Visibility'
+                        />
                     </>
                 }
             </Stack>
-
             <Stack direction="row" justifyContent={'center'}>
-                <ListItem>
-                    <ListItemIcon>
-                        <SvgIcon fontSize='large'>
-                            <Barometer />
-                        </SvgIcon>
-                    </ListItemIcon>
-                    <ListItemText primaryTypographyProps={{
-                        fontSize: 20,
-                        fontWeight: 'medium',
-                    }} primary={`${forecastDetails.pressure} hpa`} secondary='Air Pressure' />
-                </ListItem>
-
+                <Item
+                    icon={<Barometer />}
+                    text={`${forecastDetails.pressure} hpa`}
+                    textSize={20}
+                    subtitle='Air Pressure'
+                />
                 {forecastDetails.uvi !== 0 &&
                     <>
                         <Divider orientation="vertical" variant="middle" flexItem />
-                        <ListItem>
-                            <ListItemIcon>
-                                <SvgIcon fontSize='large'>
-                                    <BeachAccessIcon />
-                                </SvgIcon>
-                            </ListItemIcon>
-                            <ListItemText primaryTypographyProps={{
-                                fontSize: 20,
-                                fontWeight: 'medium',
-                            }} primary={`${forecastDetails.uvi}`} secondary='UV Index' />
-                        </ListItem>
+                        <Item
+                            icon={<BeachAccessIcon />}
+                            text={`${forecastDetails.uvi}`}
+                            textSize={20}
+                            subtitle='UV Index'
+                        />
                     </>
                 }
             </Stack>
