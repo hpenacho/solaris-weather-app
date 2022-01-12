@@ -1,6 +1,6 @@
 import animIconPicker from './animIconPicker'
 
-const IconStyler = (iconID, iconStyle) => {
+const IconStyler = ({ iconID, iconStyle }) => {
 
     switch (iconStyle) {
         case 'static':

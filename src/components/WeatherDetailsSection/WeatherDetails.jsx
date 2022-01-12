@@ -12,7 +12,7 @@ import { ReactComponent as Sunset } from '../../assets/icons/misc/wi-sunset.svg'
 import { ReactComponent as Moonrise } from '../../assets/icons/misc/wi-moonrise.svg'
 import { ReactComponent as Moonset } from '../../assets/icons/misc/wi-moonset.svg'
 import Typography from '@mui/material/Typography';
-import WeatherIcon from '../WeatherIcon'
+import IconStyler from '../../tools/IconStyler';
 import { Icon } from '@mui/material';
 import { Grid } from '@mui/material'
 import { formatTime } from '../../tools/dateFormatter';
@@ -97,7 +97,7 @@ const WeatherDetails = React.forwardRef(({ forecastDetails, localTime, timezoneO
                                     <Grid container direction="row">
                                         <Grid mt={-2} item >
                                             <Icon sx={{ fontSize: 140 }}>
-                                                <WeatherIcon iconID={forecastDetails.weather[0].icon} iconStyle={iconStyle} />
+                                                <IconStyler iconID={forecastDetails.weather[0].icon} iconStyle={iconStyle} />
                                             </Icon>
                                         </Grid>
 

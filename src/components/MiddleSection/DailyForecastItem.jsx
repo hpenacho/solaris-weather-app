@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import Button from '@mui/material/Button';
-import WeatherIcon from '../WeatherIcon';
+import IconStyler from '../../tools/IconStyler';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
 import { getWeekDay } from '../../tools/dateFormatter'
@@ -27,11 +27,11 @@ const DailyForecast = ({ dailyWeatherInfo, timezoneOffset, iconStyle, unitType }
                         <Typography color='textColor.default' variant="h6"> {weekDay} </Typography>
                         {iconStyle === 'animated' &&
                             <svg width="57px" height="57px">
-                                <WeatherIcon iconID={dailyWeatherInfo.weather[0].icon} iconStyle={iconStyle} />
+                                <IconStyler iconID={dailyWeatherInfo.weather[0].icon} iconStyle={iconStyle} />
                             </svg>
                         }
                         {iconStyle === 'static' &&
-                            <WeatherIcon iconID={dailyWeatherInfo.weather[0].icon} iconStyle={iconStyle} />
+                            <IconStyler iconID={dailyWeatherInfo.weather[0].icon} iconStyle={iconStyle} />
                         }
 
                     </Grid>

@@ -3,7 +3,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { SvgIcon } from '@mui/material';
 
-//fontSize: `${iconSize ? iconSize : 35}`
 const Item = ({ icon, iconSize, text, textSize, subtitle, sx }) => {
     return (
         <ListItem>
@@ -21,7 +20,3 @@ const Item = ({ icon, iconSize, text, textSize, subtitle, sx }) => {
 }
 
 export default Item;
-
-//...(job.status === 'aborted' && {
-    //color: color1,
-    //backgroundColor: bgcolor1,
