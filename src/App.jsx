@@ -4,7 +4,9 @@ import darkTheme from './assets/darkTheme'
 import { ThemeProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material';
 import WeatherApp from './components/WeatherApp'
-import Header from './components/Header/HeaderSection'
+import HeaderSection from './components/Header/HeaderSection'
+import FooterSection from './components/Footer/FooterSection'
+import { Grid } from '@mui/material';
 
 const App = () => {
   const [theme, setTheme] = useState(darkTheme)
@@ -13,10 +15,18 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline enableColorScheme />
       <SnackbarProvider maxSnack={3}>
-        <Header />
-        <WeatherApp theme={theme} setTheme={setTheme} />
+        <Grid
+          container
+          direction="column"
+          justifyContent="space-between"
+          minHeight="100vh"
+        >
+          <HeaderSection />
+          <WeatherApp theme={theme} setTheme={setTheme} />
+          <FooterSection />
+        </Grid>
       </SnackbarProvider>
-    </ThemeProvider>
+    </ThemeProvider >
   );
 }
 

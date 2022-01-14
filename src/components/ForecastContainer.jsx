@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import WeatherService from '../services/WeatherService'
 import TopSection from "./InfoSection/InfoSection"
-import MiddleSection from "./BottomSection/HourlyForecast"
-import BottomSection from "./MiddleSection/DailyForecast"
+import MiddleSection from "./MiddleSection/HourlyForecast"
+import BottomSection from "./BottomSection/DailyForecast"
 
 const ForecastContainer = ({ location, setLocation, iconStyle, unitType, timeframe }) => {
     const [weatherData, setWeatherData] = useState();
