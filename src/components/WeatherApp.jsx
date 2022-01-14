@@ -7,12 +7,12 @@ import ForecastContainer from './ForecastContainer'
 
 const WeatherApp = ({ theme, setTheme }) => {
 
+    const cities = InitService.initializeCities()
     const [filter, setFilter] = useState('')
-    const [location, setLocation] = useState('')
+    const [location, setLocation] = useState(cities.find(city => city.name === 'Lisbon'))
     const [unitType, setUnitType] = useState("celsius")
     const [iconStyle, setIconStyle] = useState("animated")
     const [timeframe, setTimeframe] = useState(3)
-    const cities = InitService.initializeCities()
 
     return (
         < Container maxWidth="md" >

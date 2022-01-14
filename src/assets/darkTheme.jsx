@@ -35,6 +35,22 @@ const darktheme = createTheme(
                         "&:hover": { transform: "scale3d(1.16, 1.16, 1)", background: 'none', },
                     },
                 }
+            },
+            MuiTabs: {
+                styleOverrides: {
+                    indicator: {
+                        backgroundColor: '#BC7200'
+                    }
+                }
+            },
+            MuiTab: {
+                styleOverrides: {
+                    root: {
+                        "&.Mui-selected": {
+                            color: '#FF9B00',
+                        }
+                    }
+                }
             }
         }
     })
