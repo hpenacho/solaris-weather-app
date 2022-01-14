@@ -22,7 +22,7 @@ const HeaderSection = () => {
     }
 
     return (
-        <Paper elevation={0} sx={{ marginBottom: 2.5, padding: 3.5 }}>
+        <Paper elevation={0} sx={{ marginBottom: 2.5, padding: 3 }}>
             <Grid container spacing={0} direction="row" justifyContent={'space-between'}>
 
                 <Grid item>
