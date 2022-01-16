@@ -6,7 +6,6 @@ import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import Grid from '@mui/material/Grid'
 import ProjectTitle from './ProjectTitle';
 
-
 const HeaderSection = () => {
 
     const AboutMe = {
@@ -22,8 +21,8 @@ const HeaderSection = () => {
     }
 
     return (
-        <Paper elevation={0} sx={{ marginBottom: 2.5, padding: 3 }}>
-            <Grid container spacing={0} direction="row" justifyContent={'space-between'}>
+        <Paper elevation={0} sx={{ marginBottom: 2.5, padding: 2 }}>
+            <Grid container spacing={0} direction="row" justifyContent={'space-between'} alignItems={'center'}>
 
                 <Grid item>
                     <ProjectTitle />

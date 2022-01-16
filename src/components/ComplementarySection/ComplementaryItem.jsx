@@ -6,7 +6,6 @@ import Zoom from '@mui/material/Zoom';
 const ComplementaryInfo = ({ title, icon, label }) => {
 
     return (
-
         <Grid item>
             <Grid container direction="row" alignItems="center">
                 <Tooltip TransitionComponent={Zoom} title={title}>

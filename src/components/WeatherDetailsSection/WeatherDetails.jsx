@@ -4,8 +4,7 @@ import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
+import CloseDialogButton from '../CloseDialogButton';
 import DetailsList from './DetailsList'
 import { ReactComponent as Sunrise } from '../../assets/icons/misc/wi-sunrise.svg'
 import { ReactComponent as Sunset } from '../../assets/icons/misc/wi-sunset.svg'
@@ -37,18 +36,7 @@ const BootstrapDialogTitle = (props) => {
         <DialogTitle sx={{ m: 0, p: 1 }} {...other}>
             {children}
             {onClose ? (
-                <IconButton
-                    aria-label="close"
-                    onClick={onClose}
-                    sx={{
-                        position: 'absolute',
-                        right: 8,
-                        top: 8,
-                        color: (theme) => theme.palette.grey[500],
-                    }}
-                >
-                    <CloseIcon />
-                </IconButton>
+                <CloseDialogButton onClose={onClose} />
             ) : null}
         </DialogTitle>
     );

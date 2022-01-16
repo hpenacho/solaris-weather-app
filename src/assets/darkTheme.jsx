@@ -25,6 +25,10 @@ const darktheme = createTheme(
             alertModal: {
                 main: '#1e1e1e',
                 secondary: '#2a2a2a'
+            },
+            logoTitle: {
+                textMain: '#EF9C00',
+                textSub: '#595959'
             }
         },
         components: {
