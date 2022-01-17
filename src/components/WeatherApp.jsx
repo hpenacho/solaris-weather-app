@@ -15,7 +15,7 @@ const WeatherApp = ({ theme, setTheme }) => {
     const [timeframe, setTimeframe] = useState(3)
 
     return (
-        < Container maxWidth="md" >
+        < Container maxWidth="lg" >
             <Box sx={{ boxShadow: 8, borderRadius: 7, backgroundColor: "primary.main" }}>
                 <NavBarSection
                     filter={filter}

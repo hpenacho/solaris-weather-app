@@ -13,16 +13,16 @@ import Badge from '@mui/material/Badge';
 import { Grid } from '@mui/material';
 
 const style = {
-  position: 'absolute',
+  position: 'relative',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  maxWidth: 600,
+  maxWidth: 700,
   bgcolor: 'alertModal.main',
   border: '2px solid #ff9100',
   borderRadius: 2,
   boxShadow: 24,
-  p: 4
+  p: 3
 };
 
 export default function AlertModal({ alertData, index }) {
@@ -64,7 +64,7 @@ export default function AlertModal({ alertData, index }) {
                 </Grid>
               </Grid>
               {alertData.description &&
-                <Typography color="textColor.default" sx={{ backgroundColor: 'alertModal.secondary', borderRadius: 3 }} fontSize={20} p={2} id="transition-modal-description">{alertData.description}</Typography>
+                <Typography color="textColor.default" sx={{ backgroundColor: 'alertModal.secondary', borderRadius: 3 }} fontSize={17} p={2} id="transition-modal-description">{alertData.description}</Typography>
               }
               {alertData.sender_name &&
                 < Typography mt={4} color="textColor.subdued" variant="subtitle2">Alert provider: {alertData.sender_name}</Typography>
