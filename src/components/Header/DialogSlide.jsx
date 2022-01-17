@@ -2,7 +2,6 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import CloseDialogButton from '../CloseDialogButton';
@@ -18,7 +17,7 @@ const CustomDialogTitle = (props) => {
     const { children, onClose, ...other } = props;
 
     return (
-        <DialogTitle sx={{ m: 0, p: 1 }} {...other}>
+        <DialogTitle sx={{ p: 1.75 }} {...other}>
             {children}
             {onClose ? (
                 <CloseDialogButton onClose={onClose} />
@@ -52,6 +51,7 @@ const DialogSlide = ({ info }) => {
             </Button>
 
             <Dialog
+                maxWidth='md'
                 open={open}
                 TransitionComponent={Transition}
                 keepMounted
@@ -60,18 +60,16 @@ const DialogSlide = ({ info }) => {
                 sx={{ backdropFilter: "blur(4px)" }}
             >
                 <CustomDialogTitle id="customized-dialog-title" onClose={handleClose}>
-                    <Typography p={0.75} fontSize={22.5} color="initial">
+                    <Typography fontSize={22.5} color="initial">
                         {info.title}
                     </Typography>
                 </CustomDialogTitle>
                 <DialogContent>
-                    <DialogContentText id="alert-dialog-slide-description">
-                        {info.contentText}
-                    </DialogContentText>
+                    {info.content}
                 </DialogContent>
             </Dialog>
         </div>
     );
 }
-// <BootstrapDialogTitle backgroundColor='detailsModal.main' id="customized-dialog-title" onClose={handleClose}>
+
 export default DialogSlide
