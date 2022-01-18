@@ -1,9 +1,10 @@
 import { IconButton } from "@mui/material";
 import LightModeIcon from '@mui/icons-material/LightMode';
-import NightsStayTwoToneIcon from '@mui/icons-material/NightsStayTwoTone';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 import darkTheme from '../../assets/darkTheme'
 import lightTheme from '../../assets/lightTheme'
 import Tooltip from '@mui/material/Tooltip';
+import { SvgIcon } from "@mui/material";
 
 const ThemeModeButton = ({ theme, setTheme }) => {
 
@@ -13,8 +14,11 @@ const ThemeModeButton = ({ theme, setTheme }) => {
 
     return (
         <Tooltip title="Toggle dark/light mode" placement="top">
-            <IconButton onClick={() => toggleTheme(setTheme)} color="inherit">
-                {theme.palette.mode === 'dark' ? <LightModeIcon /> : <NightsStayTwoToneIcon />}
+            <IconButton sx={{ width: 45, height: 45 }} onClick={() => toggleTheme(setTheme)} color="inherit">
+                {theme.palette.mode === 'dark' ?
+                    <SvgIcon sx={{ fontSize: 32 }}> <LightModeIcon /> </SvgIcon>
+                    :
+                    <SvgIcon sx={{ fontSize: 32 }}> <DarkModeIcon /></SvgIcon>}
             </IconButton>
         </Tooltip>
     )

@@ -24,13 +24,13 @@ const TemperatureSwitch = ({ unitType, setUnitType }) => {
                 onChange={handleUnit}
                 aria-label="unitType"
             >
-                <ToggleButton sx={{ height: 24, paddingX: 0.5, borderRadius: 4 }} value="celsius" aria-label="Celsius">
-                    <SvgIcon sx={{ fontSize: 20 }}>
+                <ToggleButton sx={{ height: 30, borderRadius: 4 }} value="celsius" aria-label="Celsius">
+                    <SvgIcon sx={{ fontSize: 23.5 }}>
                         <Celsius />
                     </SvgIcon>
                 </ToggleButton>
-                <ToggleButton sx={{ height: 24, paddingX: 0.5, borderRadius: 4 }} value="fahrenheit" aria-label="Fahrenheit">
-                    <SvgIcon sx={{ fontSize: 20 }}>
+                <ToggleButton sx={{ height: 30, borderRadius: 4 }} value="fahrenheit" aria-label="Fahrenheit">
+                    <SvgIcon sx={{ fontSize: 23.5 }}>
                         <Fahrenheit />
                     </SvgIcon>
                 </ToggleButton>

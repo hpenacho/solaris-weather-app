@@ -22,14 +22,14 @@ const TimeframeForecast = ({ timeframe, setTimeframe }) => {
                 onChange={handleUnit}
                 aria-label="timeframe"
             >
-                <ToggleButton sx={{ textTransform: "none", height: 24, paddingX: 0.5, borderRadius: 4 }} value={1} aria-label="1h">
-                    <Typography fontStyle='italic' fontSize={20}> 1h</Typography>
+                <ToggleButton sx={{ textTransform: "none", height: 30, borderRadius: 4 }} value={1} aria-label="1h">
+                    <Typography fontStyle='italic' fontSize={21}> 1h</Typography>
                 </ToggleButton>
-                <ToggleButton sx={{ textTransform: "none", height: 24, paddingX: 0.5, borderRadius: 4 }} value={3} aria-label="3h">
-                    <Typography fontStyle='italic' fontSize={20}> 3h</Typography>
+                <ToggleButton sx={{ textTransform: "none", height: 30, borderRadius: 4 }} value={3} aria-label="3h">
+                    <Typography fontStyle='italic' fontSize={21}> 3h</Typography>
                 </ToggleButton>
-                <ToggleButton sx={{ textTransform: "none", height: 24, paddingX: 0.5, borderRadius: 4 }} value={6} aria-label="6h">
-                    <Typography fontStyle='italic' fontSize={20}> 6h</Typography>
+                <ToggleButton sx={{ textTransform: "none", height: 30, borderRadius: 4 }} value={6} aria-label="6h">
+                    <Typography fontStyle='italic' fontSize={21}> 6h</Typography>
                 </ToggleButton>
             </ToggleButtonGroup>
         </Tooltip>

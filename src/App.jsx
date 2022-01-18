@@ -21,7 +21,7 @@ const App = () => {
           justifyContent="space-between"
           minHeight="100vh"
         >
-          <HeaderSection />
+          <HeaderSection theme={theme} setTheme={setTheme} />
           <WeatherApp theme={theme} setTheme={setTheme} />
           <FooterSection />
         </Grid>

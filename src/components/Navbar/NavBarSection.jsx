@@ -1,25 +1,21 @@
-import { Container } from '@mui/material'
+import { Box } from '@mui/material'
 import SearchLocation from './SearchLocation'
 import TimeframeForecast from './TimeframeForecast'
 import TemperatureSwitch from './TemperatureSwitch'
 import { Grid } from '@mui/material'
-import ThemeModeButton from './ThemeModeButton'
 import IconToggleButton from './IconToggleButton'
 
 const NavBarSection = ({ filter, setFilter, setLocation, cities, unitType, iconStyle, setIconStyle, theme, setTheme, setUnitType, timeframe, setTimeframe }) => {
 
     return (
-        <Container>
+        <Box p={1}
+            sx={{
+                alignItems: 'center'
+            }}
+        >
             <Grid container justifyContent='space-between' direction='row' alignItems='center'>
                 <Grid item>
-                    <Grid container spacing={2}>
-                        <Grid item>
-                            <ThemeModeButton theme={theme} setTheme={setTheme} />
-                        </Grid>
-                        <Grid item>
-                            <IconToggleButton iconStyle={iconStyle} setIconStyle={setIconStyle} />
-                        </Grid>
-                    </Grid>
+                    <IconToggleButton iconStyle={iconStyle} setIconStyle={setIconStyle} />
                 </Grid>
 
                 <Grid item>
@@ -45,7 +41,7 @@ const NavBarSection = ({ filter, setFilter, setLocation, cities, unitType, iconS
                     </Grid>
                 </Grid>
             </Grid>
-        </Container>
+        </Box >
     )
 
 }

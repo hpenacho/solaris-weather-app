@@ -10,8 +10,10 @@ import { Link } from '@mui/material';
 import { Grid } from '@mui/material';
 import Image from 'mui-image'
 import photo from '../../assets/images/face1.jpg'
+import ThemeModeButton from './ThemeModeButton';
+import { Box } from '@mui/system';
 
-const HeaderSection = () => {
+const HeaderSection = ({ theme, setTheme }) => {
 
     const AboutMe = {
         title: 'About me',
@@ -55,8 +57,8 @@ const HeaderSection = () => {
                     <Divider />
                     <DialogContentText mb={1.5} variant='body2' id="aboutme-furtherlearning">
                         I came to understand that, as in life, one must keep constantly learning in this industry in order to stay relevant. <br />
-                        I took it upon myself to finish a <Link fontWeight='bold' color="inherit" rel="noopener" target="_blank" href="https://fullstackopen.com/en/">M.E.R.N. Stack MOOC</Link> accredited by the University of Helsinki, after work hours.
-                        Soon after I felt the need to put into practice what I had learned, and that's how this project came to be!
+                        I took it upon myself to finish a <Link fontWeight='bold' color="inherit" rel="noopener" target="_blank" href="https://fullstackopen.com/en/">M.E.R.N. Stack MOOC</Link> accredited by the University of Helsinki, after work hours. <br />
+                        Soon after, I felt the need to put into practice what I had learned, and that's how this project came to be!
                     </DialogContentText>
                 </Grid>
                 <Grid item>
@@ -89,16 +91,22 @@ const HeaderSection = () => {
 
     return (
         <Paper elevation={0} sx={{ marginBottom: 2.5, padding: 2 }}>
-            <Grid container spacing={0} direction="row" justifyContent={'space-between'} alignItems={'center'}>
-
+            <Grid container direction="row" justifyContent={'space-between'} alignItems={'center'}>
                 <Grid item>
                     <ProjectTitle />
                 </Grid>
-
                 <Grid item>
-                    <Grid container>
-                        <DialogSlide info={AboutThisProject} />
-                        <DialogSlide info={AboutMe} />
+                    <Grid container alignItems={'center'}>
+                        <Grid item >
+                            <DialogSlide info={AboutThisProject} />
+                        </Grid>
+                        <Grid item pr={1}>
+                            <DialogSlide info={AboutMe} />
+                        </Grid>
+                        <Divider orientation="vertical" flexItem />
+                        <Grid item pl={1}>
+                            <ThemeModeButton theme={theme} setTheme={setTheme} ></ThemeModeButton>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>

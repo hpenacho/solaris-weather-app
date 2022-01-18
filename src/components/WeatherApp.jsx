@@ -24,6 +24,7 @@ const WeatherApp = ({ theme, setTheme }) => {
                     cities={cities}
                     unitType={unitType}
                     setUnitType={setUnitType}
+                    iconStyle={iconStyle}
                     setIconStyle={setIconStyle}
                     theme={theme}
                     setTheme={setTheme}
