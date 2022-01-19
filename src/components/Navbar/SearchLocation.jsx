@@ -42,12 +42,12 @@ const SearchLocation = ({ filter, setFilter, setLocation, cities }) => {
 
     return (
         <Paper
-            sx={{ borderRadius: 8, backgroundColor: 'secondary.main', py: 0.7, my: 0.7, display: 'flex', alignItems: 'center', width: 300 }}
+            sx={{ borderRadius: 8, backgroundColor: 'secondary.main', py: 0.9, my: 0.7, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 325 }}
         >
             <FindMyLocation setLocation={setLocation} enqueueSnackbar={enqueueSnackbar} />
             <TextField variant='outlined' value={filter} onChange={handleFilterChange} onKeyPress={handleKeyPress} label="Search..." />
             <Tooltip TransitionComponent={Zoom} title={'Search'} placement="top">
-                <IconButton aria-label="search" onClick={handleSearch}>
+                <IconButton sx={{ marginX: 0.50 }} aria-label="search" onClick={handleSearch}>
                     <SearchIcon />
                 </IconButton>
             </Tooltip>

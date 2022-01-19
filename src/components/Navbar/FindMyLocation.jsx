@@ -33,7 +33,7 @@ const FindMyLocation = ({ setLocation, enqueueSnackbar }) => {
 
     return (
         <Tooltip TransitionComponent={Zoom} title={'Find my location'} placement="top">
-            <IconButton onClick={handleClick}>
+            <IconButton onClick={handleClick} sx={{ marginX: 0.50 }}>
                 <MyLocationSharpIcon sx={{ color: '#589ceb' }} />
             </IconButton>
         </Tooltip>

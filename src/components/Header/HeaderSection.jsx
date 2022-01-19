@@ -11,7 +11,6 @@ import { Grid } from '@mui/material';
 import Image from 'mui-image'
 import photo from '../../assets/images/face1.jpg'
 import ThemeModeButton from './ThemeModeButton';
-import { Box } from '@mui/system';
 
 const HeaderSection = ({ theme, setTheme }) => {
 

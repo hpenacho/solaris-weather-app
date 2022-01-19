@@ -5,40 +5,32 @@ import TemperatureSwitch from './TemperatureSwitch'
 import { Grid } from '@mui/material'
 import IconToggleButton from './IconToggleButton'
 
-const NavBarSection = ({ filter, setFilter, setLocation, cities, unitType, iconStyle, setIconStyle, theme, setTheme, setUnitType, timeframe, setTimeframe }) => {
+const NavBarSection = ({ filter, setFilter, setLocation, cities, unitType, iconStyle, setIconStyle, setUnitType, timeframe, setTimeframe }) => {
 
     return (
-        <Box p={1}
-            sx={{
-                alignItems: 'center'
-            }}
-        >
-            <Grid container justifyContent='space-between' direction='row' alignItems='center'>
-                <Grid item>
-                    <IconToggleButton iconStyle={iconStyle} setIconStyle={setIconStyle} />
-                </Grid>
-
-                <Grid item>
-                    <Grid container direction='row'>
-                        <center>
-                            <SearchLocation
-                                filter={filter}
-                                setFilter={setFilter}
-                                setLocation={setLocation}
-                                cities={cities} />
-                        </center>
-                    </Grid>
-                </Grid>
-
-                <Grid item>
-                    <Grid container spacing={2}>
+        <Box p={1} sx={{ alignItems: 'center' }}>
+            <Grid container columnSpacing={{ xs: 3, sm: 2, md: 1 }} justifyContent={{ xs: 'center', md: 'space-between' }} alignItems='center'>
+                <Grid item order={{ xs: 2, md: 1 }} md={3}>
+                    <Grid container alignItems='center' columnSpacing={1.5}>
                         <Grid item>
-                            <TimeframeForecast timeframe={timeframe} setTimeframe={setTimeframe} />
+                            <IconToggleButton iconStyle={iconStyle} setIconStyle={setIconStyle} />
                         </Grid>
                         <Grid item>
                             <TemperatureSwitch unitType={unitType} setUnitType={setUnitType} />
                         </Grid>
                     </Grid>
+                </Grid>
+                <Grid item xs={12} md={6} order={{ xs: 1, md: 2 }}>
+                    <Grid container justifyContent={'center'}>
+                        <SearchLocation
+                            filter={filter}
+                            setFilter={setFilter}
+                            setLocation={setLocation}
+                            cities={cities} />
+                    </Grid>
+                </Grid>
+                <Grid container md={3} order={{ xs: 3 }} justifyContent={'center'}>
+                    <TimeframeForecast timeframe={timeframe} setTimeframe={setTimeframe} />
                 </Grid>
             </Grid>
         </Box >
