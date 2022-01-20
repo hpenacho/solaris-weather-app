@@ -8,7 +8,7 @@ const SunMoonTime = ({ time, title, icon, color }) => {
     return (
         <ListItem sx={{ paddingY: 0 }}>
             <ListItemIcon>
-                <SvgIcon sx={{ color: { color }, fontSize: 37 }}> {icon} </SvgIcon>
+                <SvgIcon fontSize='large' sx={{ color: { color } }}> {icon} </SvgIcon>
             </ListItemIcon>
             <ListItemText primaryTypographyProps={{
                 fontSize: 14,

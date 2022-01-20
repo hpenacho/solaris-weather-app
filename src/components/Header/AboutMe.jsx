@@ -58,7 +58,6 @@ const AboutMe = {
                 <DialogContentText mb={1.5} variant='body2' id="aboutme-hobbies">
                     Exercise is my biggest passion right next to coding! <br />
                     When I'm not working on a side project, you may find me outside practicing Calisthenics, Surfing and more.
-
                 </DialogContentText>
             </Grid>
             <Grid item>

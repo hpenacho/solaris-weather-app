@@ -16,9 +16,9 @@ const ThemeModeButton = ({ theme, setTheme }) => {
         <Tooltip title="Toggle dark/light mode" placement="top">
             <IconButton sx={{ width: 45, height: 45 }} onClick={() => toggleTheme(setTheme)} color="inherit">
                 {theme.palette.mode === 'dark' ?
-                    <SvgIcon sx={{ fontSize: 32 }}> <LightModeIcon /> </SvgIcon>
+                    <LightModeIcon />
                     :
-                    <SvgIcon sx={{ fontSize: 32 }}> <DarkModeIcon /></SvgIcon>}
+                    <DarkModeIcon />}
             </IconButton>
         </Tooltip>
     )

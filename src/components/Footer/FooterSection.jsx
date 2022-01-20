@@ -10,13 +10,13 @@ const FooterSection = () => {
         <Paper elevation={0} sx={{ marginTop: 4, padding: 1 }}>
             <Stack direction='row' justifyContent='center' spacing={4}>
                 <IconButton disabled href='https://hugopenacho.com'>
-                    <PublicTwoToneIcon sx={{ fontSize: 43 }} />
+                    <PublicTwoToneIcon fontSize='large' />
                 </IconButton>
                 <IconButton href='https://github.com/hpenacho'>
-                    <GitHubIcon sx={{ fontSize: 43 }} />
+                    <GitHubIcon fontSize='large' />
                 </IconButton>
                 <IconButton href='https://www.linkedin.com/in/hugopenacho/'>
-                    <LinkedInIcon sx={{ fontSize: 43 }} />
+                    <LinkedInIcon fontSize='large' />
                 </IconButton>
             </Stack>
         </Paper>

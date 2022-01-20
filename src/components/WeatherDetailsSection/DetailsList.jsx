@@ -57,7 +57,7 @@ const DetailsList = ({ forecastDetails, unitType }) => {
                                 <>
                                     <Item
                                         icon={<DeviceThermostatOutlinedIcon />}
-                                        iconSize={26}
+                                        iconSize={'medium'}
                                         text={`${Math.round(unitTypeSwitcher(forecastDetails.feels_like, unitType))}°`}
                                         textSize={17.5}
                                         subtitle='Feels Like'
@@ -71,7 +71,7 @@ const DetailsList = ({ forecastDetails, unitType }) => {
                                 <>
                                     <Item
                                         icon={<DeviceThermostatOutlinedIcon sx={{ color: '#F15421' }} />}
-                                        iconSize={26}
+                                        iconSize={'medium'}
                                         text={`${Math.round(unitTypeSwitcher(forecastDetails.temp.max, unitType))}°`}
                                         textSize={17.5}
                                         subtitle='Max'
@@ -79,7 +79,7 @@ const DetailsList = ({ forecastDetails, unitType }) => {
                                     <Divider orientation="vertical" variant="middle" flexItem />
                                     <Item
                                         icon={<DeviceThermostatOutlinedIcon sx={{ color: '#589ceb' }} />}
-                                        iconSize={26}
+                                        iconSize={'medium'}
                                         text={`${Math.round(unitTypeSwitcher(forecastDetails.temp.min, unitType))}°`}
                                         textSize={17.5}
                                         subtitle='Min'
@@ -89,7 +89,7 @@ const DetailsList = ({ forecastDetails, unitType }) => {
                             }
                             <Item
                                 icon={<DeviceThermostatOutlinedIcon />}
-                                iconSize={26}
+                                iconSize={'medium'}
                                 text={`${unitTypeSwitcher(forecastDetails.dew_point, unitType).toFixed(1)}°`}
                                 textSize={17.5}
                                 sx={{ whiteSpace: 'nowrap' }}
@@ -102,6 +102,7 @@ const DetailsList = ({ forecastDetails, unitType }) => {
             <Stack direction="row" justifyContent={'center'}>
                 <Item
                     icon={<Humidity />}
+                    iconSize={'large'}
                     text={`${Math.round(forecastDetails.humidity)}%`}
                     textSize={20}
                     subtitle='Humidity'
@@ -111,6 +112,7 @@ const DetailsList = ({ forecastDetails, unitType }) => {
                         <Divider orientation="vertical" variant="middle" flexItem />
                         <Item
                             icon={<InvertColorsTwoToneIcon />}
+                            iconSize={'large'}
                             text={`${Math.round(forecastDetails.pop * 100)}%`}
                             textSize={20}
                             subtitle='Chance of Precipitation'
@@ -121,6 +123,7 @@ const DetailsList = ({ forecastDetails, unitType }) => {
             <Stack direction="row" justifyContent={'center'}>
                 <Item
                     icon={<AirRoundedIcon />}
+                    iconSize={'large'}
                     text={`${forecastDetails.wind_deg} at ${forecastDetails.wind_speed} km/h`}
                     textSize={18}
                     subtitle='Wind direction and speed'
@@ -128,6 +131,7 @@ const DetailsList = ({ forecastDetails, unitType }) => {
                 <Divider orientation="vertical" variant="middle" flexItem />
                 <Item
                     icon={<AirRoundedIcon />}
+                    iconSize={'large'}
                     text={`${forecastDetails.wind_gust} km/h`}
                     textSize={18}
                     subtitle='Wind Gusts'
@@ -136,6 +140,7 @@ const DetailsList = ({ forecastDetails, unitType }) => {
             <Stack direction="row" justifyContent={'center'}>
                 <Item
                     icon={<FilterDramaTwoToneIcon />}
+                    iconSize={'large'}
                     text={`${forecastDetails.clouds}%`}
                     textSize={20}
                     subtitle='Cloud Coverage'
@@ -145,6 +150,7 @@ const DetailsList = ({ forecastDetails, unitType }) => {
                         <Divider orientation="vertical" variant="middle" flexItem />
                         <Item
                             icon={<VisibilityTwoToneIcon />}
+                            iconSize={'large'}
                             text={`${forecastDetails.visibility} m`}
                             textSize={20}
                             subtitle='Visibility'
@@ -155,6 +161,7 @@ const DetailsList = ({ forecastDetails, unitType }) => {
             <Stack direction="row" justifyContent={'center'}>
                 <Item
                     icon={<Barometer />}
+                    iconSize={'large'}
                     text={`${forecastDetails.pressure} hpa`}
                     textSize={20}
                     subtitle='Air Pressure'
@@ -164,6 +171,7 @@ const DetailsList = ({ forecastDetails, unitType }) => {
                         <Divider orientation="vertical" variant="middle" flexItem />
                         <Item
                             icon={<BeachAccessIcon />}
+                            iconSize={'large'}
                             text={`${forecastDetails.uvi}`}
                             textSize={20}
                             subtitle='UV Index'
