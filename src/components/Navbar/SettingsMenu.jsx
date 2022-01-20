@@ -3,8 +3,12 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import SettingsIcon from '@mui/icons-material/Settings';
+import IconToggleButton from './IconToggleButton';
+import TimeframeForecast from './TimeframeForecast';
+import TemperatureSwitch from './TemperatureSwitch';
+import { Stack } from '@mui/material'
 
-export const SettingsMenu = () => {
+const SettingsMenu = ({ iconStyle, setIconStyle, timeframe, setTimeframe, unitType, setUnitType }) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -22,6 +26,7 @@ export const SettingsMenu = () => {
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
+                color='inherit'
             >
                 <SettingsIcon />
             </Button>
@@ -34,9 +39,13 @@ export const SettingsMenu = () => {
                     'aria-labelledby': 'settings-button',
                 }}
             >
-                <MenuItem disabled onClick={handleClose}>Profile</MenuItem>
-                <MenuItem disabled onClick={handleClose}>My account</MenuItem>
-                <MenuItem disabled onClick={handleClose}>Logout</MenuItem>
+                <MenuItem onClick={handleClose}>
+                    <Stack direction={'row'} spacing={2} alignItems={'center'}>
+                        <IconToggleButton iconStyle={iconStyle} setIconStyle={setIconStyle} />
+                        <TemperatureSwitch unitType={unitType} setUnitType={setUnitType} />
+                        <TimeframeForecast timeframe={timeframe} setTimeframe={setTimeframe} />
+                    </Stack>
+                </MenuItem>
             </Menu>
         </div>
     );
