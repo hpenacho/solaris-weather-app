@@ -11,6 +11,7 @@ import { Grid } from '@mui/material';
 const App = () => {
   const [theme, setTheme] = useState(darkTheme)
 
+  //<WeatherApp />
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline enableColorScheme />
@@ -22,7 +23,7 @@ const App = () => {
           minHeight="100vh"
         >
           <HeaderSection theme={theme} setTheme={setTheme} />
-          <WeatherApp />
+          test
           <FooterSection />
         </Grid>
       </SnackbarProvider>
