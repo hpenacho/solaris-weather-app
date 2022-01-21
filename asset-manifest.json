@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/static/js/main.736a9840.chunk.js",
-    "main.js.map": "/static/js/main.736a9840.chunk.js.map",
+    "main.js": "/static/js/main.f561af02.chunk.js",
+    "main.js.map": "/static/js/main.f561af02.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.b63a55e7.js",
     "runtime-main.js.map": "/static/js/runtime-main.b63a55e7.js.map",
     "static/js/2.d64dac67.chunk.js": "/static/js/2.d64dac67.chunk.js",
@@ -26,16 +26,16 @@
     "static/media/snow-night.f7d5b45f.svg": "/static/media/snow-night.f7d5b45f.svg",
     "static/media/thunderstorms-day.6f8b3f90.svg": "/static/media/thunderstorms-day.6f8b3f90.svg",
     "static/media/thunderstorms-night.e98f2dac.svg": "/static/media/thunderstorms-night.e98f2dac.svg",
-    "static/media/wi-barometer.e9c43f10.svg": "/static/media/wi-barometer.e9c43f10.svg",
-    "static/media/wi-humidity.4810ceff.svg": "/static/media/wi-humidity.4810ceff.svg",
-    "static/media/wi-moonrise.58ac37eb.svg": "/static/media/wi-moonrise.58ac37eb.svg",
-    "static/media/wi-moonset.5e90520c.svg": "/static/media/wi-moonset.5e90520c.svg",
-    "static/media/wi-sunrise.9695a6b5.svg": "/static/media/wi-sunrise.9695a6b5.svg",
-    "static/media/wi-sunset.44275c39.svg": "/static/media/wi-sunset.44275c39.svg"
+    "static/media/wi-barometer.e33cfe92.svg": "/static/media/wi-barometer.e33cfe92.svg",
+    "static/media/wi-humidity.2cbfd748.svg": "/static/media/wi-humidity.2cbfd748.svg",
+    "static/media/wi-moonrise.f6451abc.svg": "/static/media/wi-moonrise.f6451abc.svg",
+    "static/media/wi-moonset.794162a5.svg": "/static/media/wi-moonset.794162a5.svg",
+    "static/media/wi-sunrise.c720074e.svg": "/static/media/wi-sunrise.c720074e.svg",
+    "static/media/wi-sunset.9741a09e.svg": "/static/media/wi-sunset.9741a09e.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.b63a55e7.js",
     "static/js/2.d64dac67.chunk.js",
-    "static/js/main.736a9840.chunk.js"
+    "static/js/main.f561af02.chunk.js"
   ]
 }
