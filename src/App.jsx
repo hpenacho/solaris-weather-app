@@ -22,7 +22,7 @@ const App = () => {
           minHeight="100vh"
         >
           <HeaderSection theme={theme} setTheme={setTheme} />
-          <WeatherApp theme={theme} setTheme={setTheme} />
+          <WeatherApp />
           <FooterSection />
         </Grid>
       </SnackbarProvider>

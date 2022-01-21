@@ -23,7 +23,7 @@ const HourlyForecast = ({ hourlyForecast, timezoneOffset, iconStyle, unitType })
                     </ListItemText>
                     <ListItemIcon>
                         {iconStyle === 'animated' &&
-                            <svg width="95px" height="95px">
+                            <svg width="105px" height="105px">
                                 <IconStyler iconID={hourlyForecast.weather[0].icon} iconStyle={iconStyle} />
                             </svg>
                         }

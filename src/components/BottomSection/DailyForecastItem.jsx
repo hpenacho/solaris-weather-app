@@ -31,7 +31,7 @@ const DailyForecast = ({ dailyWeatherInfo, timezoneOffset, iconStyle, unitType }
                             </svg>
                         }
                         {iconStyle === 'static' &&
-                            <IconStyler iconID={dailyWeatherInfo.weather[0].icon} iconStyle={iconStyle} />
+                            <IconStyler iconID={dailyWeatherInfo.weather[0].icon} iconStyle={'staticSmall'} />
                         }
 
                     </Grid>

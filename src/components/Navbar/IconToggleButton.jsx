@@ -12,9 +12,9 @@ const IconToggleButton = ({ iconStyle, setIconStyle }) => {
 
     return (
         <Tooltip title="Toggle static/animated icons" placement="top">
-            <IconButton onClick={() => toggleStyle()} color="inherit" sx={{ width: 50, height: 50 }}>
+            <IconButton onClick={() => toggleStyle()} color="inherit" sx={{ width: 65, height: 65 }}>
                 {iconStyle === 'static' ?
-                    <SvgIcon sx={{ fontSize: 50 }}> <AnimatedCloudyDay /> </SvgIcon>
+                    <svg> <AnimatedCloudyDay /> </svg>
                     :
                     <img height='50px' alt="weatherIcon" src={`https://openweathermap.org/img/wn/02d@2x.png`} />}
             </IconButton>

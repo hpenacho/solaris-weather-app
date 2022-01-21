@@ -5,7 +5,7 @@ import { Container } from '@mui/material'
 import NavBarSection from './Navbar/NavBarSection'
 import ForecastContainer from './ForecastContainer'
 
-const WeatherApp = ({ theme, setTheme }) => {
+const WeatherApp = () => {
 
     const cities = InitService.initializeCities()
     const [filter, setFilter] = useState('')
@@ -26,8 +26,6 @@ const WeatherApp = ({ theme, setTheme }) => {
                     setUnitType={setUnitType}
                     iconStyle={iconStyle}
                     setIconStyle={setIconStyle}
-                    theme={theme}
-                    setTheme={setTheme}
                     timeframe={timeframe}
                     setTimeframe={setTimeframe} />
                 <ForecastContainer

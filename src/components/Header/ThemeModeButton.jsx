@@ -4,7 +4,6 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import darkTheme from '../../assets/darkTheme'
 import lightTheme from '../../assets/lightTheme'
 import Tooltip from '@mui/material/Tooltip';
-import { SvgIcon } from "@mui/material";
 
 const ThemeModeButton = ({ theme, setTheme }) => {
 
