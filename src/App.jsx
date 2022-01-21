@@ -10,7 +10,7 @@ import { Grid } from '@mui/material';
 
 const App = () => {
   const [theme, setTheme] = useState(darkTheme)
-  //test
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline enableColorScheme />
