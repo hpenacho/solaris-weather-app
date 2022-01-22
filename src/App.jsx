@@ -3,7 +3,7 @@ import { SnackbarProvider } from 'notistack';
 import darkTheme from './assets/darkTheme'
 import { ThemeProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material';
-import WeatherApp from './components/WeatherApp'
+//import WeatherApp from './components/WeatherApp'
 import HeaderSection from './components/Header/HeaderSection'
 import FooterSection from './components/Footer/FooterSection'
 import { Grid } from '@mui/material';
