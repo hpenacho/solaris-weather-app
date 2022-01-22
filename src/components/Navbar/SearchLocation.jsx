@@ -42,7 +42,7 @@ const SearchLocation = ({ filter, setFilter, setLocation, cities }) => {
 
     return (
         <Paper
-            sx={{ borderRadius: 8, backgroundColor: 'secondary.main', py: 0.9, my: 0.7, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 325 }}
+            sx={{ borderRadius: 8, backgroundColor: 'secondary.main', py: 0.9, my: 0.6, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 'auto' }}
         >
             <FindMyLocation setLocation={setLocation} enqueueSnackbar={enqueueSnackbar} />
             <TextField variant='outlined' value={filter} onChange={handleFilterChange} onKeyPress={handleKeyPress} label="Search..." />

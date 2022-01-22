@@ -1,5 +1,5 @@
 import { Grid } from '@mui/material';
-import { Container } from '@mui/material';
+import { Box } from '@mui/material';
 import AlertModal from './AlertModal'
 import ComplementaryItem from './ComplementaryItem'
 import AirRoundedIcon from '@mui/icons-material/AirRounded';
@@ -9,9 +9,9 @@ import BeachAccessIcon from '@mui/icons-material/BeachAccess';
 const ComplementaryInfo = ({ weatherData }) => {
 
     return (
-        <Container >
+        <Box px={2} pb={1}>
             {weatherData &&
-                <Grid pb={2} mt={1} container alignItems="center" justifyContent="flex-start" spacing={1}>
+                <Grid sx={{ height: 57 }} container alignItems="center" justifyContent="flex-start" spacing={1}>
 
                     <ComplementaryItem
                         title="Current Humidity"
@@ -41,7 +41,7 @@ const ComplementaryInfo = ({ weatherData }) => {
                         )}
                 </Grid>
             }
-        </Container>
+        </Box>
     )
 }
 
