@@ -1,7 +1,7 @@
 {
   "name": "solaris-weather-app",
   "version": "0.1.0",
-  "private": false,
+  "private": true,
   "dependencies": {
     "@emotion/react": "^11.6.0",
     "@emotion/styled": "^11.6.0",
@@ -19,6 +19,7 @@
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3"
   },
+  "homepage": "https://hpenacho.github.io/solaris-weather-app",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
