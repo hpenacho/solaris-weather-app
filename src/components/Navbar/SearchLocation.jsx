@@ -1,58 +1,90 @@
-import * as React from 'react';
-import Paper from '@mui/material/Box';
+import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
-import FindMyLocation from './FindMyLocation';
-import { IconButton } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
+import Autocomplete from '@mui/material/Autocomplete';
+import { Box } from '@mui/system';
 import { useSnackbar } from 'notistack';
-import { Tooltip } from '@mui/material';
-import Zoom from '@mui/material/Zoom';
+import FindMyLocation from './FindMyLocation';
+import { createFilterOptions } from '@mui/material/Autocomplete';
+import { Typography } from '@mui/material';
+import { Stack } from '@mui/material';
 
-const SearchLocation = ({ filter, setFilter, setLocation, cities }) => {
+export default function Grouped({ setLocation, cities, countries }) {
+
+    const [inputValue, setInputValue] = useState('');
     const { enqueueSnackbar } = useSnackbar();
 
-    const capitalize = (word) => {
-        return word.charAt(0).toUpperCase() + word.slice(1);
+    const filterOptions = createFilterOptions({
+        matchFrom: 'start',
+        limit: 6,
+        stringify: (option) => option.name,
+    });
+
+    let timerID;
+    const handleFilterChange = (event, newInputValue) => {
+        clearTimeout(timerID)
+        timerID = setTimeout(() => {
+            setInputValue(newInputValue.toLowerCase())
+        }, 300)
+
     }
 
-    const handleFilterChange = (event) => {
-        setFilter(event.target.value)
-    }
-
-    const handleKeyPress = async (e) => {
-        if (e.key === 'Enter') {
-            handleSearch()
-        }
-    }
-
-    const handleSearch = async () => {
-        filter = capitalize(filter);
-        const location = cities.find(city => city.name === filter)
-
-        if (location && location.name !== "") {
+    const handleSearch = async (event, newValue) => {
+        if (newValue) {
+            const location = newValue
             setLocation(location)
-            enqueueSnackbar((`Displaying ${filter} weather data`), { variant: 'success' })
-            setFilter("");
-        }
-
-        else {
-            enqueueSnackbar(('Location not found'), { variant: 'error' })
+            enqueueSnackbar((`Displaying ${location.name} weather data`), { variant: 'success' })
+            setInputValue('')
         }
     }
+
+
+
+    const options = cities
+        .filter(c => c.name.toLowerCase().includes(inputValue))
+        .map((option) => {
+            const countryLabel = (countries.find(country => country.code === option.country)).label
+            const statPop = String(option.stat.population)
+
+            return {
+                countryLabel,
+                statPop,
+                ...option,
+            };
+        });
+
 
     return (
-        <Paper
-            sx={{ borderRadius: 8, backgroundColor: 'secondary.main', py: 0.9, my: 0.6, display: 'flex', alignItems: 'center', justifyContent: 'center', width: 'auto' }}
+        <Box
+            sx={{
+                borderRadius: 8, backgroundColor: 'secondary.main', py: 0.9, my: 0.6, display: 'flex', alignItems: 'center', width: 290
+            }}
         >
             <FindMyLocation setLocation={setLocation} enqueueSnackbar={enqueueSnackbar} />
-            <TextField variant='outlined' value={filter} onChange={handleFilterChange} onKeyPress={handleKeyPress} label="Search..." />
-            <Tooltip TransitionComponent={Zoom} title={'Search'} placement="top">
-                <IconButton sx={{ marginX: 0.50 }} aria-label="search" onClick={handleSearch}>
-                    <SearchIcon />
-                </IconButton>
-            </Tooltip>
-        </Paper>
-    )
+            <Autocomplete
+                id="autocomplete-search"
+                onChange={handleSearch}
+                onInputChange={handleFilterChange}
+                options={options.sort((a, b) => -b.statPop.localeCompare(a.statPop))}
+                getOptionLabel={(option) => option.name}
+                key={(option) => option.id}
+                isOptionEqualToValue={(option, value) => option.id === value.id}
+                filterOptions={filterOptions}
+                sx={{ width: 220 }}
+                open={inputValue.length >= 2}
+                renderOption={(props, option) => {
+                    return (
+                        <Box {...props} key={option.id}>
+                            <Stack>
+                                {option.name}
+                                <Typography color="textColor.subdued" variant="body2"> {option.countryLabel} </Typography>
+                            </Stack>
+                        </Box>
+                    )
+                }}
+                renderInput={(params) =>
+                    <TextField {...params} variant='outlined' label="Search..." />
+                }
+            />
+        </Box>
+    );
 }
-
-export default SearchLocation;

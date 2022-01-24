@@ -8,7 +8,7 @@ import ForecastContainer from './ForecastContainer'
 const WeatherApp = () => {
 
     const cities = InitService.initializeCities()
-    const [filter, setFilter] = useState('')
+    const countries = InitService.initializeCountries()
     const [location, setLocation] = useState(cities.find(city => city.name === 'Lisbon'))
     const [unitType, setUnitType] = useState("celsius")
     const [iconStyle, setIconStyle] = useState("animated")
@@ -18,10 +18,9 @@ const WeatherApp = () => {
         < Container maxWidth="lg" >
             <Box sx={{ boxShadow: 8, borderRadius: 7, backgroundColor: "primary.main" }}>
                 <NavBarSection
-                    filter={filter}
-                    setFilter={setFilter}
                     setLocation={setLocation}
                     cities={cities}
+                    countries={countries}
                     unitType={unitType}
                     setUnitType={setUnitType}
                     iconStyle={iconStyle}
@@ -31,6 +30,7 @@ const WeatherApp = () => {
                 <ForecastContainer
                     location={location}
                     setLocation={setLocation}
+                    countries={countries}
                     iconStyle={iconStyle}
                     unitType={unitType}
                     timeframe={timeframe} />

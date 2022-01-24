@@ -50,9 +50,7 @@ const darktheme = createTheme(
             MuiTab: {
                 styleOverrides: {
                     root: {
-                        "&.Mui-selected": {
-                            color: '#FF9B00',
-                        }
+                        "&.Mui-selected": { color: '#FF9B00' }
                     }
                 }
             }

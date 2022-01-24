@@ -6,7 +6,7 @@ import { Grid } from '@mui/material'
 import IconToggleButton from './IconToggleButton'
 import SettingsMenu from './SettingsMenu'
 
-const NavBarSection = ({ filter, setFilter, setLocation, cities, unitType, iconStyle, setIconStyle, setUnitType, timeframe, setTimeframe }) => {
+const NavBarSection = ({ setLocation, cities, countries, unitType, iconStyle, setIconStyle, setUnitType, timeframe, setTimeframe }) => {
 
     return (
         <Box py={1} px={{ xs: 2, md: 5 }}>
@@ -15,12 +15,13 @@ const NavBarSection = ({ filter, setFilter, setLocation, cities, unitType, iconS
                 <Grid item sx={{ display: { xs: 'none', md: 'block' } }}>
                     <TimeframeForecast timeframe={timeframe} setTimeframe={setTimeframe} />
                 </Grid>
+
+
                 <Grid item>
                     <SearchLocation
-                        filter={filter}
-                        setFilter={setFilter}
                         setLocation={setLocation}
-                        cities={cities} />
+                        cities={cities}
+                        countries={countries} />
                 </Grid>
 
                 <Grid item>

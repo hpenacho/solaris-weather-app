@@ -6,13 +6,12 @@ import LocationOnTwoToneIcon from '@mui/icons-material/LocationOnTwoTone';
 import InfoTwoToneIcon from '@mui/icons-material/InfoTwoTone';
 import Tooltip from '@mui/material/Tooltip';
 import Zoom from '@mui/material/Zoom';
-import InitService from '../../services/InitService'
 
 const capitalize = (word) => {
     return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
-const TopSection = ({ location, weatherData }) => {
+const Info = ({ location, countries, weatherData }) => {
     let wikiLink = "";
     if (location) {
         if (location.langs !== undefined) {
@@ -25,7 +24,7 @@ const TopSection = ({ location, weatherData }) => {
             wikiLink = `https://en.wikipedia.org/wiki/${location.name}`
         }
     }
-    const country = InitService.initializeCountries().find(country => country.code === location.country)
+    const country = countries.find(country => country.code === location.country)
 
     return (
         <Container sx={{ backgroundColor: 'secondary.main' }}>
@@ -55,7 +54,7 @@ const TopSection = ({ location, weatherData }) => {
                                 <IconButton
                                     href={`https://www.google.com/maps/place/${location.name}/@${location.coord.lat},${location.coord.lon}`}
                                     target="_blank">
-                                    <LocationOnTwoToneIcon sx={{ color: "green" }} />
+                                    <LocationOnTwoToneIcon />
                                 </IconButton>
                             </Tooltip>
                         </Grid>
@@ -77,4 +76,4 @@ const TopSection = ({ location, weatherData }) => {
     )
 }
 
-export default TopSection;
+export default Info;

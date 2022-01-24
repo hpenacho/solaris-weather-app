@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import WeatherService from '../services/WeatherService'
-import TopSection from "./InfoSection/InfoSection"
+import InfoSection from "./InfoSection/Info"
 import MiddleSection from "./MiddleSection/HourlyForecast"
 import BottomSection from "./BottomSection/DailyForecast"
 
-const ForecastContainer = ({ location, setLocation, iconStyle, unitType, timeframe }) => {
+const ForecastContainer = ({ location, setLocation, countries, iconStyle, unitType, timeframe }) => {
     const [weatherData, setWeatherData] = useState();
 
     useEffect(() => {
@@ -18,9 +18,10 @@ const ForecastContainer = ({ location, setLocation, iconStyle, unitType, timefra
 
     return (
         <>
-            <TopSection
+            <InfoSection
                 location={location}
                 setLocation={setLocation}
+                countries={countries}
                 weatherData={weatherData} />
 
             <MiddleSection
