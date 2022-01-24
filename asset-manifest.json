@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/solaris-weather-app/static/js/main.c92beaab.chunk.js",
-    "main.js.map": "/solaris-weather-app/static/js/main.c92beaab.chunk.js.map",
+    "main.js": "/solaris-weather-app/static/js/main.d2837e17.chunk.js",
+    "main.js.map": "/solaris-weather-app/static/js/main.d2837e17.chunk.js.map",
     "runtime-main.js": "/solaris-weather-app/static/js/runtime-main.74e7a8a5.js",
     "runtime-main.js.map": "/solaris-weather-app/static/js/runtime-main.74e7a8a5.js.map",
     "static/js/2.9094d00c.chunk.js": "/solaris-weather-app/static/js/2.9094d00c.chunk.js",
@@ -36,6 +36,6 @@
   "entrypoints": [
     "static/js/runtime-main.74e7a8a5.js",
     "static/js/2.9094d00c.chunk.js",
-    "static/js/main.c92beaab.chunk.js"
+    "static/js/main.d2837e17.chunk.js"
   ]
 }
