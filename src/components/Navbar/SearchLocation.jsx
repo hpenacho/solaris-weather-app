@@ -24,7 +24,7 @@ export default function Grouped({ setLocation, cities, countries }) {
         clearTimeout(timerID)
         timerID = setTimeout(() => {
             setInputValue(newInputValue.toLowerCase())
-        }, 300)
+        }, 450)
 
     }
 
@@ -67,7 +67,7 @@ export default function Grouped({ setLocation, cities, countries }) {
                 options={options.sort((a, b) => -b.statPop.localeCompare(a.statPop))}
                 getOptionLabel={(option) => option.name}
                 key={(option) => option.id}
-                isOptionEqualToValue={(option, value) => option.id === value.id}
+                isOptionEqualToValue={(option, value) => option.value === value.value}
                 filterOptions={filterOptions}
                 sx={{ width: 220 }}
                 open={inputValue.length >= 2}
