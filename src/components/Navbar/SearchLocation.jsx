@@ -24,8 +24,7 @@ export default function Grouped({ setLocation, cities, countries }) {
         clearTimeout(timerID)
         timerID = setTimeout(() => {
             setInputValue(newInputValue.toLowerCase())
-        }, 450)
-
+        }, 600)
     }
 
     const handleSearch = async (event, newValue) => {
@@ -36,8 +35,6 @@ export default function Grouped({ setLocation, cities, countries }) {
             setInputValue('')
         }
     }
-
-
 
     const options = cities
         .filter(c => c.name.toLowerCase().includes(inputValue))
@@ -64,8 +61,8 @@ export default function Grouped({ setLocation, cities, countries }) {
                 id="autocomplete-search"
                 onChange={handleSearch}
                 onInputChange={handleFilterChange}
-                options={options.sort((a, b) => -b.statPop.localeCompare(a.statPop))}
-                getOptionLabel={(option) => option.name}
+                options={options}
+                getOptionLabel={(option) => option.name || ""}
                 key={(option) => option.id}
                 isOptionEqualToValue={(option, value) => option.value === value.value}
                 filterOptions={filterOptions}

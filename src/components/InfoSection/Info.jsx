@@ -34,12 +34,12 @@ const Info = ({ location, countries, weatherData }) => {
                         <Grid item>
                             <Typography variant={"h4"} color='textColor.default'> <b> {capitalize(weatherData.current.weather[0].description)} </b></Typography>
                         </Grid>
-                        <Grid backgroundColor='primary.main' borderRadius={5} item>
+                        <Grid p={0.5} backgroundColor='primary.main' borderRadius={9} item>
                             {wikiLink &&
                                 <Tooltip
                                     TransitionComponent={Zoom}
-                                    title={`Open ${location.name} on Wikipedia`}
-                                    placement="top">
+                                    title={`Open location on Wikipedia`}
+                                    placement="left">
                                     <IconButton
                                         href={wikiLink}
                                         target="_blank">
@@ -49,8 +49,8 @@ const Info = ({ location, countries, weatherData }) => {
                             }
                             <Tooltip
                                 TransitionComponent={Zoom}
-                                title={`Open ${location.name} on GoogleMaps`}
-                                placement="top">
+                                title={`Open location on GoogleMaps`}
+                                placement="bottom">
                                 <IconButton
                                     href={`https://www.google.com/maps/place/${location.name}/@${location.coord.lat},${location.coord.lon}`}
                                     target="_blank">
@@ -61,7 +61,7 @@ const Info = ({ location, countries, weatherData }) => {
                     </Grid>
                     <Grid container alignItems="center" justifyContent="flex-start">
                         <Grid item >
-                            <Grid px={1} container direction="row" alignItems="center">
+                            <Grid container direction="row" alignItems="center">
                                 <Typography variant='h5'> {location.name},</Typography>
                                 <Typography mr={1} sx={{ color: 'textColor.subdued' }} variant='h5'>{country.label} </Typography>
                                 <img loading="lazy" width="30" alt="flag"
