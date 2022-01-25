@@ -32,7 +32,7 @@ const Info = ({ location, countries, weatherData }) => {
                 <>
                     <Grid container pt={1} justifyContent={"space-between"}>
                         <Grid item>
-                            <Typography variant={"h4"} color='textColor.default'> <b> {capitalize(weatherData.current.weather[0].description)} </b></Typography>
+                            <Typography letterSpacing={2} fontSize={35} variant={"h4"} color='textColor.default'> <b> {capitalize(weatherData.current.weather[0].description)} </b></Typography>
                         </Grid>
                         <Grid p={0.5} backgroundColor='primary.main' borderRadius={9} item>
                             {wikiLink &&

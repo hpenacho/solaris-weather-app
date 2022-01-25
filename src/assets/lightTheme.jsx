@@ -49,8 +49,13 @@ const lighttheme = createTheme(
                         "&.Mui-selected": { color: '#0066B6' }
                     }
                 }
+            },
+        },
+        typography: {
+            h4: {
+                fontFamily: "Bree Serif",
             }
-        }
+        },
     })
 
 export default lighttheme;

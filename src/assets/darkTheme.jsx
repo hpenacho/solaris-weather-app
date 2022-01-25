@@ -54,7 +54,12 @@ const darktheme = createTheme(
                     }
                 }
             }
-        }
+        },
+        typography: {
+            h4: {
+                fontFamily: "Bree Serif",
+            }
+        },
     })
 
 export default darktheme;

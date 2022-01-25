@@ -84,9 +84,16 @@ const WeatherDetails = React.forwardRef(({ forecastDetails, localTime, timezoneO
                                 <Grid item  >
                                     <Grid container direction="row">
                                         <Grid mt={-2} item >
-                                            <Icon sx={{ fontSize: 140 }}>
-                                                <IconStyler iconID={forecastDetails.weather[0].icon} iconStyle={iconStyle} />
-                                            </Icon>
+                                            {iconStyle === 'animated' &&
+                                                <Icon sx={{ fontSize: 140 }}>
+                                                    <IconStyler iconID={forecastDetails.weather[0].icon} iconStyle={iconStyle} />
+                                                </Icon>
+                                            }
+
+                                            {iconStyle === 'static' &&
+                                                <Grid item mt={2.5}>
+                                                    <IconStyler iconID={forecastDetails.weather[0].icon} iconStyle={'staticBig'} />
+                                                </Grid>}
                                         </Grid>
 
                                         {localTime &&
