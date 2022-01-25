@@ -12,9 +12,11 @@ const AboutMe = {
     content:
         <Grid container px={1}>
             <Grid container justifyContent='center'>
-                <DialogContentText mb={1.6} variant='h6' id="aboutme-intro">
-                    Hi, my name is Hugo and I'm a fullstack web developer! <br />
-                </DialogContentText>
+                <center>
+                    <DialogContentText mb={1.6} color='inherit' variant='h6' id="aboutme-intro">
+                        Hi, my name is Hugo and I'm a fullstack web developer! <br />
+                    </DialogContentText>
+                </center>
             </Grid>
 
             <Grid container justifyContent={'space-between'} >

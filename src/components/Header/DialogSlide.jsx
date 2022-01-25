@@ -46,8 +46,8 @@ const DialogSlide = ({ info }) => {
     return (
 
         <div>
-            <Button variant="Filled" onClick={handleClickOpen} startIcon={info.icon}>
-                {info.title}
+            <Button size={"60"} variant="Filled" onClick={handleClickOpen} startIcon={info.icon}>
+                <Typography display={{ xs: 'none', sm: 'block' }} fontSize={14}>{info.title}</Typography>
             </Button>
 
             <Dialog
@@ -60,7 +60,7 @@ const DialogSlide = ({ info }) => {
                 sx={{ backdropFilter: "blur(4px)" }}
             >
                 <CustomDialogTitle id="customized-dialog-title" onClose={handleClose}>
-                    <Typography fontSize={22.5} color="initial">
+                    <Typography fontStyle={'italic'} fontSize={22.5} color="aboutTitle.main">
                         {info.title}
                     </Typography>
                 </CustomDialogTitle>

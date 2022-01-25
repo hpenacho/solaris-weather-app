@@ -3,7 +3,6 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { Box } from '@mui/system';
 import { useSnackbar } from 'notistack';
-import FindMyLocation from './FindMyLocation';
 import { createFilterOptions } from '@mui/material/Autocomplete';
 import { Typography } from '@mui/material';
 import { Stack } from '@mui/material';
@@ -51,12 +50,7 @@ export default function Grouped({ setLocation, cities, countries }) {
 
 
     return (
-        <Box
-            sx={{
-                borderRadius: 8, backgroundColor: 'secondary.main', py: 0.9, my: 0.6, display: 'flex', alignItems: 'center', width: 290
-            }}
-        >
-            <FindMyLocation setLocation={setLocation} enqueueSnackbar={enqueueSnackbar} />
+        <>
             <Autocomplete
                 id="autocomplete-search"
                 onChange={handleSearch}
@@ -79,9 +73,9 @@ export default function Grouped({ setLocation, cities, countries }) {
                     )
                 }}
                 renderInput={(params) =>
-                    <TextField {...params} variant='outlined' label="Search..." />
+                    <TextField {...params} sx={{ width: { xs: 200, sm: 235 } }} variant='outlined' label="Search..." />
                 }
             />
-        </Box>
+        </>
     );
 }

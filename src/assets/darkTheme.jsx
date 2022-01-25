@@ -29,6 +29,9 @@ const darktheme = createTheme(
             logoTitle: {
                 textMain: '#EF9C00',
                 textSub: '#595959'
+            },
+            aboutTitle: {
+                main: '#B9B9B9'
             }
         },
         components: {

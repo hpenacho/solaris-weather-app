@@ -20,11 +20,14 @@ const lighttheme = createTheme(
             },
             detailsModal: {
                 main: '#A6A7BB',
-                section: '#d2d3db', //#e4e5f1
+                section: '#d2d3db',
             },
             alertModal: {
                 main: '#d2d3db',
                 secondary: '#f1f2f8'
+            },
+            aboutTitle: {
+                main: '#47474E'
             }
         },
         components: {

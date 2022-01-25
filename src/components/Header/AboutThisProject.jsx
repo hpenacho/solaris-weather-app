@@ -9,9 +9,11 @@ const AboutThisProject = {
     icon: <LibraryBooksIcon />,
     content: <Grid container px={1}>
         <Grid container py={1.5} justifyContent='center'>
-            <DialogContentText mb={1.6} variant='h6' id="aboutme-intro">
-                Solaris Weather App, my first project in React.js <br />
-            </DialogContentText>
+            <center>
+                <DialogContentText color='inherit' mb={1.6} variant='h6' id="aboutme-intro">
+                    Solaris Weather App, my first project in React.js <br />
+                </DialogContentText>
+            </center>
         </Grid>
         <Grid item xs={9}>
             <b>Purpose</b>

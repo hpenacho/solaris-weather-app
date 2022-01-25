@@ -1,10 +1,11 @@
 import { Typography } from "@mui/material"
 import { Stack } from "@mui/material";
 
+//display={{ xs: 'none', sm: 'block' }}
 const ProjectTitle = () => {
     return (
         <>
-            <Stack display={{ xs: 'none', sm: 'block' }} alignItems={'center'}>
+            <Stack alignItems={'center'}>
                 <Typography color="logoTitle.textMain" fontSize={18.5} letterSpacing={0.7} variant="h4" fontStyle={'italic'} component="h1">
                     SOLARIS
                 </Typography>
