@@ -15,10 +15,10 @@ const MiddleSection = ({ weatherData, iconStyle, unitType, timeframe }) => {
     return (
         <Container disableGutters sx={{ backgroundColor: 'secondary.main' }}>
             {weatherData &&
-                <Grid py={1} container direction="row" sx={{ justifyContent: 'space-between' }} columns={8} >
+                <Grid py={1} px={0.6} container direction="row" sx={{ justifyContent: 'space-evenly' }} columns={8} >
                     {weatherData &&
                         slicedForecast.map(element =>
-                            <Grid item xs={2} sm={1} key={element.dt} >
+                            <Grid item xs={2} sm={1.5} md={1} key={element.dt} >
                                 <HourlyForecast
                                     hourlyForecast={element}
                                     timezoneOffset={weatherData.timezone_offset}

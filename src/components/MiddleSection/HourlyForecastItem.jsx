@@ -18,7 +18,7 @@ const HourlyForecast = ({ hourlyForecast, timezoneOffset, iconStyle, unitType })
         <>
             <Button fullWidth sx={{ textTransform: "none" }} onClick={handleClick}>
                 <Stack alignItems="center" >
-                    <ListItemText primaryTypographyProps={{ fontSize: 21, color: 'textColor.default', mb: -2 }}>
+                    <ListItemText primaryTypographyProps={{ fontSize: 24, color: 'textColor.default', mb: -1 }}>
                         {formatHour(hourlyForecast.dt + timezoneOffset)}h
                     </ListItemText>
                     <ListItemIcon>
@@ -31,7 +31,7 @@ const HourlyForecast = ({ hourlyForecast, timezoneOffset, iconStyle, unitType })
                             <IconStyler iconID={hourlyForecast.weather[0].icon} iconStyle={iconStyle} />
                         }
                     </ListItemIcon>
-                    <ListItemText primaryTypographyProps={{ fontSize: 19, color: 'textColor.default', mt: -1 }}>
+                    <ListItemText primaryTypographyProps={{ fontSize: 19, color: 'textColor.weaker', mt: -0.8 }}>
                         {Math.round(unitTypeSwitcher(hourlyForecast.temp, unitType))}°
                     </ListItemText>
                 </Stack>

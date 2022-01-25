@@ -15,7 +15,8 @@ const darktheme = createTheme(
                 paper: '#1e1e1e',
             },
             textColor: {
-                default: '#e4e5f1',
+                default: '#E8E9F6', //e4e5f1
+                weaker: '#B8B8B8',
                 subdued: '#5E5E5E'
             },
             detailsModal: {

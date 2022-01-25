@@ -16,6 +16,7 @@ const lighttheme = createTheme(
             },
             textColor: {
                 default: '#2A2A2A',
+                weaker: '#3C3C3C',
                 subdued: '#5E5E5E'
             },
             detailsModal: {
