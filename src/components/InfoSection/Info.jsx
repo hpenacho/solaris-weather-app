@@ -6,6 +6,7 @@ import LocationOnTwoToneIcon from '@mui/icons-material/LocationOnTwoTone';
 import InfoTwoToneIcon from '@mui/icons-material/InfoTwoTone';
 import Tooltip from '@mui/material/Tooltip';
 import Zoom from '@mui/material/Zoom';
+import { Box } from '@mui/system';
 
 const capitalize = (word) => {
     return word.charAt(0).toUpperCase() + word.slice(1);
@@ -30,33 +31,35 @@ const Info = ({ location, countries, weatherData }) => {
         <Container sx={{ backgroundColor: 'secondary.main' }}>
             {location && weatherData &&
                 <>
-                    <Grid container pt={1} justifyContent={"space-between"}>
-                        <Grid item>
+                    <Grid container direction='row' pt={1} justifyContent={"space-between"}>
+                        <Grid item xs={8}>
                             <Typography letterSpacing={2} fontSize={35} variant={"h4"} color='textColor.default'> <b> {capitalize(weatherData.current.weather[0].description)} </b></Typography>
                         </Grid>
-                        <Grid p={0.5} backgroundColor='primary.main' borderRadius={9} item>
-                            {wikiLink &&
+                        <Grid item>
+                            <Box p={0.5} backgroundColor='primary.main' borderRadius={9}>
+                                {wikiLink &&
+                                    <Tooltip
+                                        TransitionComponent={Zoom}
+                                        title={`Open location on Wikipedia`}
+                                        placement="left">
+                                        <IconButton
+                                            href={wikiLink}
+                                            target="_blank">
+                                            <InfoTwoToneIcon />
+                                        </IconButton>
+                                    </Tooltip>
+                                }
                                 <Tooltip
                                     TransitionComponent={Zoom}
-                                    title={`Open location on Wikipedia`}
-                                    placement="left">
+                                    title={`Open location on GoogleMaps`}
+                                    placement="bottom">
                                     <IconButton
-                                        href={wikiLink}
+                                        href={`https://www.google.com/maps/place/${location.name}/@${location.coord.lat},${location.coord.lon}`}
                                         target="_blank">
-                                        <InfoTwoToneIcon />
+                                        <LocationOnTwoToneIcon />
                                     </IconButton>
                                 </Tooltip>
-                            }
-                            <Tooltip
-                                TransitionComponent={Zoom}
-                                title={`Open location on GoogleMaps`}
-                                placement="bottom">
-                                <IconButton
-                                    href={`https://www.google.com/maps/place/${location.name}/@${location.coord.lat},${location.coord.lon}`}
-                                    target="_blank">
-                                    <LocationOnTwoToneIcon />
-                                </IconButton>
-                            </Tooltip>
+                            </Box>
                         </Grid>
                     </Grid>
                     <Grid container alignItems="center" justifyContent="flex-start">
