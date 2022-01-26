@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { ReactComponent as AnimatedCloudyDay } from '../../assets/icons/animated/cloudy-day.svg'
 import { Tooltip } from '@mui/material';
 import { IconButton } from '@mui/material';

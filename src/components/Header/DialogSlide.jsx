@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { forwardRef, useState } from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
@@ -8,7 +8,7 @@ import CloseDialogButton from '../CloseDialogButton';
 import PropTypes from 'prop-types';
 import { Typography } from '@mui/material';
 
-const Transition = React.forwardRef(function Transition(props, ref) {
+const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="left" ref={ref} {...props} />;
 });
 
@@ -33,7 +33,7 @@ CustomDialogTitle.propTypes = {
 
 const DialogSlide = ({ info }) => {
 
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
 
     const handleClickOpen = () => {
         setOpen(true);

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -21,7 +21,7 @@ import unitTypeSwitcher from '../../tools/unitTypeSwitcher';
 import Item from './Item';
 
 const DetailsList = ({ forecastDetails, unitType }) => {
-    const [openTemp, setOpenTemp] = React.useState(false);
+    const [openTemp, setOpenTemp] = useState(false);
 
     return (
         <List

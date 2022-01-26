@@ -1,5 +1,4 @@
 import Paper from '@mui/material/Paper';
-import * as React from 'react';
 import DialogSlide from './DialogSlide'
 import ProjectTitle from './ProjectTitle';
 import { Divider } from '@mui/material';
