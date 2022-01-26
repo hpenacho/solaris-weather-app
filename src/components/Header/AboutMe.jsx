@@ -3,7 +3,6 @@ import { DialogContentText } from '@mui/material';
 import { Divider } from '@mui/material';
 import { Link } from '@mui/material';
 import { Grid } from '@mui/material';
-import Image from 'mui-image'
 import photo from '../../assets/images/face1.jpg'
 import { Box } from '@mui/system';
 
