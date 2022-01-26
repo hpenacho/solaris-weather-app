@@ -67,7 +67,8 @@ const AboutMe = {
                 <b>More</b>
                 <Divider />
                 <DialogContentText mb={1.5} variant='body2' id="aboutme-more">
-                    You can find more about my learning path, career, what I have to offer, and my skillset on my <Link fontWeight='bold' color="inherit" rel="noopener" target="_blank" href="https://www.linkedin.com/in/hugopenacho/">LinkedIn</Link>.
+                    You can find more about my learning path, career, what I have to offer, and my skillset on my <Link fontWeight='bold' color="inherit" rel="noopener" target="_blank" href="https://www.linkedin.com/in/hugopenacho/">LinkedIn</Link>. <br />
+                    For any business/work related inquiries, you may also reach me at <Link fontWeight='bold' color="inherit" rel="noopener" href='mailto:hpworkdev@gmail.com'>hpworkdev@gmail.com</Link>
                 </DialogContentText>
             </Grid>
         </Grid>

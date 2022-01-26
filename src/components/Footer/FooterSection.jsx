@@ -4,6 +4,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { Stack } from "@mui/material";
 import PublicTwoToneIcon from '@mui/icons-material/PublicTwoTone';
+import EmailIcon from '@mui/icons-material/Email';
 
 const FooterSection = () => {
     return (
@@ -17,6 +18,9 @@ const FooterSection = () => {
                 </IconButton>
                 <IconButton href='https://www.linkedin.com/in/hugopenacho/'>
                     <LinkedInIcon fontSize='large' />
+                </IconButton>
+                <IconButton href='mailto:hpworkdev@gmail.com'>
+                    <EmailIcon fontSize='large' />
                 </IconButton>
             </Stack>
         </Paper>
