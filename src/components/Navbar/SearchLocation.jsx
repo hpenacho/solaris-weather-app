@@ -8,7 +8,7 @@ import { Typography } from '@mui/material';
 import { Stack } from '@mui/material';
 
 export default function Grouped({ setLocation, cities, countries }) {
-
+    const [open, setOpen] = useState(false)
     const [inputValue, setInputValue] = useState('');
     const { enqueueSnackbar } = useSnackbar();
 
@@ -24,14 +24,15 @@ export default function Grouped({ setLocation, cities, countries }) {
         timerID = setTimeout(() => {
             setInputValue(newInputValue.toLowerCase())
         }, 600)
+        setOpen(true)
     }
 
-    const handleSearch = async (event, newValue) => {
+    const handleSearch = (event, newValue) => {
         if (newValue) {
             const location = newValue
             setLocation(location)
             enqueueSnackbar((`Displaying ${location.name} weather data`), { variant: 'success' })
-            setInputValue('')
+            setOpen(false)
         }
     }
 
@@ -60,7 +61,7 @@ export default function Grouped({ setLocation, cities, countries }) {
                 key={(option) => option.id}
                 isOptionEqualToValue={(option, value) => option.value === value.value}
                 filterOptions={filterOptions}
-                open={inputValue.length >= 2}
+                open={inputValue.length >= 2 && open}
                 renderOption={(props, option) => {
                     return (
                         <Box {...props} key={option.id}>
