@@ -60,7 +60,6 @@ export default function Grouped({ setLocation, cities, countries }) {
                 key={(option) => option.id}
                 isOptionEqualToValue={(option, value) => option.value === value.value}
                 filterOptions={filterOptions}
-                sx={{ width: 220 }}
                 open={inputValue.length >= 2}
                 renderOption={(props, option) => {
                     return (
@@ -73,7 +72,7 @@ export default function Grouped({ setLocation, cities, countries }) {
                     )
                 }}
                 renderInput={(params) =>
-                    <TextField {...params} sx={{ width: { xs: 200, sm: 235 } }} variant='outlined' label="Search..." />
+                    <TextField {...params} sx={{ width: { xs: 215, sm: 235 } }} variant='outlined' label="Search..." />
                 }
             />
         </>

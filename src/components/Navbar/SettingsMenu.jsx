@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -7,9 +7,10 @@ import IconToggleButton from './IconToggleButton';
 import TimeframeForecast from './TimeframeForecast';
 import TemperatureSwitch from './TemperatureSwitch';
 import { Stack } from '@mui/material'
+import { Box } from '@mui/system';
 
 const SettingsMenu = ({ iconStyle, setIconStyle, timeframe, setTimeframe, unitType, setUnitType }) => {
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -19,17 +20,19 @@ const SettingsMenu = ({ iconStyle, setIconStyle, timeframe, setTimeframe, unitTy
     };
 
     return (
-        <div>
-            <Button
-                id="settings-button"
-                aria-controls={open ? 'settings-menu' : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? 'true' : undefined}
-                onClick={handleClick}
-                color='inherit'
-            >
-                <SettingsIcon />
-            </Button>
+        <>
+            <Box ml={-1.2}>
+                <Button
+                    id="settings-button"
+                    aria-controls={open ? 'settings-menu' : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? 'true' : undefined}
+                    onClick={handleClick}
+                    color='inherit'
+                >
+                    <SettingsIcon />
+                </Button>
+            </Box>
             <Menu
                 id="settings-menu"
                 anchorEl={anchorEl}
@@ -40,14 +43,14 @@ const SettingsMenu = ({ iconStyle, setIconStyle, timeframe, setTimeframe, unitTy
                 }}
             >
                 <MenuItem onClick={handleClose}>
-                    <Stack direction={'row'} spacing={2} alignItems={'center'}>
+                    <Stack direction={'row'} spacing={1.3} alignItems={'center'}>
                         <IconToggleButton iconStyle={iconStyle} setIconStyle={setIconStyle} />
                         <TemperatureSwitch unitType={unitType} setUnitType={setUnitType} />
                         <TimeframeForecast timeframe={timeframe} setTimeframe={setTimeframe} />
                     </Stack>
                 </MenuItem>
             </Menu>
-        </div>
+        </>
     );
 }
 

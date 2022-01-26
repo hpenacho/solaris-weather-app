@@ -21,7 +21,7 @@ const NavBarSection = ({ setLocation, cities, countries, unitType, iconStyle, se
 
 
                 <Grid item >
-                    <Box width={{ xs: 322, md: 308 }}
+                    <Box width={{ xs: 310, sm: 330, md: 305 }}
                         sx={{
                             borderRadius: 8, backgroundColor: 'secondary.main', py: 0.9, my: 0.6, display: 'flex', alignItems: 'center'
                         }}
@@ -31,7 +31,7 @@ const NavBarSection = ({ setLocation, cities, countries, unitType, iconStyle, se
                             setLocation={setLocation}
                             cities={cities}
                             countries={countries} />
-                        <Grid item sx={{ display: { sm: 'block', md: 'none' } }}>
+                        <Grid item sx={{ display: { xs: 'block', md: 'none' } }}>
                             <SettingsMenu
                                 iconStyle={iconStyle}
                                 setIconStyle={setIconStyle}
