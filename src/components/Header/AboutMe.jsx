@@ -5,6 +5,7 @@ import { Link } from '@mui/material';
 import { Grid } from '@mui/material';
 import Image from 'mui-image'
 import photo from '../../assets/images/face1.jpg'
+import { Box } from '@mui/system';
 
 const AboutMe = {
     title: 'About me',
@@ -36,12 +37,13 @@ const AboutMe = {
                     </DialogContentText>
                 </Grid>
                 <Grid item md={4} xs={12} my={3} order={{ xs: 1, sm: 1, md: 2 }}>
-                    <Image
-                        src={photo}
-                        style={{ borderRadius: 300, maxWidth: 220, maxHeight: 220 }}
-                        duration={4000}
-                    />
-
+                    <Box borderRadius={10}
+                        display="flex"
+                        justifyContent="center"
+                        alignItems="center"
+                    >
+                        <img src={photo} alt={"developer"} width={230} height={230} style={{ borderRadius: "50%" }} />
+                    </Box>
                 </Grid>
             </Grid>
 
