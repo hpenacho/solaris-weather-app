@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 import Button from '@mui/material/Button';
 import IconStyler from '../../tools/IconStyler';
 import Typography from '@mui/material/Typography';

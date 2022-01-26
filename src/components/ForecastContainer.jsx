@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import WeatherService from '../services/WeatherService'
 import InfoSection from "./InfoSection/Info"
 import MiddleSection from "./MiddleSection/HourlyForecast"

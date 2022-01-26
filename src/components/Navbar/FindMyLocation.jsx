@@ -1,7 +1,6 @@
 import MyLocationSharpIcon from '@mui/icons-material/MyLocationSharp';
 import IconButton from '@mui/material/IconButton';
 import WeatherService from '../../services/WeatherService'
-import React from 'react'
 import { Tooltip } from '@mui/material';
 import Zoom from '@mui/material/Zoom';
 

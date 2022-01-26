@@ -1,4 +1,4 @@
-import React, { useImperativeHandle } from 'react'
+import { useImperativeHandle, useState, forwardRef } from 'react'
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
@@ -47,8 +47,8 @@ BootstrapDialogTitle.propTypes = {
     onClose: PropTypes.func.isRequired,
 };
 
-const WeatherDetails = React.forwardRef(({ forecastDetails, localTime, timezoneOffset, iconStyle, unitType }, ref) => {
-    const [open, setOpen] = React.useState(false);
+const WeatherDetails = forwardRef(({ forecastDetails, localTime, timezoneOffset, iconStyle, unitType }, ref) => {
+    const [open, setOpen] = useState(false);
     const handleClickOpen = () => { setOpen(true); };
     const handleClose = () => { setOpen(false); };
 

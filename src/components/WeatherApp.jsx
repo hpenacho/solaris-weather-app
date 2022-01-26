@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import InitService from '../services/InitService'
 import Box from '@mui/material/Box'
 import { Container } from '@mui/material'
@@ -11,7 +11,7 @@ const WeatherApp = () => {
     const countries = InitService.initializeCountries()
     const [location, setLocation] = useState(cities.find(city => city.name === 'Lisbon'))
     const [unitType, setUnitType] = useState("celsius")
-    const [iconStyle, setIconStyle] = useState("animated")
+    const [iconStyle, setIconStyle] = useState("static")
     const [timeframe, setTimeframe] = useState(3)
 
     return (
