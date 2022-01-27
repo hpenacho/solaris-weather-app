@@ -16,7 +16,7 @@ const HourlyForecast = ({ hourlyForecast, timezoneOffset, iconStyle, unitType })
     }
     return (
         <>
-            <Button fullWidth sx={{ textTransform: "none" }} onClick={handleClick}>
+            <Button sx={{ textTransform: "none" }} onClick={handleClick}>
                 <Stack alignItems="center" >
                     <ListItemText primaryTypographyProps={{ fontSize: 24, color: 'textColor.default', mb: -1 }}>
                         {formatHour(hourlyForecast.dt + timezoneOffset)}h
