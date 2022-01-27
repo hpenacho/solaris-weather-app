@@ -21,7 +21,7 @@ const DailyForecast = ({ dailyWeatherInfo, timezoneOffset, iconStyle, unitType }
 
     return (
         <>
-            <Button fullWidth sx={{ paddingX: 0, textTransform: "none" }} onClick={handleClick}>
+            <Button fullWidth sx={{ textTransform: "none" }} onClick={handleClick}>
                 <Grid container justifyContent="center" alignItems="center">
                     <Grid item>
                         <Typography color='textColor.default' variant="h6"> {weekDay} </Typography>

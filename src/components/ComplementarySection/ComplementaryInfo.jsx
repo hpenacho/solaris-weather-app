@@ -9,7 +9,7 @@ import BeachAccessIcon from '@mui/icons-material/BeachAccess';
 const ComplementaryInfo = ({ weatherData }) => {
 
     return (
-        <Box px={2} pb={1}>
+        <Box px={2} pb={1} sx={{ display: { xs: 'none', sm: 'block' } }}>
             {weatherData &&
                 <Grid sx={{ height: 57 }} container alignItems="center" justifyContent="flex-start" spacing={1}>
 
