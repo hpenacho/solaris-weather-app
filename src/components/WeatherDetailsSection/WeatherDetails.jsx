@@ -16,8 +16,6 @@ import { Icon } from '@mui/material';
 import { Grid } from '@mui/material'
 import { formatTime } from '../../tools/dateFormatter';
 import SunMoonTime from './SunMoonTime';
-import { Box } from '@mui/material';
-import List from '@mui/material/List';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
