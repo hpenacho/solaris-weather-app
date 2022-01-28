@@ -82,53 +82,77 @@ const WeatherDetails = forwardRef(({ forecastDetails, localTime, timezoneOffset,
                             <Grid container alignItems="center" direction="column" >
                                 <Grid item  >
                                     <Grid container direction="row" alignItems="center" spacing={{ sm: 2 }}>
-                                        <Grid item>
-                                            {iconStyle === 'animated' &&
-                                                <Icon sx={{ fontSize: 60 }}>
-                                                    <IconStyler iconID={forecastDetails.weather[0].icon} iconStyle={iconStyle} />
-                                                </Icon>
-                                            }
-
-                                            {iconStyle === 'static' &&
-                                                <>
-                                                    <Grid item sx={{ display: { xs: 'block', sm: 'none' } }}>
-                                                        <IconStyler iconID={forecastDetails.weather[0].icon} iconStyle={'staticSmall'} />
-                                                    </Grid>
-                                                    <Grid item sx={{ display: { xs: 'none', sm: 'block' } }}>
-                                                        <IconStyler iconID={forecastDetails.weather[0].icon} iconStyle={'static'} />
-                                                    </Grid>
-                                                </>}
-                                        </Grid>
-
-                                        {localTime &&
-                                            <Grid item sx={{ textAlign: 'center' }}>
-                                                <Typography fontSize={{ xs: 18, sm: 22 }} sx={{ color: 'textColor.default' }}>
-                                                    {formatTime(localTime, { hour: 'numeric', minute: 'numeric', hour12: false })}
-                                                </Typography>
-                                                <Typography fontSize={{ xs: 18, sm: 22 }} sx={{ color: 'textColor.default' }}>
-                                                    {formatTime(localTime, { day: 'numeric', month: 'short', hour12: false })}
-                                                </Typography>
-                                            </Grid>
-                                        }
-
                                         {!localTime &&
-                                            <Grid item >
-                                                <Typography fontSize={{ xs: 18, sm: 22 }} sx={{ color: 'textColor.default' }} textAlign={'right'}>
-                                                    <i>{formatTime(forecastDetails.dt, { weekday: 'long' })}</i>
-                                                </Typography>
-                                                <Typography fontSize={{ xs: 18, sm: 22 }} sx={{ color: 'textColor.default' }}>
-                                                    {formatTime(forecastDetails.dt, { year: 'numeric', month: 'numeric', day: 'numeric' })}
-                                                </Typography>
-                                            </Grid>
+                                            <>
+                                                <Grid item sx={{ display: { xs: 'none', sm: 'block' } }}>
+                                                    {iconStyle === 'animated' &&
+                                                        <Icon sx={{ fontSize: 60 }}>
+                                                            <IconStyler iconID={forecastDetails.weather[0].icon} iconStyle={iconStyle} />
+                                                        </Icon>
+                                                    }
+
+                                                    {iconStyle === 'static' &&
+                                                        <>
+                                                            <Grid item sx={{ display: { xs: 'none', sm: 'block' } }}>
+                                                                <IconStyler iconID={forecastDetails.weather[0].icon} iconStyle={'static'} />
+                                                            </Grid>
+                                                        </>}
+                                                </Grid>
+                                                <Grid item >
+                                                    <Typography fontSize={{ xs: 17.5, sm: 22 }} sx={{ color: 'textColor.default' }} textAlign={'right'}>
+                                                        <i>{formatTime(forecastDetails.dt, { weekday: 'long' })}</i>
+                                                    </Typography>
+                                                    <Typography fontSize={{ xs: 17.5, sm: 22 }} sx={{ color: 'textColor.default' }}>
+                                                        {formatTime(forecastDetails.dt, { year: 'numeric', month: 'numeric', day: 'numeric' })}
+                                                    </Typography>
+                                                </Grid>
+                                            </>
+                                        }
+                                        {localTime &&
+                                            <>
+                                                <Grid item>
+                                                    {iconStyle === 'animated' &&
+                                                        <Icon sx={{ fontSize: 60 }}>
+                                                            <IconStyler iconID={forecastDetails.weather[0].icon} iconStyle={iconStyle} />
+                                                        </Icon>
+                                                    }
+
+                                                    {iconStyle === 'static' &&
+                                                        <>
+                                                            <Grid item>
+                                                                <IconStyler iconID={forecastDetails.weather[0].icon} iconStyle={'static'} />
+                                                            </Grid>
+                                                        </>}
+                                                </Grid>
+                                                <Grid item sx={{ textAlign: 'center' }}>
+                                                    <Typography fontSize={{ xs: 18, sm: 22 }} sx={{ color: 'textColor.default' }}>
+                                                        {formatTime(localTime, { hour: 'numeric', minute: 'numeric', hour12: false })}
+                                                    </Typography>
+                                                    <Typography fontSize={{ xs: 18, sm: 22 }} sx={{ color: 'textColor.default' }}>
+                                                        {formatTime(localTime, { day: 'numeric', month: 'short', hour12: false })}
+                                                    </Typography>
+                                                </Grid>
+                                            </>
                                         }
                                     </Grid>
                                 </Grid>
 
-                                <Grid item mt={-0.5}>
-                                    <Typography fontStyle='italic' sx={{ fontSize: { xs: 20, sm: 34 }, color: 'textColor.default' }} >
-                                        {capitalize(forecastDetails.weather[0].description)}
-                                    </Typography>
-                                </Grid>
+                                {localTime &&
+                                    <Grid item mt={-2.5}>
+                                        <Typography fontStyle='italic' sx={{ fontSize: { xs: 25, sm: 34 }, color: 'textColor.default' }} >
+                                            {capitalize(forecastDetails.weather[0].description)}
+                                        </Typography>
+                                    </Grid>
+                                }
+
+                                {!localTime &&
+                                    <Grid item mt={{ xs: 1, sm: -3.2 }}>
+                                        <Typography fontStyle='italic' sx={{ fontSize: { xs: 18, sm: 34 }, color: 'textColor.default' }} >
+                                            {capitalize(forecastDetails.weather[0].description)}
+                                        </Typography>
+                                    </Grid>
+                                }
+
 
                             </Grid>
                         </Grid>

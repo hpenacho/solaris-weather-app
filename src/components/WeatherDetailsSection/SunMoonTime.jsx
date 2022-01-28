@@ -6,7 +6,7 @@ import { SvgIcon } from '@mui/material';
 const SunMoonTime = ({ time, title, icon, color }) => {
 
     return (
-        <ListItem sx={{ paddingY: 0, paddingX: 1.2 }}>
+        <ListItem sx={{ paddingY: 0, paddingX: 1 }}>
             <ListItemIcon>
                 <SvgIcon fontSize='large' sx={{ color: { color } }}> {icon} </SvgIcon>
             </ListItemIcon>

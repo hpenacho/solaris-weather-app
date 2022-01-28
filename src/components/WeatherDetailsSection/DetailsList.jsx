@@ -19,6 +19,7 @@ import { Stack } from '@mui/material';
 import { SvgIcon } from '@mui/material';
 import unitTypeSwitcher from '../../tools/unitTypeSwitcher';
 import Item from './Item';
+import SubItem from './SubItem';
 
 const DetailsList = ({ forecastDetails, unitType }) => {
     const [openTemp, setOpenTemp] = useState(false);
@@ -55,7 +56,7 @@ const DetailsList = ({ forecastDetails, unitType }) => {
                         <Stack direction="row" >
                             {!isNaN(forecastDetails.temp) &&
                                 <>
-                                    <Item
+                                    <SubItem
                                         icon={<DeviceThermostatOutlinedIcon />}
                                         iconSize={'medium'}
                                         text={`${Math.round(unitTypeSwitcher(forecastDetails.feels_like, unitType))}°`}
@@ -69,7 +70,7 @@ const DetailsList = ({ forecastDetails, unitType }) => {
                         <Stack direction="row" >
                             {isNaN(forecastDetails.temp) &&
                                 <>
-                                    <Item
+                                    <SubItem
                                         icon={<DeviceThermostatOutlinedIcon sx={{ color: '#F15421' }} />}
                                         iconSize={'medium'}
                                         text={`${Math.round(unitTypeSwitcher(forecastDetails.temp.max, unitType))}°`}
@@ -77,7 +78,7 @@ const DetailsList = ({ forecastDetails, unitType }) => {
                                         subtitle='Max'
                                     />
                                     <Divider orientation="vertical" variant="middle" flexItem />
-                                    <Item
+                                    <SubItem
                                         icon={<DeviceThermostatOutlinedIcon sx={{ color: '#589ceb' }} />}
                                         iconSize={'medium'}
                                         text={`${Math.round(unitTypeSwitcher(forecastDetails.temp.min, unitType))}°`}
@@ -87,19 +88,18 @@ const DetailsList = ({ forecastDetails, unitType }) => {
                                     <Divider orientation="vertical" variant="middle" flexItem />
                                 </>
                             }
-                            <Item
+                            <SubItem
                                 icon={<DeviceThermostatOutlinedIcon />}
                                 iconSize={'medium'}
                                 text={`${unitTypeSwitcher(forecastDetails.dew_point, unitType).toFixed(1)}°`}
                                 textSize={17.5}
-                                sx={{ whiteSpace: 'nowrap' }}
                                 subtitle={'Dew Point'}
                             />
                         </Stack>
                     </Stack>
                 </List>
             </Collapse >
-            <Stack direction="row" justifyContent={'center'}>
+            <Stack direction={{ xs: 'column', sm: "row" }} justifyContent={'center'}>
                 <Item
                     icon={<Humidity />}
                     iconSize={'large'}
@@ -109,7 +109,7 @@ const DetailsList = ({ forecastDetails, unitType }) => {
                 />
                 {forecastDetails.pop !== 0 &&
                     <>
-                        <Divider orientation="vertical" variant="middle" flexItem />
+                        <Divider sx={{ display: { xs: 'none', sm: 'block' } }} orientation="vertical" variant="middle" flexItem />
                         <Item
                             icon={<InvertColorsTwoToneIcon />}
                             iconSize={'large'}
@@ -120,7 +120,7 @@ const DetailsList = ({ forecastDetails, unitType }) => {
                     </>
                 }
             </Stack>
-            <Stack direction="row" justifyContent={'center'}>
+            <Stack direction={{ xs: 'column', sm: "row" }} justifyContent={'center'}>
                 <Item
                     icon={<AirRoundedIcon />}
                     iconSize={'large'}
@@ -128,7 +128,7 @@ const DetailsList = ({ forecastDetails, unitType }) => {
                     textSize={18}
                     subtitle='Wind direction and speed'
                 />
-                <Divider orientation="vertical" variant="middle" flexItem />
+                <Divider sx={{ display: { xs: 'none', sm: 'block' } }} orientation="vertical" variant="middle" flexItem />
                 <Item
                     icon={<AirRoundedIcon />}
                     iconSize={'large'}
@@ -137,7 +137,7 @@ const DetailsList = ({ forecastDetails, unitType }) => {
                     subtitle='Wind Gusts'
                 />
             </Stack>
-            <Stack direction="row" justifyContent={'center'}>
+            <Stack direction={{ xs: 'column', sm: "row" }} justifyContent={'center'}>
                 <Item
                     icon={<FilterDramaTwoToneIcon />}
                     iconSize={'large'}
@@ -147,7 +147,7 @@ const DetailsList = ({ forecastDetails, unitType }) => {
                 />
                 {forecastDetails.visibility &&
                     <>
-                        <Divider orientation="vertical" variant="middle" flexItem />
+                        <Divider sx={{ display: { xs: 'none', sm: 'block' } }} orientation="vertical" variant="middle" flexItem />
                         <Item
                             icon={<VisibilityTwoToneIcon />}
                             iconSize={'large'}
@@ -158,7 +158,7 @@ const DetailsList = ({ forecastDetails, unitType }) => {
                     </>
                 }
             </Stack>
-            <Stack direction="row" justifyContent={'center'}>
+            <Stack direction={{ xs: 'column', sm: "row" }} justifyContent={'center'}>
                 <Item
                     icon={<Barometer />}
                     iconSize={'large'}
@@ -168,7 +168,7 @@ const DetailsList = ({ forecastDetails, unitType }) => {
                 />
                 {forecastDetails.uvi !== 0 &&
                     <>
-                        <Divider orientation="vertical" variant="middle" flexItem />
+                        <Divider sx={{ display: { xs: 'none', sm: 'block' } }} orientation="vertical" variant="middle" flexItem />
                         <Item
                             icon={<BeachAccessIcon />}
                             iconSize={'large'}
