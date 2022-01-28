@@ -11,7 +11,9 @@ const fetchWeather = async (latitude, longitude, language) => {
             lang: language,
             APPID: process.env.REACT_APP_API_KEY
         }
-    });
+    }
+
+    );
     return data
 }
 

@@ -8,13 +8,15 @@ const CloseDialogButton = ({ onClose }) => {
             onClick={onClose}
             sx={{
                 position: 'absolute',
-                right: 8,
-                top: 8,
+                right: 3,
+                top: {
+                    xs: 1, sm: 3
+                },
                 color: (theme) => theme.palette.grey[500],
             }}
         >
             <CloseIcon />
-        </IconButton>
+        </IconButton >
     )
 }
 

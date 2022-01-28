@@ -16,6 +16,7 @@ import { Icon } from '@mui/material';
 import { Grid } from '@mui/material'
 import { formatTime } from '../../tools/dateFormatter';
 import SunMoonTime from './SunMoonTime';
+import { Box } from '@mui/material';
 import List from '@mui/material/List';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -78,41 +79,46 @@ const WeatherDetails = forwardRef(({ forecastDetails, localTime, timezoneOffset,
                         </Typography>
                     </BootstrapDialogTitle>
 
-                    <Grid pb={2} bgcolor='detailsModal.main' container direction="row" justifyContent="space-evenly">
+                    <Grid mt={-1.2} pb={{ xs: 1, sm: 1.5 }} bgcolor='detailsModal.main' container direction={'row'} justifyContent="space-evenly" alignItems={'center'}>
                         <Grid item>
                             <Grid container alignItems="center" direction="column" >
                                 <Grid item  >
-                                    <Grid container direction="row">
-                                        <Grid mt={-2} item >
+                                    <Grid container direction="row" alignItems="center" spacing={{ sm: 2 }}>
+                                        <Grid item>
                                             {iconStyle === 'animated' &&
-                                                <Icon sx={{ fontSize: 140 }}>
+                                                <Icon sx={{ fontSize: 60 }}>
                                                     <IconStyler iconID={forecastDetails.weather[0].icon} iconStyle={iconStyle} />
                                                 </Icon>
                                             }
 
                                             {iconStyle === 'static' &&
-                                                <Grid item mt={2.5}>
-                                                    <IconStyler iconID={forecastDetails.weather[0].icon} iconStyle={'staticBig'} />
-                                                </Grid>}
+                                                <>
+                                                    <Grid item sx={{ display: { xs: 'block', sm: 'none' } }}>
+                                                        <IconStyler iconID={forecastDetails.weather[0].icon} iconStyle={'staticSmall'} />
+                                                    </Grid>
+                                                    <Grid item sx={{ display: { xs: 'none', sm: 'block' } }}>
+                                                        <IconStyler iconID={forecastDetails.weather[0].icon} iconStyle={'static'} />
+                                                    </Grid>
+                                                </>}
                                         </Grid>
 
                                         {localTime &&
-                                            <Grid item mt={5} mr={2} sx={{ textAlign: 'center' }}>
-                                                <Typography variant='h5' sx={{ color: 'textColor.default' }}>
+                                            <Grid item sx={{ textAlign: 'center' }}>
+                                                <Typography fontSize={{ xs: 18, sm: 22 }} sx={{ color: 'textColor.default' }}>
                                                     {formatTime(localTime, { hour: 'numeric', minute: 'numeric', hour12: false })}
                                                 </Typography>
-                                                <Typography variant='h5' sx={{ color: 'textColor.default' }}>
+                                                <Typography fontSize={{ xs: 18, sm: 22 }} sx={{ color: 'textColor.default' }}>
                                                     {formatTime(localTime, { day: 'numeric', month: 'short', hour12: false })}
                                                 </Typography>
                                             </Grid>
                                         }
 
                                         {!localTime &&
-                                            <Grid item mr={2} mt={5}>
-                                                <Typography variant='h6' sx={{ color: 'textColor.default' }} textAlign={'right'}>
+                                            <Grid item >
+                                                <Typography fontSize={{ xs: 18, sm: 22 }} sx={{ color: 'textColor.default' }} textAlign={'right'}>
                                                     <i>{formatTime(forecastDetails.dt, { weekday: 'long' })}</i>
                                                 </Typography>
-                                                <Typography variant='h6' sx={{ color: 'textColor.default' }}>
+                                                <Typography fontSize={{ xs: 18, sm: 22 }} sx={{ color: 'textColor.default' }}>
                                                     {formatTime(forecastDetails.dt, { year: 'numeric', month: 'numeric', day: 'numeric' })}
                                                 </Typography>
                                             </Grid>
@@ -120,8 +126,8 @@ const WeatherDetails = forwardRef(({ forecastDetails, localTime, timezoneOffset,
                                     </Grid>
                                 </Grid>
 
-                                <Grid item>
-                                    <Typography fontStyle='italic' sx={{ fontSize: 36, color: 'textColor.default' }} >
+                                <Grid item mt={-0.5}>
+                                    <Typography fontStyle='italic' sx={{ fontSize: { xs: 20, sm: 34 }, color: 'textColor.default' }} >
                                         {capitalize(forecastDetails.weather[0].description)}
                                     </Typography>
                                 </Grid>
@@ -133,36 +139,47 @@ const WeatherDetails = forwardRef(({ forecastDetails, localTime, timezoneOffset,
                             <Grid item>
                                 <Grid container alignItems="center" justifyContent="center">
                                     <Grid item>
-                                        <List disablePadding dense sx={{ width: '100%', borderRadius: 5, bgcolor: 'detailsModal.section' }}>
-                                            <SunMoonTime
-                                                time={`${formatTime(forecastDetails.sunrise + timezoneOffset, { hour: 'numeric', minute: 'numeric', hour12: false })}`}
-                                                title='Sun Rise'
-                                                icon={<Sunrise />}
-                                                color={"#ff9100"}
-                                            />
-                                            <SunMoonTime
-                                                time={`${formatTime(forecastDetails.sunset + timezoneOffset, { hour: 'numeric', minute: 'numeric', hour12: false })}`}
-                                                title='Sun Set'
-                                                icon={<Sunset />}
-                                                color={"#ff9100"}
-                                            />
-                                            {forecastDetails.moonrise !== 0 && forecastDetails.moonset !== 0 &&
-                                                <>
-                                                    <SunMoonTime
-                                                        time={`${formatTime(forecastDetails.moonrise + timezoneOffset, { hour: 'numeric', minute: 'numeric', hour12: false })}`}
-                                                        title='Moon Rise'
-                                                        icon={<Moonrise />}
-                                                        color={"#589ceb"}
-                                                    />
-                                                    <SunMoonTime
-                                                        time={`${formatTime(forecastDetails.moonset + timezoneOffset, { hour: 'numeric', minute: 'numeric', hour12: false })}`}
-                                                        title='Moon Set'
-                                                        icon={<Moonset />}
-                                                        color={"#589ceb"}
-                                                    />
-                                                </>
-                                            }
-                                        </List>
+                                        <Grid container sx={{ borderRadius: 5, bgcolor: 'detailsModal.section' }}>
+                                            <Grid item>
+                                                <Grid container direction={{ xs: 'column', sm: 'column' }}>
+                                                    <Grid item>
+                                                        <SunMoonTime
+                                                            time={`${formatTime(forecastDetails.sunrise + timezoneOffset, { hour: 'numeric', minute: 'numeric', hour12: false })}`}
+                                                            title='Sun Rise'
+                                                            icon={<Sunrise />}
+                                                            color={"#ff9100"}
+                                                        />
+                                                    </Grid>
+                                                    <Grid item>
+                                                        <SunMoonTime
+                                                            time={`${formatTime(forecastDetails.sunset + timezoneOffset, { hour: 'numeric', minute: 'numeric', hour12: false })}`}
+                                                            title='Sun Set'
+                                                            icon={<Sunset />}
+                                                            color={"#ff9100"}
+                                                        />
+                                                    </Grid>
+                                                </Grid>
+                                            </Grid>
+                                            <Grid item sx={{ display: { xs: 'none', sm: 'block' } }}>
+                                                {forecastDetails.moonrise !== 0 && forecastDetails.moonset !== 0 &&
+                                                    <>
+                                                        <SunMoonTime
+                                                            time={`${formatTime(forecastDetails.moonrise + timezoneOffset, { hour: 'numeric', minute: 'numeric', hour12: false })}`}
+                                                            title='Moon Rise'
+                                                            icon={<Moonrise />}
+                                                            color={"#589ceb"}
+                                                        />
+
+                                                        <SunMoonTime
+                                                            time={`${formatTime(forecastDetails.moonset + timezoneOffset, { hour: 'numeric', minute: 'numeric', hour12: false })}`}
+                                                            title='Moon Set'
+                                                            icon={<Moonset />}
+                                                            color={"#589ceb"}
+                                                        />
+                                                    </>
+                                                }
+                                            </Grid>
+                                        </Grid>
                                     </Grid>
 
                                 </Grid>
