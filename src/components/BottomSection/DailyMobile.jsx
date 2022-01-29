@@ -46,8 +46,8 @@ export default function SwipeableTemporaryDrawer({ weatherData, iconStyle, unitT
                 <Box
 
                     sx={{
-                        width: 30,
-                        height: 6,
+                        width: 35,
+                        height: 7,
                         borderRadius: 3,
                         backgroundColor: 'primary.main',
                     }} >
