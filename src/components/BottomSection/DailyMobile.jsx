@@ -4,7 +4,6 @@ import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import KeyboardArrowUpRoundedIcon from '@mui/icons-material/KeyboardArrowUpRounded'; import { useState } from 'react';
 import { Typography } from '@mui/material';
-import ListItem from '@mui/material/ListItem';
 import DailyMobileItem from './DailyMobileItem';
 import React from "react";
 import { Divider } from '@mui/material';
@@ -58,14 +57,12 @@ export default function SwipeableTemporaryDrawer({ weatherData, iconStyle, unitT
                 {weatherData &&
                     slicedForecast.map((element, index) => (
                         <React.Fragment key={element.dt}>
-                            <ListItem button sx={{ paddingX: 1, paddingY: 0, display: 'flex', justifyContent: 'space-between' }}>
-                                <DailyMobileItem
-                                    dailyWeatherInfo={element}
-                                    timezoneOffset={weatherData.timezone_offset}
-                                    iconStyle={iconStyle}
-                                    unitType={unitType}
-                                />
-                            </ListItem>
+                            <DailyMobileItem
+                                dailyWeatherInfo={element}
+                                timezoneOffset={weatherData.timezone_offset}
+                                iconStyle={iconStyle}
+                                unitType={unitType}
+                            />
                             <Divider variant="inset" component="li" />
                         </React.Fragment>
                     ))}
@@ -90,6 +87,9 @@ export default function SwipeableTemporaryDrawer({ weatherData, iconStyle, unitT
                 open={state['bottom']}
                 onClose={toggleDrawer('bottom', false)}
                 onOpen={toggleDrawer('bottom', true)}
+                ModalProps={{
+                    keepMounted: true,
+                }}
             >
                 {list('bottom')}
             </SwipeableDrawer>
