@@ -47,6 +47,5 @@ const ForecastContainer = ({ location, setLocation, countries, iconStyle, unitTy
         </>
     )
 }
-//            <Box sx={{display:{{xs:'none', sm:'block'}}}}>
 
 export default ForecastContainer;

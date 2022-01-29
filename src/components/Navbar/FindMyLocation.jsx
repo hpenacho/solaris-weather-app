@@ -16,7 +16,7 @@ const FindMyLocation = ({ setLocation, enqueueSnackbar }) => {
                         coord: { lat: response[0].lat, lon: response[0].lon }
                     }
                     setLocation(location)
-                    enqueueSnackbar((`Geo-located at ${location.name}`), { variant: 'success' })
+                    enqueueSnackbar((`Geo-located at ${location.name}`), { variant: 'info' })
                 })
         }
     }
