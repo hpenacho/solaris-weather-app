@@ -2,13 +2,14 @@ import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Button from '@mui/material/Button';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import KeyboardArrowUpRoundedIcon from '@mui/icons-material/KeyboardArrowUpRounded'; import { useState } from 'react';
 import { Typography } from '@mui/material';
+import ListItem from '@mui/material/ListItem';
+import DailyMobileItem from './DailyMobileItem';
+import React from "react";
+import { Divider } from '@mui/material';
 
-export default function SwipeableTemporaryDrawer() {
+export default function SwipeableTemporaryDrawer({ weatherData, iconStyle, unitType }) {
     const [state, setState] = useState({
         bottom: false,
     });
@@ -25,21 +26,50 @@ export default function SwipeableTemporaryDrawer() {
         setState({ ...state, [anchor]: open });
     };
 
+    let slicedForecast;
+    if (weatherData) {
+        slicedForecast = weatherData.daily
+            .slice(0, 7)
+    }
+
     const list = (anchor) => (
         <Box
+            sx={{ borderTopLeftRadius: 15 }}
             role="presentation"
             onClick={toggleDrawer(anchor, false)}
             onKeyDown={toggleDrawer(anchor, false)}
-            color='inherit'
         >
-            <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
+            <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center" height={20} backgroundColor={'secondary.main'} sx={{ borderTopLeftRadius: 15, borderTopRightRadius: 15 }}>
+                <Box
+
+                    sx={{
+                        width: 30,
+                        height: 6,
+                        borderRadius: 3,
+                        backgroundColor: 'primary.main',
+                    }} >
+
+                </Box>
+            </Box>
+            <List sx={{ paddingBottom: 0, backgroundColor: 'secondary.main' }}>
+                {weatherData &&
+                    slicedForecast.map((element, index) => (
+                        <React.Fragment key={element.dt}>
+                            <ListItem button sx={{ paddingX: 1, paddingY: 0, display: 'flex', justifyContent: 'space-between' }}>
+                                <DailyMobileItem
+                                    dailyWeatherInfo={element}
+                                    timezoneOffset={weatherData.timezone_offset}
+                                    iconStyle={iconStyle}
+                                    unitType={unitType}
+                                />
+                            </ListItem>
+                            <Divider variant="inset" component="li" />
+                        </React.Fragment>
+                    ))}
+                <Typography py={0.5} textAlign={'center'} color={'textColor.weaker'} variant='subtitle2'> Press any day to open contextual data</Typography>
             </List>
         </Box>
     );
@@ -50,11 +80,12 @@ export default function SwipeableTemporaryDrawer() {
             alignItems="center"
             height={40}
             key={'bottom'}>
-            <Button sx={{ textTransform: "none", backgroundColor: 'secondary.main', borderRadius: 3 }} color='inherit' onClick={toggleDrawer('bottom', true)}>
+            <Button sx={{ boxShadow: 3, textTransform: "none", backgroundColor: 'secondary.main', borderRadius: 3 }} color='inherit' onClick={toggleDrawer('bottom', true)}>
                 <Typography fontFamily={'Exo, sans-serif'} sx={{ fontSize: 19 }}>Open Daily Forecast</Typography>
                 <KeyboardArrowUpRoundedIcon />
             </Button>
             <SwipeableDrawer
+                PaperProps={{ elevation: 0, style: { backgroundColor: "transparent" } }}
                 anchor={'bottom'}
                 open={state['bottom']}
                 onClose={toggleDrawer('bottom', false)}

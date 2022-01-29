@@ -86,7 +86,7 @@ const WeatherDetails = forwardRef(({ forecastDetails, localTime, timezoneOffset,
                                             <>
                                                 <Grid item sx={{ display: { xs: 'none', sm: 'block' } }}>
                                                     {iconStyle === 'animated' &&
-                                                        <Icon sx={{ fontSize: 60 }}>
+                                                        <Icon sx={{ fontSize: 100 }}>
                                                             <IconStyler iconID={forecastDetails.weather[0].icon} iconStyle={iconStyle} />
                                                         </Icon>
                                                     }
@@ -112,7 +112,7 @@ const WeatherDetails = forwardRef(({ forecastDetails, localTime, timezoneOffset,
                                             <>
                                                 <Grid item>
                                                     {iconStyle === 'animated' &&
-                                                        <Icon sx={{ fontSize: 60 }}>
+                                                        <Icon sx={{ fontSize: 100 }}>
                                                             <IconStyler iconID={forecastDetails.weather[0].icon} iconStyle={iconStyle} />
                                                         </Icon>
                                                     }
@@ -138,7 +138,7 @@ const WeatherDetails = forwardRef(({ forecastDetails, localTime, timezoneOffset,
                                 </Grid>
 
                                 {localTime &&
-                                    <Grid item mt={-2.5}>
+                                    <Grid item mt={-1}>
                                         <Typography fontStyle='italic' sx={{ fontSize: { xs: 25, sm: 34 }, color: 'textColor.default' }} >
                                             {capitalize(forecastDetails.weather[0].description)}
                                         </Typography>
@@ -146,7 +146,7 @@ const WeatherDetails = forwardRef(({ forecastDetails, localTime, timezoneOffset,
                                 }
 
                                 {!localTime &&
-                                    <Grid item mt={{ xs: 1, sm: -3.2 }}>
+                                    <Grid item mt={{ xs: 1, sm: -2.1 }}>
                                         <Typography fontStyle='italic' sx={{ fontSize: { xs: 18, sm: 34 }, color: 'textColor.default' }} >
                                             {capitalize(forecastDetails.weather[0].description)}
                                         </Typography>
@@ -161,7 +161,7 @@ const WeatherDetails = forwardRef(({ forecastDetails, localTime, timezoneOffset,
                             <Grid item>
                                 <Grid container alignItems="center" justifyContent="center">
                                     <Grid item>
-                                        <Grid container sx={{ borderRadius: 5, bgcolor: 'detailsModal.section' }}>
+                                        <Grid container p={{ xs: 0, sm: 1 }} sx={{ borderRadius: 5, bgcolor: 'detailsModal.section' }}>
                                             <Grid item>
                                                 <Grid container direction={{ xs: 'column', sm: 'column' }}>
                                                     <Grid item>

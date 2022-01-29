@@ -25,7 +25,8 @@ const BottomSection = ({ weatherData, iconStyle, unitType }) => {
                     )}
                 {weatherData &&
                     <Grid item xs={1} key={weatherData.daily[6].dt} >
-                        <DailyForecast dailyWeatherInfo={weatherData.daily[6]}
+                        <DailyForecast
+                            dailyWeatherInfo={weatherData.daily[6]}
                             timezoneOffset={weatherData.timezone_offset}
                             iconStyle={iconStyle}
                             unitType={unitType} />

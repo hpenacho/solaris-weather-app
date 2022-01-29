@@ -26,7 +26,7 @@ const DailyForecast = ({ dailyWeatherInfo, timezoneOffset, iconStyle, unitType }
                     <Grid item>
                         <Typography color='textColor.default' variant="h6"> {weekDay} </Typography>
                         {iconStyle === 'animated' &&
-                            <svg width="57px" height="57px">
+                            <svg width="60px" height="60px">
                                 <IconStyler iconID={dailyWeatherInfo.weather[0].icon} iconStyle={iconStyle} />
                             </svg>
                         }
