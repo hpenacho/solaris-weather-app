@@ -3,6 +3,8 @@ import WeatherService from '../services/WeatherService'
 import InfoSection from "./InfoSection/Info"
 import MiddleSection from "./MiddleSection/HourlyForecast"
 import BottomSection from "./BottomSection/DailyForecast"
+import BottomSectionMobile from './BottomSection/DailyMobile'
+import { Box } from '@mui/material'
 
 const ForecastContainer = ({ location, setLocation, countries, iconStyle, unitType, timeframe }) => {
     const [weatherData, setWeatherData] = useState();
@@ -30,12 +32,21 @@ const ForecastContainer = ({ location, setLocation, countries, iconStyle, unitTy
                 unitType={unitType}
                 timeframe={timeframe} />
 
-            <BottomSection
-                weatherData={weatherData}
-                iconStyle={iconStyle}
-                unitType={unitType} />
+            <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+                <BottomSection
+                    weatherData={weatherData}
+                    iconStyle={iconStyle}
+                    unitType={unitType} />
+            </Box>
+            <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
+                <BottomSectionMobile
+                    weatherData={weatherData}
+                    iconStyle={iconStyle}
+                    unitType={unitType} />
+            </Box>
         </>
     )
 }
+//            <Box sx={{display:{{xs:'none', sm:'block'}}}}>
 
 export default ForecastContainer;
