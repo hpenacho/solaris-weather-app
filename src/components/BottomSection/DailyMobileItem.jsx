@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+//import { useRef } from 'react'
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import IconStyler from '../../tools/IconStyler';
@@ -6,10 +6,10 @@ import { formatTime } from '../../tools/dateFormatter';
 import { Box } from '@mui/system';
 
 const DailyMobileItem = ({ dailyWeatherInfo, timezoneOffset, iconStyle, unitType }) => {
-    const ref = useRef()
-    const handleClick = () => {
-        ref.current.handleClickOpen()
-    }
+    /* const ref = useRef()
+     const handleClick = () => {
+         ref.current.handleClickOpen()
+     } */
 
     let weekday = formatTime(dailyWeatherInfo.dt, { weekday: 'long' })
     let date = formatTime(dailyWeatherInfo.dt, { year: 'numeric', month: 'numeric', day: 'numeric' })
