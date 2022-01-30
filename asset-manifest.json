@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/solaris-weather-app/static/js/main.c6775f48.chunk.js",
-    "main.js.map": "/solaris-weather-app/static/js/main.c6775f48.chunk.js.map",
+    "main.js": "/solaris-weather-app/static/js/main.3bbaaf31.chunk.js",
+    "main.js.map": "/solaris-weather-app/static/js/main.3bbaaf31.chunk.js.map",
     "runtime-main.js": "/solaris-weather-app/static/js/runtime-main.74e7a8a5.js",
     "runtime-main.js.map": "/solaris-weather-app/static/js/runtime-main.74e7a8a5.js.map",
-    "static/js/2.b4106d60.chunk.js": "/solaris-weather-app/static/js/2.b4106d60.chunk.js",
-    "static/js/2.b4106d60.chunk.js.map": "/solaris-weather-app/static/js/2.b4106d60.chunk.js.map",
+    "static/js/2.f6d8c2fd.chunk.js": "/solaris-weather-app/static/js/2.f6d8c2fd.chunk.js",
+    "static/js/2.f6d8c2fd.chunk.js.map": "/solaris-weather-app/static/js/2.f6d8c2fd.chunk.js.map",
     "index.html": "/solaris-weather-app/index.html",
-    "static/js/2.b4106d60.chunk.js.LICENSE.txt": "/solaris-weather-app/static/js/2.b4106d60.chunk.js.LICENSE.txt",
+    "static/js/2.f6d8c2fd.chunk.js.LICENSE.txt": "/solaris-weather-app/static/js/2.f6d8c2fd.chunk.js.LICENSE.txt",
     "static/media/celsius.e8b7c190.svg": "/solaris-weather-app/static/media/celsius.e8b7c190.svg",
     "static/media/clear-day.82d493fc.svg": "/solaris-weather-app/static/media/clear-day.82d493fc.svg",
     "static/media/clear-night.a42b7aec.svg": "/solaris-weather-app/static/media/clear-night.a42b7aec.svg",
@@ -26,16 +26,16 @@
     "static/media/snow-night.f7d5b45f.svg": "/solaris-weather-app/static/media/snow-night.f7d5b45f.svg",
     "static/media/thunderstorms-day.6f8b3f90.svg": "/solaris-weather-app/static/media/thunderstorms-day.6f8b3f90.svg",
     "static/media/thunderstorms-night.e98f2dac.svg": "/solaris-weather-app/static/media/thunderstorms-night.e98f2dac.svg",
-    "static/media/wi-barometer.e33cfe92.svg": "/solaris-weather-app/static/media/wi-barometer.e33cfe92.svg",
-    "static/media/wi-humidity.2cbfd748.svg": "/solaris-weather-app/static/media/wi-humidity.2cbfd748.svg",
-    "static/media/wi-moonrise.f6451abc.svg": "/solaris-weather-app/static/media/wi-moonrise.f6451abc.svg",
-    "static/media/wi-moonset.794162a5.svg": "/solaris-weather-app/static/media/wi-moonset.794162a5.svg",
-    "static/media/wi-sunrise.c720074e.svg": "/solaris-weather-app/static/media/wi-sunrise.c720074e.svg",
-    "static/media/wi-sunset.9741a09e.svg": "/solaris-weather-app/static/media/wi-sunset.9741a09e.svg"
+    "static/media/wi-barometer.e9c43f10.svg": "/solaris-weather-app/static/media/wi-barometer.e9c43f10.svg",
+    "static/media/wi-humidity.4810ceff.svg": "/solaris-weather-app/static/media/wi-humidity.4810ceff.svg",
+    "static/media/wi-moonrise.58ac37eb.svg": "/solaris-weather-app/static/media/wi-moonrise.58ac37eb.svg",
+    "static/media/wi-moonset.5e90520c.svg": "/solaris-weather-app/static/media/wi-moonset.5e90520c.svg",
+    "static/media/wi-sunrise.9695a6b5.svg": "/solaris-weather-app/static/media/wi-sunrise.9695a6b5.svg",
+    "static/media/wi-sunset.44275c39.svg": "/solaris-weather-app/static/media/wi-sunset.44275c39.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.74e7a8a5.js",
-    "static/js/2.b4106d60.chunk.js",
-    "static/js/main.c6775f48.chunk.js"
+    "static/js/2.f6d8c2fd.chunk.js",
+    "static/js/main.3bbaaf31.chunk.js"
   ]
 }
