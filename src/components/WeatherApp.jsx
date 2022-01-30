@@ -4,15 +4,26 @@ import Box from '@mui/material/Box'
 import { Container } from '@mui/material'
 import NavBarSection from './Navbar/NavBarSection'
 import ForecastContainer from './ForecastContainer'
+import { useEffect } from 'react'
 
 const WeatherApp = () => {
 
     const cities = InitService.initializeCities()
     const countries = InitService.initializeCountries()
     const [location, setLocation] = useState(cities.find(city => city.name === 'Lisbon'))
-    const [unitType, setUnitType] = useState("celsius")
-    const [iconStyle, setIconStyle] = useState("static")
-    const [timeframe, setTimeframe] = useState(3)
+    const [unitType, setUnitType] = useState('')
+    const [iconStyle, setIconStyle] = useState('')
+    const [timeframe, setTimeframe] = useState('')
+
+    useEffect(() => {
+        const unitTypeUserPref = window.localStorage.getItem('unitType')
+        const iconStyleUserPref = window.localStorage.getItem('iconStyle')
+        const timeframeUserPref = window.localStorage.getItem('timeframe')
+
+        unitTypeUserPref ? setUnitType(unitTypeUserPref) : setUnitType('celcius')
+        iconStyleUserPref ? setIconStyle(iconStyleUserPref) : setIconStyle('static')
+        timeframeUserPref ? setTimeframe(Number(timeframeUserPref)) : setTimeframe(3)
+    }, [])
 
     return (
         < Container maxWidth="lg" >

@@ -9,6 +9,7 @@ const TimeframeForecast = ({ timeframe, setTimeframe }) => {
     const handleUnit = (event, chosenUnit) => {
         if (chosenUnit !== null) {
             setTimeframe(chosenUnit)
+            window.localStorage.setItem('timeframe', chosenUnit)
         }
     };
 

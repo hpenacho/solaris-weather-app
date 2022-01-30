@@ -11,6 +11,7 @@ const TemperatureSwitch = ({ unitType, setUnitType }) => {
     const handleUnit = (event, chosenUnit) => {
         if (chosenUnit !== null) {
             setUnitType(chosenUnit)
+            window.localStorage.setItem('unitType', chosenUnit)
         }
     };
 

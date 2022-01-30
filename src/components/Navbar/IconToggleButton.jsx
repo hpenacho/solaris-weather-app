@@ -7,6 +7,7 @@ const IconToggleButton = ({ iconStyle, setIconStyle }) => {
 
     const toggleStyle = () => {
         setIconStyle((iconStyle) => (iconStyle === 'static' ? 'animated' : 'static'));
+        window.localStorage.setItem('iconStyle', iconStyle === 'static' ? 'animated' : 'static')
     };
 
     return (

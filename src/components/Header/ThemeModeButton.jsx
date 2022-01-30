@@ -9,6 +9,7 @@ const ThemeModeButton = ({ theme, setTheme }) => {
 
     const toggleTheme = () => {
         setTheme((prevTheme) => (prevTheme.palette.mode === 'dark' ? lightTheme : darkTheme));
+        window.localStorage.setItem('theme', theme.palette.mode === 'dark' ? 'light' : 'dark')
     }
 
     return (
