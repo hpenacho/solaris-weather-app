@@ -20,7 +20,7 @@ const WeatherApp = () => {
         const iconStyleUserPref = window.localStorage.getItem('iconStyle')
         const timeframeUserPref = window.localStorage.getItem('timeframe')
 
-        unitTypeUserPref ? setUnitType(unitTypeUserPref) : setUnitType('celcius')
+        unitTypeUserPref ? setUnitType(unitTypeUserPref) : setUnitType('celsius')
         iconStyleUserPref ? setIconStyle(iconStyleUserPref) : setIconStyle('static')
         timeframeUserPref ? setTimeframe(Number(timeframeUserPref)) : setTimeframe(3)
     }, [])
