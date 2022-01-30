@@ -13,7 +13,7 @@ const AboutMe = {
         <Grid container px={1}>
             <Grid container justifyContent='center'>
                 <center>
-                    <DialogContentText mb={1.6} color='inherit' variant='h6' id="aboutme-intro">
+                    <DialogContentText fontFamily={'Exo, sans-serif'} mb={1.6} color='inherit' variant='h6' id="aboutme-intro">
                         Hi, my name is Hugo and I'm a fullstack web developer! <br />
                     </DialogContentText>
                 </center>

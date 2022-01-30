@@ -33,7 +33,7 @@ const Info = ({ location, countries, weatherData }) => {
                 <>
                     <Grid container direction='row' pt={1} justifyContent={"space-between"} alignItems='center'>
                         <Grid item xs={8}>
-                            <Typography letterSpacing={2} fontSize={{ xs: 21, sm: 30 }} variant={"h4"} color='textColor.default'> <b> {capitalize(weatherData.current.weather[0].description)} </b></Typography>
+                            <Typography letterSpacing={2} fontSize={{ xs: 21, sm: 30 }} fontFamily={'Exo, sans-serif'} color='textColor.default'> <b> {capitalize(weatherData.current.weather[0].description)} </b></Typography>
                         </Grid>
                         <Grid item>
                             <Box p={0.5} backgroundColor='primary.main' borderRadius={9}>
@@ -65,8 +65,8 @@ const Info = ({ location, countries, weatherData }) => {
                     <Grid container alignItems="center" justifyContent="flex-start">
                         <Grid item >
                             <Grid container direction="row" alignItems="center">
-                                <Typography fontSize={{ xs: 18, sm: 28 }}> {location.name},</Typography>
-                                <Typography fontSize={{ xs: 18, sm: 28 }} mr={1} sx={{ color: 'textColor.subdued' }}>{country.label} </Typography>
+                                <Typography fontFamily={'Exo, sans-serif'} fontSize={{ xs: 18, sm: 28 }}> {location.name},</Typography>
+                                <Typography fontFamily={'Exo, sans-serif'} fontSize={{ xs: 18, sm: 28 }} mr={1} sx={{ color: 'textColor.subdued' }}>{country.label} </Typography>
                                 <img loading="lazy" width="30" alt="flag"
                                     src={`https://flagcdn.com/${location.country.toLowerCase()}.svg`}
                                 />

@@ -8,7 +8,7 @@ import EmailIcon from '@mui/icons-material/Email';
 
 const FooterSection = () => {
     return (
-        <Paper elevation={0} sx={{ marginTop: 4, padding: 1 }}>
+        <Paper elevation={0} sx={{ borderRadius: 0, marginTop: 4, padding: 1 }}>
             <Stack direction='row' justifyContent='center' spacing={4}>
                 <IconButton disabled href='https://hugopenacho.com'>
                     <PublicTwoToneIcon fontSize='large' />

@@ -139,7 +139,7 @@ const WeatherDetails = forwardRef(({ forecastDetails, localTime, timezoneOffset,
 
                                 {localTime &&
                                     <Grid item mt={-1}>
-                                        <Typography fontStyle='italic' sx={{ fontSize: { xs: 25, sm: 34 }, color: 'textColor.default' }} >
+                                        <Typography fontFamily={'Exo, sans-serif'} fontStyle='italic' sx={{ fontSize: { xs: 25, sm: 34 }, color: 'textColor.default' }} >
                                             {capitalize(forecastDetails.weather[0].description)}
                                         </Typography>
                                     </Grid>
@@ -147,7 +147,7 @@ const WeatherDetails = forwardRef(({ forecastDetails, localTime, timezoneOffset,
 
                                 {!localTime &&
                                     <Grid item mt={{ xs: 1, sm: -2.1 }}>
-                                        <Typography fontStyle='italic' sx={{ fontSize: { xs: 18, sm: 34 }, color: 'textColor.default' }} >
+                                        <Typography fontFamily={'Exo, sans-serif'} fontStyle='italic' sx={{ fontSize: { xs: 18, sm: 34 }, color: 'textColor.default' }} >
                                             {capitalize(forecastDetails.weather[0].description)}
                                         </Typography>
                                     </Grid>

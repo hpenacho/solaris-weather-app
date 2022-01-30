@@ -6,7 +6,7 @@ import { formatTime } from '../../tools/dateFormatter';
 import { Box } from '@mui/system';
 import WeatherDetails from '../WeatherDetailsSection/WeatherDetails';
 import ListItem from '@mui/material/ListItem';
-
+import unitTypeSwitcher from '../../tools/unitTypeSwitcher';
 
 const DailyMobileItem = ({ dailyWeatherInfo, timezoneOffset, iconStyle, unitType }) => {
     const ref = useRef()
@@ -16,6 +16,9 @@ const DailyMobileItem = ({ dailyWeatherInfo, timezoneOffset, iconStyle, unitType
 
     let weekday = formatTime(dailyWeatherInfo.dt, { weekday: 'long' })
     let date = formatTime(dailyWeatherInfo.dt, { year: 'numeric', month: 'numeric', day: 'numeric' })
+    let maxTemp = Math.round(unitTypeSwitcher(dailyWeatherInfo.temp.max, unitType))
+    let minTemp = Math.round(unitTypeSwitcher(dailyWeatherInfo.temp.min, unitType))
+
     return (
         <>
             <ListItem button onClick={handleClick} sx={{ paddingX: 1, paddingY: 0, display: 'flex', justifyContent: 'space-between' }}>
@@ -32,8 +35,8 @@ const DailyMobileItem = ({ dailyWeatherInfo, timezoneOffset, iconStyle, unitType
                 <ListItemText sx={{ marginLeft: 1 }} primary={weekday} secondary={date} primaryTypographyProps={{ letterSpacing: 1.2, fontSize: 19 }} />
 
                 <Box sx={{ textAlign: 'right' }}>
-                    <ListItemText primary={'18°'} primaryTypographyProps={{ fontWeight: 'bold', color: '#F15421', fontSize: 16 }} />
-                    <ListItemText primary={'4°'} primaryTypographyProps={{ fontWeight: 'bold', color: '#589ceb', fontSize: 15 }} />
+                    <ListItemText primary={`${maxTemp}°`} primaryTypographyProps={{ fontWeight: 'bold', color: '#F15421', fontSize: 16 }} />
+                    <ListItemText primary={`${minTemp}°`} primaryTypographyProps={{ fontWeight: 'bold', color: '#589ceb', fontSize: 15 }} />
                 </Box>
             </ListItem>
             <WeatherDetails forecastDetails={dailyWeatherInfo} timezoneOffset={timezoneOffset} iconStyle={iconStyle} unitType={unitType} ref={ref} />
