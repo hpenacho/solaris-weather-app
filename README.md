@@ -2,9 +2,9 @@
 
 <p align="center">
   <a href="#key-features">Key Features</a> •
-  <a href="#Resources-/-Libraries-used">How To Use</a> •
-  <a href="#how-to-use">Resources / Libraries Used</a> •
-  <a href="#You-may-also-like">You may also like</a> •
+  <a href="#resources-&-libraries-used">Resources & Libraries Used</a> •
+  <a href="#how-to-use">How to use</a> •
+  <a href="#you-may-also-like">You may also like</a> •
   <a href="#license">License</a>
 </p>
 
@@ -12,10 +12,10 @@
     <img src="/src/assets/readMeFiles/overview.apng">
 </p>
 
-<h5> This project was conceived and developed with the intention of enhancing my portfolio and putting into practice everything I've learned during University of Helsinki's FullStackOpen course. 
+><h5> This project was conceived and developed with the intention of enhancing my portfolio and putting into practice everything I've learned during University of Helsinki's FullStackOpen course. 
   </h5>
   
-  You can find the live version [here](https://hpenacho.github.io/solaris-weather-app/).
+  <p align="center"> You can find the live version  <a href="https://hpenacho.github.io/solaris-weather-app/">here</a>. </p>
 
 ## Key Features
 
@@ -41,7 +41,7 @@
 * High responsiveness
   - Special care was taken to ensure a pleasant experience on smaller viewports, with certain components being exclusive to this scenario, such as an extensible drawer list, collapsible settings cogwheel, etc.
 
-## Resources / Libraries used
+## Resources & Libraries used
 
 * This project makes use of the following:
 
@@ -60,7 +60,8 @@ Use npm to install all the dependancies:
 npm install
 ```
 
-Grab a free API key from [Open Weather](https://openweathermap.org/) and place it at the root of your directory.
+Grab a free API key from [Open Weather](https://openweathermap.org/) and paste it on a .env at the root of your directory, like so:
+![screenshot](https://user-images.githubusercontent.com/68301369/151849394-5f512b76-62ba-4083-956c-16d1fcab2263.png)
 
 ```bash
 npm start
