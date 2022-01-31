@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="#key-features">Key Features</a> •
-  <a href="#resources-&-libraries-used">Resources & Libraries Used</a> •
+  <a href="#resources-and-libraries-used">Resources & Libraries Used</a> •
   <a href="#how-to-use">How to use</a> •
   <a href="#you-may-also-like">You may also like</a> •
   <a href="#license">License</a>
@@ -43,7 +43,7 @@ ____
 * [x] High responsiveness
   - Special care was taken to ensure a pleasant experience on smaller viewports, with certain components being exclusive to this scenario, such as an extensible drawer list, collapsible settings cogwheel, etc.
 
-## Resources & Libraries used
+## Resources and Libraries used
 
 * This project makes use of the following:
 
