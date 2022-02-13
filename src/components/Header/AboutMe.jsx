@@ -14,7 +14,7 @@ const AboutMe = {
             <Grid container justifyContent='center'>
                 <center>
                     <DialogContentText fontFamily={'Exo, sans-serif'} mb={1.6} color='inherit' variant='h6' id="aboutme-intro">
-                        Hi, my name is Hugo and I'm a fullstack web developer! <br />
+                        Hi, my name is Hugo and I'm a Front-End web developer! <br />
                     </DialogContentText>
                 </center>
             </Grid>
@@ -50,7 +50,7 @@ const AboutMe = {
                 <b>Further Learning</b>
                 <Divider />
                 <DialogContentText mb={1.5} variant='body2' id="aboutme-furtherlearning">
-                    I came to understand that in order to stay relevant in this industry, one must be a student for life. <br />
+                    I came to understand that in order to stay relevant in this industry, one must remain a student for life. <br />
                     I took it upon myself to finish a <Link fontWeight='bold' color="inherit" rel="noopener" target="_blank" href="https://fullstackopen.com/en/">M.E.R.N. Stack MOOC</Link> accredited by the University of Helsinki, after work hours. <br />
                     Soon after, I felt the need to put my recently acquired knowledge to the test, and that's how this project came to be!
                 </DialogContentText>
