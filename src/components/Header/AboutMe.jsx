@@ -14,7 +14,7 @@ const AboutMe = {
             <Grid container justifyContent='center'>
                 <center>
                     <DialogContentText fontFamily={'Exo, sans-serif'} mb={1.6} color='inherit' variant='h6' id="aboutme-intro">
-                        Hi, my name is Hugo and I'm a Front-End web developer! <br />
+                        Hi, my name is Hugo and I'm a Fullstack Web Developer! <br />
                     </DialogContentText>
                 </center>
             </Grid>
