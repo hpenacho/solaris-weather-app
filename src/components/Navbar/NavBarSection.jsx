@@ -6,10 +6,8 @@ import { Grid } from '@mui/material'
 import IconToggleButton from './IconToggleButton'
 import SettingsMenu from './SettingsMenu'
 import FindMyLocation from './FindMyLocation'
-import { useSnackbar } from 'notistack';
 
 const NavBarSection = ({ setLocation, cities, countries, unitType, iconStyle, setIconStyle, setUnitType, timeframe, setTimeframe }) => {
-    const { enqueueSnackbar } = useSnackbar();
 
     return (
         <Box py={1} px={{ xs: 2, md: 5 }}>
@@ -26,7 +24,7 @@ const NavBarSection = ({ setLocation, cities, countries, unitType, iconStyle, se
                             borderRadius: 8, backgroundColor: 'secondary.main', py: 0.9, my: 0.6, display: 'flex', alignItems: 'center'
                         }}
                     >
-                        <FindMyLocation setLocation={setLocation} enqueueSnackbar={enqueueSnackbar} />
+                        <FindMyLocation setLocation={setLocation} />
                         <SearchLocation
                             setLocation={setLocation}
                             cities={cities}

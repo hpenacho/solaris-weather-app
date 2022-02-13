@@ -40,7 +40,6 @@ const WeatherApp = () => {
                     setTimeframe={setTimeframe} />
                 <ForecastContainer
                     location={location}
-                    setLocation={setLocation}
                     countries={countries}
                     iconStyle={iconStyle}
                     unitType={unitType}

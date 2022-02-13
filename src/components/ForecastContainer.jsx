@@ -1,28 +1,17 @@
-import { useState, useEffect } from 'react'
-import WeatherService from '../services/WeatherService'
 import InfoSection from "./InfoSection/Info"
 import MiddleSection from "./MiddleSection/HourlyForecast"
 import BottomSection from "./BottomSection/DailyForecast"
 import BottomSectionMobile from './BottomSection/DailyMobile'
 import { Box } from '@mui/material'
+import useFetchWeather from '../hooks/useFetchWeather'
 
-const ForecastContainer = ({ location, setLocation, countries, iconStyle, unitType, timeframe }) => {
-    const [weatherData, setWeatherData] = useState();
-
-    useEffect(() => {
-        if (location) {
-            WeatherService.fetchWeather(location.coord.lat, location.coord.lon)
-                .then(response => {
-                    setWeatherData(response)
-                })
-        }
-    }, [location])
+const ForecastContainer = ({ location, countries, iconStyle, unitType, timeframe }) => {
+    const weatherData = useFetchWeather(location)
 
     return (
         <>
             <InfoSection
                 location={location}
-                setLocation={setLocation}
                 countries={countries}
                 weatherData={weatherData} />
 

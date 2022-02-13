@@ -1,4 +1,6 @@
 import axios from 'axios'
+import { useState, useEffect } from 'react';
+
 const baseUrl = 'https://api.openweathermap.org/data/2.5/'
 
 const fetchWeather = async (latitude, longitude, language) => {
@@ -11,26 +13,22 @@ const fetchWeather = async (latitude, longitude, language) => {
             lang: language,
             APPID: process.env.REACT_APP_API_KEY
         }
-    }
-
-    );
-    return data
-}
-
-const geoDecode = async (latitude, longitude) => {
-    const { data } = await axios.get("https://api.openweathermap.org/geo/1.0/reverse?", {
-        params: {
-            lat: latitude,
-            lon: longitude,
-            limit: 5,
-            APPID: process.env.REACT_APP_API_KEY
-        }
     });
-
     return data
 }
 
-export default {
-    fetchWeather: fetchWeather,
-    geoDecode: geoDecode
+const useFetchWeather = (location) => {
+    const [weatherData, setWeatherData] = useState();
+    useEffect(() => {
+        if (location) {
+            fetchWeather(location.coord.lat, location.coord.lon)
+                .then(response => {
+                    setWeatherData(response)
+                })
+        }
+    }, [location])
+
+    return (weatherData)
 }
+
+export default useFetchWeather;

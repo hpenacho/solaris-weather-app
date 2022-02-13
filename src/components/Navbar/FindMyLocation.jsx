@@ -1,14 +1,16 @@
 import MyLocationSharpIcon from '@mui/icons-material/MyLocationSharp';
 import IconButton from '@mui/material/IconButton';
-import WeatherService from '../../services/WeatherService'
+import geoDecode from '../../services/GeoDecodeService'
 import { Tooltip } from '@mui/material';
 import Zoom from '@mui/material/Zoom';
+import { useSnackbar } from 'notistack';
 
-const FindMyLocation = ({ setLocation, enqueueSnackbar }) => {
+const FindMyLocation = ({ setLocation }) => {
+    const { enqueueSnackbar } = useSnackbar();
 
     const successCallback = (position) => {
         if (position) {
-            WeatherService.geoDecode(position.coords.latitude, position.coords.longitude)
+            geoDecode(position.coords.latitude, position.coords.longitude)
                 .then(response => {
                     let location = {
                         name: response[0].name,
