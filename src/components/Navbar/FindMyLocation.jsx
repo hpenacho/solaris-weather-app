@@ -24,7 +24,6 @@ const FindMyLocation = ({ setLocation }) => {
     }
 
     const errorCallback = (error) => {
-        console.error(error)
         enqueueSnackbar((`${error.message}`), { variant: 'error' })
     }
 
