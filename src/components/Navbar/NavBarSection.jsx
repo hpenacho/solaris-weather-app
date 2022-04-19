@@ -6,6 +6,7 @@ import { Grid } from '@mui/material'
 import IconToggleButton from './IconToggleButton'
 import SettingsMenu from './SettingsMenu'
 import FindMyLocation from './FindMyLocation'
+import FavoriteLocations from './FavoriteLocations'
 
 const NavBarSection = ({ setLocation, cities, countries, unitType, iconStyle, setIconStyle, setUnitType, timeframe, setTimeframe }) => {
 
@@ -29,6 +30,9 @@ const NavBarSection = ({ setLocation, cities, countries, unitType, iconStyle, se
                             setLocation={setLocation}
                             cities={cities}
                             countries={countries} />
+                        <Grid item>
+                            <FavoriteLocations />
+                        </Grid>
                         <Grid item sx={{ display: { xs: 'block', md: 'none' } }}>
                             <SettingsMenu
                                 iconStyle={iconStyle}
