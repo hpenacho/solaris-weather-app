@@ -20,7 +20,6 @@ const options = [
     'Triton',
     'Umbriel',
 ];
-const ITEM_HEIGHT = 48;
 
 const FavoriteLocations = () => {
 
@@ -64,7 +63,7 @@ const FavoriteLocations = () => {
                 onClose={handleClose}
                 PaperProps={{
                     style: {
-                        maxHeight: ITEM_HEIGHT * 4.5,
+                        maxHeight: 216,
                         width: '20ch',
                     },
                 }}
