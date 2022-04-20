@@ -20,7 +20,7 @@ const NavBarSection = ({ setLocation, cities, countries, unitType, iconStyle, se
 
 
                 <Grid item >
-                    <Box width={{ xs: 310, sm: 330, md: 305 }}
+                    <Box width={{ xs: 325, sm: 330 }}
                         sx={{
                             borderRadius: 8, backgroundColor: 'secondary.main', py: 0.9, my: 0.6, display: 'flex', alignItems: 'center'
                         }}

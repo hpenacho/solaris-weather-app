@@ -42,6 +42,7 @@ const FavoriteLocations = () => {
                 aria-expanded={open ? 'true' : undefined}
                 aria-haspopup="true"
                 onClick={handleClick}
+                disabled
             >
                 <BookmarksIcon />
             </IconButton>

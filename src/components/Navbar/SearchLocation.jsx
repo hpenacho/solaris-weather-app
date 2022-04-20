@@ -7,7 +7,7 @@ import { createFilterOptions } from '@mui/material/Autocomplete';
 import { Typography } from '@mui/material';
 import { Stack } from '@mui/material';
 
-export default function Grouped({ setLocation, cities, countries }) {
+export default function SearchLocation({ setLocation, cities, countries }) {
     const [open, setOpen] = useState(false)
     const [inputValue, setInputValue] = useState('');
     const { enqueueSnackbar } = useSnackbar();
@@ -73,7 +73,7 @@ export default function Grouped({ setLocation, cities, countries }) {
                     )
                 }}
                 renderInput={(params) =>
-                    <TextField {...params} sx={{ width: { xs: 215, sm: 235 } }} variant='outlined' label="Search..." />
+                    <TextField {...params} sx={{ width: { xs: 197, sm: 235 } }} variant='outlined' label="Search..." />
                 }
             />
         </>

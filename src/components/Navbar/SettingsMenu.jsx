@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Button from '@mui/material/Button';
+import { IconButton } from '@mui/material';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -21,8 +21,8 @@ const SettingsMenu = ({ iconStyle, setIconStyle, timeframe, setTimeframe, unitTy
 
     return (
         <>
-            <Box ml={-1.2}>
-                <Button
+            <Box>
+                <IconButton
                     id="settings-button"
                     aria-controls={open ? 'settings-menu' : undefined}
                     aria-haspopup="true"
@@ -31,7 +31,7 @@ const SettingsMenu = ({ iconStyle, setIconStyle, timeframe, setTimeframe, unitTy
                     color='inherit'
                 >
                     <SettingsIcon />
-                </Button>
+                </IconButton>
             </Box>
             <Menu
                 id="settings-menu"
