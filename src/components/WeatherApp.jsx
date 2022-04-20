@@ -4,7 +4,7 @@ import Box from '@mui/material/Box'
 import { Container } from '@mui/material'
 import NavBarSection from './Navbar/NavBarSection'
 import ForecastContainer from './ForecastContainer'
-import { useEffect } from 'react'
+import useSettings from '../hooks/useSettings'
 
 const WeatherApp = () => {
 
@@ -15,19 +15,12 @@ const WeatherApp = () => {
     const [iconStyle, setIconStyle] = useState('')
     const [timeframe, setTimeframe] = useState('')
 
-    useEffect(() => {
-        const unitTypeUserPref = window.localStorage.getItem('unitType')
-        const iconStyleUserPref = window.localStorage.getItem('iconStyle')
-        const timeframeUserPref = window.localStorage.getItem('timeframe')
-
-        unitTypeUserPref ? setUnitType(unitTypeUserPref) : setUnitType('celsius')
-        iconStyleUserPref ? setIconStyle(iconStyleUserPref) : setIconStyle('static')
-        timeframeUserPref ? setTimeframe(Number(timeframeUserPref)) : setTimeframe(3)
-    }, [])
+    useSettings(setUnitType, setIconStyle, setTimeframe);
 
     return (
         < Container maxWidth="lg" >
             <Box sx={{ boxShadow: 8, borderRadius: 7, backgroundColor: "primary.main" }}>
+
                 <NavBarSection
                     setLocation={setLocation}
                     cities={cities}
@@ -38,6 +31,7 @@ const WeatherApp = () => {
                     setIconStyle={setIconStyle}
                     timeframe={timeframe}
                     setTimeframe={setTimeframe} />
+
                 <ForecastContainer
                     location={location}
                     countries={countries}
