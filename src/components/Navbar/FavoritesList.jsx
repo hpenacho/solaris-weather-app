@@ -5,6 +5,11 @@ import MenuItem from '@mui/material/MenuItem';
 import BookmarksIcon from '@mui/icons-material/Bookmarks';
 import { useSnackbar } from 'notistack';
 import { Typography } from '@mui/material';
+import Tooltip from '@mui/material/Tooltip';
+import Zoom from '@mui/material/Zoom';
+import { Stack } from '@mui/material';
+import FavoritedIcon from '@mui/icons-material/Star';
+import Badge from '@mui/material/Badge';
 
 const FavoritesList = ({ favoriteLocations, setFavoriteLocations, setLocation }) => {
     const { enqueueSnackbar } = useSnackbar();
@@ -26,16 +31,24 @@ const FavoritesList = ({ favoriteLocations, setFavoriteLocations, setLocation })
 
     return (
         <div>
-            <IconButton
-                aria-label="more"
-                id="long-button"
-                aria-controls={open ? 'long-menu' : undefined}
-                aria-expanded={open ? 'true' : undefined}
-                aria-haspopup="true"
-                onClick={handleClick}
-            >
-                <BookmarksIcon />
-            </IconButton>
+            <Tooltip
+                TransitionComponent={Zoom}
+                title={'Quick access to your favorite locations!'}
+                placement="bottom">
+                <IconButton
+                    aria-label="more"
+                    id="long-button"
+                    aria-controls={open ? 'long-menu' : undefined}
+                    aria-expanded={open ? 'true' : undefined}
+                    aria-haspopup="true"
+                    onClick={handleClick}
+                    sx={{ marginX: 0.40 }}
+                >
+                    <Badge badgeContent={favoriteLocations.length} color='warning'>
+                        <BookmarksIcon />
+                    </Badge>
+                </IconButton>
+            </Tooltip>
             <Menu
                 id="long-menu"
                 MenuListProps={{
@@ -59,18 +72,29 @@ const FavoritesList = ({ favoriteLocations, setFavoriteLocations, setLocation })
                     },
                 }}
             >
-                {favoriteLocations.map((option) => (
 
-                    <MenuItem dense sx={{ display: 'flex', justifyContent: 'space-between' }} key={option.id} onClick={() => handleMenuItemClick(option)}>
-                        <Typography variant="inherit" noWrap pr={1.5}>
-                            {option.name}
-                        </Typography>
-                        <Typography width={'25px'} color='textColor.weaker'>
-                            {option.country}
-                        </Typography>
-                    </MenuItem>
+                {favoriteLocations.length < 1 ?
+                    <Stack alignItems={'center'} px={2} py={1}>
+                        <Typography color='textColor.weaker'> Your favorited locations will appear here.</Typography>
+                        <Stack direction='row' spacing={1}>
+                            <Typography alignItems='center' textAlign='center' color='textColor.weaker'> Add some! </Typography>
+                            <FavoritedIcon color='warning' />
+                        </Stack>
+                    </Stack>
+                    :
+                    favoriteLocations.map((option) => (
 
-                ))}
+                        <MenuItem dense sx={{ display: 'flex', justifyContent: 'space-between' }} key={option.id} onClick={() => handleMenuItemClick(option)}>
+                            <Typography variant="inherit" noWrap pr={1.5}>
+                                {option.name}
+                            </Typography>
+                            <Typography width={'25px'} color='textColor.weaker'>
+                                {option.country}
+                            </Typography>
+                        </MenuItem>
+
+                    ))
+                }
             </Menu>
         </div>
     );
