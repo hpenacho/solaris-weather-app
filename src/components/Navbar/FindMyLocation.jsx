@@ -12,6 +12,8 @@ const FindMyLocation = ({ setLocation, cities }) => {
     const successCallback = (position) => {
 
         if (position) {
+            enqueueSnackbar((position.coords.latitude), { variant: 'info' })
+
             geoDecode(position.coords.latitude, position.coords.longitude)
                 .then(response => {
                     let location = {
