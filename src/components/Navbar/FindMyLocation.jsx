@@ -12,10 +12,11 @@ const FindMyLocation = ({ setLocation, cities }) => {
     const successCallback = (position) => {
 
         if (position) {
-            enqueueSnackbar((position.coords.latitude), { variant: 'info' })
 
             geoDecode(position.coords.latitude, position.coords.longitude)
                 .then(response => {
+                    enqueueSnackbar((`${position.coords.latitude} test BEFORE`), { variant: 'info' })
+
                     let location = {
                         name: response[0].name,
                         country: response[0].country,
@@ -33,6 +34,7 @@ const FindMyLocation = ({ setLocation, cities }) => {
                             city.coord.lon.toFixed(1) === response[0].lon.toFixed(1)
                         ).id
                     }
+                    enqueueSnackbar((`${location.id} test after`), { variant: 'warning' })
                     setLocation(location)
                     enqueueSnackbar((`Geo-located at ${location.name}`), { variant: 'info' })
                 })
