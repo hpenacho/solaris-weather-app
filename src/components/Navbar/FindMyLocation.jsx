@@ -4,22 +4,35 @@ import geoDecode from '../../services/GeoDecodeService'
 import { Tooltip } from '@mui/material';
 import Zoom from '@mui/material/Zoom';
 import { useSnackbar } from 'notistack';
+import deburr from 'lodash.deburr';
 
-const FindMyLocation = ({ setLocation }) => {
+const FindMyLocation = ({ setLocation, cities }) => {
     const { enqueueSnackbar } = useSnackbar();
 
-    const successCallback = (position) => {
+    const successCallback = async (position) => {
         if (position) {
-            geoDecode(position.coords.latitude, position.coords.longitude)
-                .then(response => {
-                    let location = {
-                        name: response[0].name,
-                        country: response[0].country,
-                        coord: { lat: response[0].lat, lon: response[0].lon }
-                    }
-                    setLocation(location)
-                    enqueueSnackbar((`Geo-located at ${location.name}`), { variant: 'info' })
-                })
+
+            const response = await geoDecode(position.coords.latitude, position.coords.longitude)
+
+            let location = {
+                name: response[0].name,
+                country: response[0].country,
+                coord: {
+                    lat: response[0].lat,
+                    lon: response[0].lon
+                },
+                id: cities.find(city =>
+                    city.name.toLowerCase() === deburr(response[0].name).toLowerCase()
+                    &&
+                    city.country === response[0].country
+                    &&
+                    city.coord.lat.toFixed(1) === response[0].lat.toFixed(1)
+                    &&
+                    city.coord.lon.toFixed(1) === response[0].lon.toFixed(1)
+                ).id
+            }
+            setLocation(location)
+            enqueueSnackbar((`Geo-located at ${location.name}`), { variant: 'info' })
         }
     }
 

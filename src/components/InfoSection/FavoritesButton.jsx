@@ -17,6 +17,11 @@ const FavoritesButton = ({ location, favoriteLocations, setFavoriteLocations }) 
     const handleClick = () => {
         let alteredFavorites;
 
+        if (!location.id) {
+            enqueueSnackbar((`This particular location is missing an id, find it through the search bar and click favorite from there.`), { variant: 'error' })
+            return;
+        }
+
         function removeFavorite() {
             alteredFavorites = favoriteLocations.filter(x => x.id !== location.id)
             enqueueSnackbar((`${location.name} removed from favorites.`), { variant: 'default' })

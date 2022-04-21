@@ -25,7 +25,7 @@ const NavBarSection = ({ setLocation, cities, countries, unitType, iconStyle, se
                             borderRadius: 8, backgroundColor: 'secondary.main', py: 0.9, my: 0.6, display: 'flex', alignItems: 'center'
                         }}
                     >
-                        <FindMyLocation setLocation={setLocation} />
+                        <FindMyLocation setLocation={setLocation} cities={cities} />
                         <SearchLocation
                             setLocation={setLocation}
                             cities={cities}

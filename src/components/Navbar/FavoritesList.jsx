@@ -84,7 +84,7 @@ const FavoritesList = ({ favoriteLocations, setFavoriteLocations, setLocation })
                     :
                     <Stack direction={'column-reverse'}>
                         {favoriteLocations.map((option) => (
-                            <MenuItem dense sx={{ display: 'flex', justifyContent: 'space-between' }} key={option.id} onClick={() => handleMenuItemClick(option)}>
+                            <MenuItem sx={{ display: 'flex', justifyContent: 'space-between' }} key={option.id} onClick={() => handleMenuItemClick(option)}>
                                 <Typography variant="inherit" noWrap pr={1.5}>
                                     {option.name}
                                 </Typography>
