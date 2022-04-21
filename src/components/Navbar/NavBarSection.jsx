@@ -34,6 +34,7 @@ const NavBarSection = ({ setLocation, cities, countries, unitType, iconStyle, se
                             <FavoritesList
                                 favoriteLocations={favoriteLocations}
                                 setFavoriteLocations={setFavoriteLocations}
+                                setLocation={setLocation}
                             />
                         </Grid>
                         <Grid item sx={{ display: { xs: 'block', md: 'none' } }}>

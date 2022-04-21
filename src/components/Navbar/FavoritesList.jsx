@@ -3,25 +3,11 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import BookmarksIcon from '@mui/icons-material/Bookmarks';
+import { useSnackbar } from 'notistack';
+import { Typography } from '@mui/material';
 
-const options = [
-    'None',
-    'Atria',
-    'Callisto',
-    'Dione',
-    'Ganymede',
-    'Hangouts Call',
-    'Luna',
-    'Oberon',
-    'Phobos',
-    'Pyxis',
-    'Sedna',
-    'Titania',
-    'Triton',
-    'Umbriel',
-];
-
-const FavoritesList = ({ favoriteLocations, setFavoriteLocations }) => {
+const FavoritesList = ({ favoriteLocations, setFavoriteLocations, setLocation }) => {
+    const { enqueueSnackbar } = useSnackbar();
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -29,6 +15,12 @@ const FavoritesList = ({ favoriteLocations, setFavoriteLocations }) => {
         setAnchorEl(event.currentTarget);
     };
     const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const handleMenuItemClick = (option) => {
+        setLocation(option)
+        enqueueSnackbar((`Loaded ${option.name} weather data from favorites!`), { variant: 'success' })
         setAnchorEl(null);
     };
 
@@ -41,7 +33,6 @@ const FavoritesList = ({ favoriteLocations, setFavoriteLocations }) => {
                 aria-expanded={open ? 'true' : undefined}
                 aria-haspopup="true"
                 onClick={handleClick}
-                disabled
             >
                 <BookmarksIcon />
             </IconButton>
@@ -64,14 +55,21 @@ const FavoritesList = ({ favoriteLocations, setFavoriteLocations }) => {
                 PaperProps={{
                     style: {
                         maxHeight: 216,
-                        width: '20ch',
+
                     },
                 }}
             >
-                {options.map((option) => (
-                    <MenuItem dense key={option} selected={option === 'Pyxis'} onClick={handleClose}>
-                        {option}
+                {favoriteLocations.map((option) => (
+
+                    <MenuItem dense sx={{ display: 'flex', justifyContent: 'space-between' }} key={option.id} onClick={() => handleMenuItemClick(option)}>
+                        <Typography variant="inherit" noWrap pr={1.5}>
+                            {option.name}
+                        </Typography>
+                        <Typography width={'25px'} color='textColor.weaker'>
+                            {option.country}
+                        </Typography>
                     </MenuItem>
+
                 ))}
             </Menu>
         </div>
