@@ -10,6 +10,9 @@ const FindMyLocation = ({ setLocation, cities }) => {
     const { enqueueSnackbar } = useSnackbar();
 
     const successCallback = async (position) => {
+        enqueueSnackbar((position.coords.latitude), { variant: 'info' })
+        enqueueSnackbar((position.coords.longitude), { variant: 'info' })
+
         if (position) {
 
             const response = await geoDecode(position.coords.latitude, position.coords.longitude)
