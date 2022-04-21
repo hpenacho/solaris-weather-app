@@ -40,8 +40,14 @@ const FindMyLocation = ({ setLocation, cities }) => {
         enqueueSnackbar((`${error.message}`), { variant: 'error' })
     }
 
+    let options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+    };
+
     const handleClick = () => {
-        navigator.geolocation.getCurrentPosition(successCallback, errorCallback)
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback, options)
     }
 
     return (
