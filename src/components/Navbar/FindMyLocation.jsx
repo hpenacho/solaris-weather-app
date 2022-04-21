@@ -15,7 +15,6 @@ const FindMyLocation = ({ setLocation, cities }) => {
 
             geoDecode(position.coords.latitude, position.coords.longitude)
                 .then(response => {
-                    enqueueSnackbar((`${position.coords.latitude} test BEFORE`), { variant: 'info' })
 
                     let location = {
                         name: response[0].name,
@@ -23,9 +22,14 @@ const FindMyLocation = ({ setLocation, cities }) => {
                         coord: {
                             lat: response[0].lat,
                             lon: response[0].lon
-                        }
+                        },
+                        id: cities.find(city =>
+                            city.coord.lat.toFixed(1) === response[0].lat.toFixed(1)
+                            &&
+                            city.coord.lon.toFixed(1) === response[0].lon.toFixed(1)
+                        ).id
                     }
-                    enqueueSnackbar((`${location} test after`), { variant: 'warning' })
+                    enqueueSnackbar((`${location.id} test after`), { variant: 'warning' })
                     setLocation(location)
                     enqueueSnackbar((`Geo-located at ${location.name}`), { variant: 'info' })
                 })
