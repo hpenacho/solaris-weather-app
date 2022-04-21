@@ -14,8 +14,9 @@ const WeatherApp = () => {
     const [unitType, setUnitType] = useState('')
     const [iconStyle, setIconStyle] = useState('')
     const [timeframe, setTimeframe] = useState('')
+    const [favoriteLocations, setFavoriteLocations] = useState([])
 
-    useSettings(setUnitType, setIconStyle, setTimeframe);
+    useSettings(setUnitType, setIconStyle, setTimeframe, setFavoriteLocations);
 
     return (
         < Container maxWidth="lg" >
@@ -30,14 +31,20 @@ const WeatherApp = () => {
                     iconStyle={iconStyle}
                     setIconStyle={setIconStyle}
                     timeframe={timeframe}
-                    setTimeframe={setTimeframe} />
+                    setTimeframe={setTimeframe}
+                    favoriteLocations={favoriteLocations}
+                    setFavoriteLocations={setFavoriteLocations}
+                />
 
                 <ForecastContainer
                     location={location}
                     countries={countries}
                     iconStyle={iconStyle}
                     unitType={unitType}
-                    timeframe={timeframe} />
+                    timeframe={timeframe}
+                    favoriteLocations={favoriteLocations}
+                    setFavoriteLocations={setFavoriteLocations}
+                />
             </Box>
         </Container >
     )

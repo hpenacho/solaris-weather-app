@@ -21,7 +21,7 @@ const options = [
     'Umbriel',
 ];
 
-const FavoriteLocations = () => {
+const FavoritesList = ({ favoriteLocations, setFavoriteLocations }) => {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -78,4 +78,4 @@ const FavoriteLocations = () => {
     );
 }
 
-export default FavoriteLocations
+export default FavoritesList

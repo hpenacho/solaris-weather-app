@@ -4,7 +4,6 @@ import { Typography } from '@mui/material';
 import LocationOnTwoToneIcon from '@mui/icons-material/LocationOnTwoTone';
 import InfoTwoToneIcon from '@mui/icons-material/InfoTwoTone';
 import { Stack } from "@mui/material";
-import { Box } from '@mui/system';
 import InfoButton from './InfoButton';
 import FavoritesButton from './FavoritesButton';
 
@@ -12,7 +11,8 @@ const capitalize = (word) => {
     return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
-const Info = ({ location, countries, weatherData }) => {
+const Info = ({ location, countries, weatherData, favoriteLocations, setFavoriteLocations }) => {
+
     let wikiLink = "";
     if (location) {
         if (location.langs !== undefined) {
@@ -36,7 +36,8 @@ const Info = ({ location, countries, weatherData }) => {
                             <Stack direction='row' alignItems='center' spacing={1.5}>
                                 <FavoritesButton
                                     location={location}
-                                    country={country}
+                                    favoriteLocations={favoriteLocations}
+                                    setFavoriteLocations={setFavoriteLocations}
                                 />
                                 <Stack>
                                     <Typography letterSpacing={2} fontSize={{ xs: 21, sm: 30 }} fontFamily={'Exo, sans-serif'} color='textColor.default'> <b> {capitalize(weatherData.current.weather[0].description)} </b></Typography>

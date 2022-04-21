@@ -5,7 +5,7 @@ import BottomSectionMobile from './BottomSection/DailyMobile'
 import { Box } from '@mui/material'
 import useFetchWeather from '../hooks/useFetchWeather'
 
-const ForecastContainer = ({ location, countries, iconStyle, unitType, timeframe }) => {
+const ForecastContainer = ({ location, countries, iconStyle, unitType, timeframe, favoriteLocations, setFavoriteLocations }) => {
     const weatherData = useFetchWeather(location)
 
     return (
@@ -13,7 +13,10 @@ const ForecastContainer = ({ location, countries, iconStyle, unitType, timeframe
             <InfoSection
                 location={location}
                 countries={countries}
-                weatherData={weatherData} />
+                weatherData={weatherData}
+                favoriteLocations={favoriteLocations}
+                setFavoriteLocations={setFavoriteLocations}
+            />
 
             <MiddleSection
                 weatherData={weatherData}
