@@ -82,18 +82,19 @@ const FavoritesList = ({ favoriteLocations, setFavoriteLocations, setLocation })
                         </Stack>
                     </Stack>
                     :
-                    favoriteLocations.map((option) => (
+                    <Stack direction={'column-reverse'}>
+                        {favoriteLocations.map((option) => (
+                            <MenuItem dense sx={{ display: 'flex', justifyContent: 'space-between' }} key={option.id} onClick={() => handleMenuItemClick(option)}>
+                                <Typography variant="inherit" noWrap pr={1.5}>
+                                    {option.name}
+                                </Typography>
+                                <Typography width={'25px'} color='textColor.weaker'>
+                                    {option.country}
+                                </Typography>
+                            </MenuItem>
 
-                        <MenuItem dense sx={{ display: 'flex', justifyContent: 'space-between' }} key={option.id} onClick={() => handleMenuItemClick(option)}>
-                            <Typography variant="inherit" noWrap pr={1.5}>
-                                {option.name}
-                            </Typography>
-                            <Typography width={'25px'} color='textColor.weaker'>
-                                {option.country}
-                            </Typography>
-                        </MenuItem>
-
-                    ))
+                        ))}
+                    </Stack>
                 }
             </Menu>
         </div>
