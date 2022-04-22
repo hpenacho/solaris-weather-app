@@ -3,7 +3,6 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import darkTheme from '../../assets/darkTheme'
 import lightTheme from '../../assets/lightTheme'
-import Tooltip from '@mui/material/Tooltip';
 
 const ThemeModeButton = ({ theme, setTheme }) => {
 
@@ -13,14 +12,12 @@ const ThemeModeButton = ({ theme, setTheme }) => {
     }
 
     return (
-        <Tooltip title="Toggle dark/light mode" placement="top">
-            <IconButton sx={{ width: 45, height: 45 }} onClick={() => toggleTheme(setTheme)} color="inherit">
-                {theme.palette.mode === 'dark' ?
-                    <LightModeIcon />
-                    :
-                    <DarkModeIcon />}
-            </IconButton>
-        </Tooltip>
+        <IconButton sx={{ width: 45, height: 45 }} onClick={() => toggleTheme(setTheme)} color="inherit">
+            {theme.palette.mode === 'dark' ?
+                <LightModeIcon />
+                :
+                <DarkModeIcon />}
+        </IconButton>
     )
 
 }
