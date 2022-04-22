@@ -41,7 +41,7 @@ const FindMyLocation = ({ setLocation, cities }) => {
 
     return (
         <Tooltip TransitionComponent={Zoom} title={'Find my location'} placement="top">
-            <IconButton onClick={handleClick} sx={{ marginX: 0.50 }}>
+            <IconButton onClick={handleClick} sx={{ marginX: 0.27 }}>
                 <MyLocationSharpIcon sx={{ color: '#589ceb' }} />
             </IconButton>
         </Tooltip>

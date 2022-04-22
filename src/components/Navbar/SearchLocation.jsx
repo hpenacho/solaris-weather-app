@@ -73,7 +73,7 @@ export default function SearchLocation({ setLocation, cities, countries }) {
                     )
                 }}
                 renderInput={(params) =>
-                    <TextField {...params} sx={{ width: { xs: 197, sm: 235 } }} variant='outlined' label="Search..." />
+                    <TextField {...params} sx={{ width: { xs: 190, sm: 235 } }} variant='outlined' label="Search..." />
                 }
             />
         </>

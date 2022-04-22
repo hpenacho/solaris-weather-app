@@ -1,8 +1,8 @@
 import { Grid } from '@mui/material';
 import { Container } from '@mui/material';
 import { Typography } from '@mui/material';
-import LocationOnTwoToneIcon from '@mui/icons-material/LocationOnTwoTone';
-import InfoTwoToneIcon from '@mui/icons-material/InfoTwoTone';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
 import { Stack } from "@mui/material";
 import InfoButton from './InfoButton';
 import FavoritesButton from './FavoritesButton';
@@ -24,6 +24,7 @@ const Info = ({ location, countries, weatherData, favoriteLocations, setFavorite
         if (wikiLink === "" || wikiLink === undefined) {
             wikiLink = `https://en.wikipedia.org/wiki/${location.name}`
         }
+
     }
     const country = countries.find(country => country.code === location.country)
 
@@ -31,17 +32,11 @@ const Info = ({ location, countries, weatherData, favoriteLocations, setFavorite
         <Container sx={{ backgroundColor: 'secondary.main' }}>
             {location && weatherData &&
                 <>
-                    <Grid justifyContent={{ xs: 'center', sm: 'space-between' }} container direction='row' columnSpacing={2} alignItems='center'>
+                    <Stack justifyContent={'space-between'} direction='row' spacing={1} alignItems='center'>
                         <Grid item pt={1}>
-                            <Stack direction='row' alignItems='center' spacing={1.5}>
-                                <FavoritesButton
-                                    location={location}
-                                    favoriteLocations={favoriteLocations}
-                                    setFavoriteLocations={setFavoriteLocations}
-                                />
+                            <Stack direction='row' alignItems='center'>
                                 <Stack>
                                     <Typography letterSpacing={2} fontSize={{ xs: 21, sm: 30 }} fontFamily={'Exo, sans-serif'} color='textColor.default'> <b> {capitalize(weatherData.current.weather[0].description)} </b></Typography>
-
                                     <Grid container direction="row" alignItems="center">
                                         <Typography fontFamily={'Exo, sans-serif'} fontSize={{ xs: 18, sm: 28 }}> {location.name},</Typography>
                                         <Typography fontFamily={'Exo, sans-serif'} fontSize={{ xs: 18, sm: 28 }} mr={1} sx={{ color: 'textColor.subdued' }}>{country.label} </Typography>
@@ -50,33 +45,32 @@ const Info = ({ location, countries, weatherData, favoriteLocations, setFavorite
                                         />
                                     </Grid>
                                 </Stack>
-
                             </Stack>
                         </Grid>
-
-                        <Grid item>
-
-                        </Grid>
-
-                        <Grid item>
-                            <Stack direction='row' borderRadius={9}>
+                        <Stack direction='row' alignItems={'center'}>
+                            <FavoritesButton
+                                location={location}
+                                favoriteLocations={favoriteLocations}
+                                setFavoriteLocations={setFavoriteLocations}
+                            />
+                            <Stack>
                                 {wikiLink &&
                                     <InfoButton
                                         title={`Open location on Wikipedia`}
-                                        icon={<InfoTwoToneIcon />}
+                                        icon={<MenuBookIcon />}
                                         placement="left"
                                         link={wikiLink}
                                     />
                                 }
                                 <InfoButton
                                     title={`Open location on GoogleMaps`}
-                                    icon={<LocationOnTwoToneIcon />}
-                                    placement="bottom"
+                                    icon={<LocationOnIcon />}
+                                    placement="left"
                                     link={`https://www.google.com/maps/place/${location.name}/@${location.coord.lat},${location.coord.lon}`}
                                 />
                             </Stack>
-                        </Grid>
-                    </Grid>
+                        </Stack>
+                    </Stack>
                 </>
             }
         </Container >

@@ -10,7 +10,7 @@ import AboutThisProject from './AboutThisProject';
 const HeaderSection = ({ theme, setTheme }) => {
 
     return (
-        <Paper elevation={0} sx={{ borderRadius: 0, marginBottom: 2.5, paddingX: 2, paddingY: { xs: 1, sm: 2 } }}>
+        <Paper elevation={0} sx={{ borderRadius: 0, marginBottom: 2.5, paddingX: { xs: 1, sm: 2 }, paddingY: { xs: 1, sm: 2 } }}>
             <Grid container direction="row" justifyContent={'space-between'} alignItems={'center'}>
                 <Grid item>
                     <ProjectTitle />

@@ -42,7 +42,7 @@ const FavoritesList = ({ favoriteLocations, setFavoriteLocations, setLocation })
                     aria-expanded={open ? 'true' : undefined}
                     aria-haspopup="true"
                     onClick={handleClick}
-                    sx={{ marginX: 0.40 }}
+                    sx={{ marginX: 0.27 }}
                 >
                     <Badge badgeContent={favoriteLocations.length} color='warning'>
                         <BookmarksIcon />
