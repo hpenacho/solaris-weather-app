@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react';
 
-const baseUrl = 'https://api.openweathermap.org/data/2.5/'
+const baseUrl = 'https://api.openweathermap.org/data/3.0/'
 
 const fetchWeather = async (latitude, longitude, language) => {
     const { data } = await axios.get(baseUrl + "onecall?", {
